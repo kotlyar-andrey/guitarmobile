@@ -20,6 +20,7 @@ interface Images {
  * Непосредственно набор цветов, изображений и других элементов для темы
  */
 export interface Theme {
+  dark: boolean;
   colors: Colors;
   images: Images;
 }

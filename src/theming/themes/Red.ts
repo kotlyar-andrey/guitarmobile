@@ -1,6 +1,7 @@
 import {ColorScheme, Theme} from '../interfaces';
 
 const RedLightTheme: Theme = {
+  dark: false,
   colors: {
     background: '#f9f9f9',
     text: '#000000',
@@ -14,6 +15,7 @@ const RedLightTheme: Theme = {
 };
 
 const RedDarkTheme: Theme = {
+  dark: true,
   colors: {
     background: '#f9f9f9',
     text: '#000000',
