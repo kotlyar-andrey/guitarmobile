@@ -5,6 +5,8 @@ import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 import ButtonInline from '~/components/ButtonInline/ButtonInline';
 
 import {NavigationType} from '~/main/MainNavigator';
+import {useTheme} from '~/theming/hooks';
+import createStyles from './Home.styles';
 
 type Props = NativeStackScreenProps<NavigationType, 'Home'>;
 
@@ -20,13 +22,23 @@ type Props = NativeStackScreenProps<NavigationType, 'Home'>;
  * @returns React Component
  */
 const Home = ({navigation}: Props) => {
+  const theme = useTheme();
+
+  const styles = React.useMemo(() => createStyles(theme), [theme]);
+
   return (
     <SafeAreaView edges={['right', 'bottom', 'left']}>
-      <Text>HomeScreen</Text>
+      <Text style={styles.text}>HomeScreen</Text>
       <ButtonInline
         title="Lessons"
         onPressHandler={() => {
           navigation.push('Lessons');
+        }}
+      />
+      <ButtonInline
+        title="Settings"
+        onPressHandler={() => {
+          navigation.push('Settings');
         }}
       />
     </SafeAreaView>

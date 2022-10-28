@@ -1,5 +1,6 @@
 import React from 'react';
 import MainNavigator from './MainNavigator';
+import {ThemeProvider} from '~/theming/context';
 
 /**
  * Основной компонент, который добавляет глобальные контексты вокруг главного навигатора
@@ -7,7 +8,11 @@ import MainNavigator from './MainNavigator';
  * @returns React Component
  */
 const Main = () => {
-  return <MainNavigator />;
+  return (
+    <ThemeProvider>
+      <MainNavigator />
+    </ThemeProvider>
+  );
 };
 
 export default Main;

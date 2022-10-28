@@ -1,0 +1,34 @@
+import {ColorScheme, Theme} from '../interfaces';
+
+const DefaultLightTheme: Theme = {
+  colors: {
+    background: '#f9f9f9',
+    text: '#2d2d2d',
+    primary: '#69306d',
+    errorText: '#f90000',
+    errorBackground: '#eda19a',
+  },
+  images: {
+    backgroundHome: require('~/assets/images/homeLightBackground.jpg'),
+  },
+};
+
+const DefaultDarkTheme: Theme = {
+  colors: {
+    background: '#2d2d2d',
+    text: '#f9f9f9',
+    primary: '#f9acfa',
+    errorText: '#f90000',
+    errorBackground: '#eda19a',
+  },
+  images: {
+    backgroundHome: require('~/assets/images/homeDarkBackground.jpg'),
+  },
+};
+
+const DefaultTheme: ColorScheme = {
+  light: DefaultLightTheme,
+  dark: DefaultDarkTheme,
+};
+
+export default DefaultTheme;
