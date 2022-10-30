@@ -1,3 +1,5 @@
+import {ImageSourcePropType} from 'react-native';
+
 /**
  * Определение набора цветов для темной или светлой темы
  */
@@ -13,7 +15,7 @@ interface Colors {
  * Набор изображений (фоновое изображение, иконки и т.п), специфических для данной темы
  */
 interface Images {
-  backgroundHome: string;
+  backgroundHome: ImageSourcePropType;
 }
 
 /**
