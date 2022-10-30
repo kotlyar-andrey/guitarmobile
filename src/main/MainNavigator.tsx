@@ -10,8 +10,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Home from '~/screens/Home/Home';
 import Lessons from '~/screens/Lessons/Lessons';
 import Settings from '~/screens/Settings/Settings';
-import {useTheme} from '~/theming/hooks';
-import {Theme} from '~/theming/interfaces';
+import {useTheme, Theme} from '~/theming';
 
 export type NavigationType = {
   Home: undefined;

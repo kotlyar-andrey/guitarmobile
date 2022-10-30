@@ -1,7 +1,7 @@
 import {StatusBar as RNStatusBar} from 'react-native';
 import React from 'react';
 import createStyles from './StatusBar.styles';
-import {useTheme} from '~/theming/hooks';
+import {useTheme} from '~/theming';
 
 interface Props {
   hidden?: boolean;

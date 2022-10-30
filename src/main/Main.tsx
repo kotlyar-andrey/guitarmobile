@@ -1,7 +1,7 @@
 import React from 'react';
 import MainNavigator from './MainNavigator';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {ThemeProvider} from '~/theming/context';
+import {ThemeProvider} from '~/theming';
 import StatusBar from '~/components/StatusBar/StatusBar';
 
 /**
