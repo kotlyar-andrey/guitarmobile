@@ -13,6 +13,7 @@ const createStyles = (theme: Theme) => {
     menuColumn: {
       flexDirection: 'column',
       justifyContent: 'space-around',
+      alignItems: 'flex-start',
     },
     text: {
       color: theme.colors.primary,

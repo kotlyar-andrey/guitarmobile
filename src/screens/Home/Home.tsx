@@ -1,5 +1,5 @@
 import React from 'react';
-import {ImageBackground, Text} from 'react-native';
+import {ImageBackground, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 import ButtonInline from '~/components/ButtonInline/ButtonInline';
@@ -34,19 +34,42 @@ const Home = ({navigation}: Props) => {
         source={theme.images.backgroundHome}
         style={styles.container}>
         <Logo />
-        <Text style={styles.text}>HomeScreen</Text>
-        <ButtonInline
-          title="Lessons"
-          onPressHandler={() => {
-            navigation.push('Lessons');
-          }}
-        />
-        <ButtonInline
-          title="Settings"
-          onPressHandler={() => {
-            navigation.push('Settings');
-          }}
-        />
+        <View style={styles.menuColumnsContainer}>
+          <View style={styles.menuColumn}>
+            <ButtonInline
+              title="Уроки"
+              onPressHandler={() => {
+                navigation.push('Lessons');
+              }}
+            />
+            <ButtonInline
+              title="Разборы"
+              onPressHandler={() => {
+                navigation.push('Settings');
+              }}
+            />
+            <ButtonInline
+              title="Аккорды"
+              onPressHandler={() => {
+                navigation.push('Settings');
+              }}
+            />
+            <ButtonInline
+              title="Упражнения"
+              onPressHandler={() => {
+                navigation.push('Settings');
+              }}
+            />
+          </View>
+          <View style={styles.menuColumn}>
+            <ButtonInline
+              title="Аккорды"
+              onPressHandler={() => {
+                navigation.push('Settings');
+              }}
+            />
+          </View>
+        </View>
       </ImageBackground>
     </SafeAreaView>
   );
