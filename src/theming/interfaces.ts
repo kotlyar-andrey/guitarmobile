@@ -7,6 +7,7 @@ interface Colors {
   background: string; // цвет фона для большинства компонентов
   text: string; // цвет текста для большинства компонентов
   primary: string; // цвет, например, для элементов управления
+  onPrimary: string; // цвет текста, который находится на primary
   errorText: string; // текст ошибки
   errorBackground: string; // фон блока с ошибкой
 }
