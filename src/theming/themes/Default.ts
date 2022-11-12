@@ -7,8 +7,10 @@ const DefaultLightTheme: Theme = {
     text: '#2d2d2d',
     primary: '#69306d',
     onPrimary: '#f9f9f9',
+    secondary: '#999999',
     errorText: '#f90000',
     errorBackground: '#eda19a',
+    divider: '#eeeeee',
   },
   images: {
     backgroundHome: require('~/assets/images/homeLightBackground.jpg'),
@@ -22,8 +24,10 @@ const DefaultDarkTheme: Theme = {
     text: '#f9f9f9',
     primary: '#f9acfa',
     onPrimary: '#f9f9f9',
+    secondary: '#cccccc',
     errorText: '#f90000',
     errorBackground: '#eda19a',
+    divider: '#000000',
   },
   images: {
     backgroundHome: require('~/assets/images/homeDarkBackground.jpg'),
