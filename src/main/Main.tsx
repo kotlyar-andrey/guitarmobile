@@ -13,7 +13,7 @@ import StatusBar from '~/components/StatusBar/StatusBar';
 const Main = () => {
   return (
     <ThemeProvider>
-      <StatusBar />
+      <StatusBar hidden={true} />
       <SafeAreaProvider>
         <MainNavigator />
       </SafeAreaProvider>
