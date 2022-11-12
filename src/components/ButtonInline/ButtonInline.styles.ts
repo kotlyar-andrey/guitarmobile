@@ -4,6 +4,9 @@ import {Theme} from '~/theming';
 const createStyles = (theme: Theme) => {
   const styles = ScaledSheet.create({
     buttonContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-around',
       margin: '4@s',
     },
     buttonText: {
