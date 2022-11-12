@@ -3,6 +3,7 @@ import {ImageBackground, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 import ButtonInline from '~/components/ButtonInline/ButtonInline';
+import {SettingsIcon} from '~/components/Icons/SettingsIcon';
 
 import {NavigationType} from '~/main/MainNavigator';
 
@@ -26,7 +27,7 @@ type Props = NativeStackScreenProps<NavigationType, 'Home'>;
 const Home = ({navigation}: Props) => {
   const theme = useTheme();
 
-  const styles = React.useMemo(() => createStyles(theme), [theme]);
+  const styles = createStyles(theme);
 
   return (
     <SafeAreaView edges={['right', 'bottom', 'left']} style={styles.container}>
@@ -67,6 +68,7 @@ const Home = ({navigation}: Props) => {
               onPressHandler={() => {
                 navigation.push('Settings');
               }}
+              icon={<SettingsIcon />}
             />
           </View>
         </View>

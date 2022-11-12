@@ -5,6 +5,7 @@ const createStyles = (theme: Theme) => {
   const styles = ScaledSheet.create({
     container: {
       flex: 1,
+      backgroundColor: theme.colors.background,
     },
     menuColumnsContainer: {
       flexDirection: 'row',
