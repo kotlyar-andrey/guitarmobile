@@ -1,6 +1,6 @@
 import Storage from 'react-native-storage';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {Accord, Lesson} from './interfaces';
+import {Accord, LessonData} from './interfaces';
 import {E_ContentType} from './interfaces';
 
 class ContentStorage {
@@ -19,7 +19,7 @@ class ContentStorage {
    * @param subject lesson, howtoplay or accord
    * @param data list of lessons, howtoplays or accords
    */
-  async _saveListOf(subject: E_ContentType, data: Lesson[] | Accord[]) {
+  async _saveListOf(subject: E_ContentType, data: LessonData[] | Accord[]) {
     try {
       data.forEach(item => {
         this._storage.save({
@@ -33,13 +33,21 @@ class ContentStorage {
     }
   }
 
-  async saveLessons(lessons: Lesson[]): Promise<void> {
+  async saveLessons(lessons: LessonData[]): Promise<void> {
     await this._saveListOf(E_ContentType.LESSON, lessons);
   }
 
-  async getLessons(): Promise<Lesson[]> {
+  async getLessons(): Promise<LessonData[]> {
     const lessons = await this._storage.getAllDataForKey(E_ContentType.LESSON);
     return lessons;
+  }
+
+  async getLesson(lessonPk: number): Promise<LessonData> {
+    const lesson = await this._storage.load({
+      key: E_ContentType.LESSON,
+      id: lessonPk.toString(),
+    });
+    return lesson;
   }
 }
 

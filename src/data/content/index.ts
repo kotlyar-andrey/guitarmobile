@@ -1,6 +1,6 @@
 import ContentStorage from './storage';
 import ContentApi from './api';
-import {Lesson} from './interfaces';
+import {LessonData} from './interfaces';
 
 /**
  * Высокоуровленевое АПИ для работы с контентом - загрузкой его из интернета, сохранением на диск и изменением
@@ -17,9 +17,9 @@ class Content {
   /**
    * Загружает уроки с сервера и сохраняет на устройстве. Возвращает скачанные уроки.
    */
-  async loadLessons(): Promise<Lesson[]> {
+  async loadLessons(): Promise<LessonData[]> {
     try {
-      const lessons: Lesson[] = await this._api.loadLessons();
+      const lessons: LessonData[] = await this._api.loadLessons();
       await this._storage.saveLessons(lessons);
       return lessons;
     } catch (error) {
@@ -28,6 +28,10 @@ class Content {
     }
   }
 
+  /**
+   * Считывает уроки с устройства и возвращает их. Если уроков нет - скачивает с сервера.
+   * @returns список уроков
+   */
   async getLessons() {
     try {
       const lessons = await this._storage.getLessons();
@@ -47,14 +51,10 @@ class Content {
     }
   }
 
-  // async loadHowToPlayes() {
-  //   try {
-  //     const howToPlays: Lesson[] = await this._api.loadHowToPlayes();
-  //     await this._storage.saveLessons(howToPlays);
-  //   } catch (error) {
-  //     console.log('ERROR -> Content -> loadLessons');
-  //   }
-  // }
+  async getLesson(lessonPk: number) {
+    const lesson = await this._storage.getLesson(lessonPk);
+    return lesson;
+  }
 }
 
 const content = new Content();

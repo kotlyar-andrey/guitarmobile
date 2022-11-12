@@ -28,7 +28,7 @@ export interface Song {
   metronome: number;
 }
 
-export interface Lesson {
+export interface LessonData {
   pk: number;
   number: number;
   title: string;

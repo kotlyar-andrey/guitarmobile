@@ -1,5 +1,5 @@
 import axios, {AxiosInstance} from 'axios';
-import {Accord, E_ContentType, Lesson} from './interfaces';
+import {Accord, E_ContentType, LessonData} from './interfaces';
 
 class ContentApi {
   _axios: AxiosInstance;
@@ -42,11 +42,11 @@ class ContentApi {
     }
   }
 
-  async loadLessons(): Promise<Lesson[]> {
+  async loadLessons(): Promise<LessonData[]> {
     return this.loadListOf(E_ContentType.LESSON);
   }
 
-  async loadHowToPlays(): Promise<Lesson[]> {
+  async loadHowToPlays(): Promise<LessonData[]> {
     return this.loadListOf(E_ContentType.HOWTOPLAY);
   }
 
@@ -54,11 +54,11 @@ class ContentApi {
     return this.loadListOf(E_ContentType.ACCORD);
   }
 
-  async loadLesson(id: number): Promise<Lesson | null> {
+  async loadLesson(id: number): Promise<LessonData | null> {
     return this.loadObjectOf(E_ContentType.LESSON, id);
   }
 
-  async loadHowToPlay(id: number): Promise<Lesson | null> {
+  async loadHowToPlay(id: number): Promise<LessonData | null> {
     return this.loadObjectOf(E_ContentType.HOWTOPLAY, id);
   }
 
