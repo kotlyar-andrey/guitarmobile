@@ -14,7 +14,7 @@ const BackArrow = (props: IconProps) => {
     <MaterialCommunityIcons
       name="arrow-left"
       color={color}
-      size={28}
+      size={24}
       onPress={props.onPress}
     />
   );
