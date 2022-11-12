@@ -9,12 +9,14 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import Home from '~/screens/Home/Home';
 import Lessons from '~/screens/Lessons/Lessons';
+import Lesson from '~/screens/Lesson/Lesson';
 import Settings from '~/screens/Settings/Settings';
 import {useTheme, Theme} from '~/theming';
 
 export type NavigationType = {
   Home: undefined;
   Lessons: undefined;
+  Lesson: {lessonPk: number};
   Settings: undefined;
 };
 
@@ -40,6 +42,7 @@ const MainNavigator = () => {
           <Group>
             <Screen name="Home" component={Home} />
             <Screen name="Lessons" component={Lessons} />
+            <Screen name="Lesson" component={Lesson} />
             <Screen name="Settings" component={Settings} />
           </Group>
         </Navigator>
