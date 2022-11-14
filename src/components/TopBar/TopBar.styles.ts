@@ -8,7 +8,6 @@ const createStyles = (theme: Theme) => {
       flexDirection: 'row',
       justifyContent: 'flex-start',
       alignItems: 'center',
-      marginBottom: '4@vs',
       padding: '4@vs',
       backgroundColor: theme.colors.primary,
     },
