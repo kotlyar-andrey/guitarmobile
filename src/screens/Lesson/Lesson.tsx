@@ -4,11 +4,11 @@ import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 
 import {NavigationType} from '~/main/MainNavigator';
 
-// import {Lesson} from '~/data/content/interfaces';
 import TopBar from '~/components/TopBar/TopBar';
 import {useTheme} from '~/theming';
 import {LessonData} from '~/data/content/interfaces';
 import data from '~/data';
+import LessonNavigator from './LessonNavigator';
 import createStyles from './Lesson.styles';
 
 type Props = NativeStackScreenProps<NavigationType, 'Lesson'>;
@@ -36,6 +36,7 @@ const Lesson = ({route, navigation}: Props) => {
         backArrow={true}
         navigation={navigation}
       />
+      {lesson && <LessonNavigator lesson={lesson} />}
     </SafeAreaView>
   );
 };
