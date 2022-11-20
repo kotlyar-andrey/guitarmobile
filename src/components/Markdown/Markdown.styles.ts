@@ -29,6 +29,7 @@ const createStyles = (theme: Theme, size: number) => {
     },
     strong: {
       fontWeight: 'bold' as 'bold',
+      padding: scale(2),
     },
     text: {
       color: theme.colors.text,
