@@ -1,4 +1,5 @@
 import React from 'react';
+import {moderateScale} from 'react-native-size-matters';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useTheme} from '~/theming';
 import {IconProps} from './interfaces';
@@ -14,7 +15,7 @@ const BackArrow = (props: IconProps) => {
     <MaterialCommunityIcons
       name="arrow-left"
       color={color}
-      size={24}
+      size={moderateScale(24)}
       onPress={props.onPress}
     />
   );

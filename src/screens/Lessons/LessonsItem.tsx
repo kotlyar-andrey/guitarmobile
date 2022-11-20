@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
-import {scale} from 'react-native-size-matters';
+
 import {CompletedIcon} from '~/components/Icons/CompletedIcon';
 import {DownloadIcon} from '~/components/Icons/DownloadIcon';
 import {FavoriteIcon} from '~/components/Icons/FavoriteIcon';
@@ -22,9 +22,9 @@ const LessonsItem = ({lesson, styles, navigationToLesson}) => {
         ))}
       </TouchableOpacity>
       <View style={styles.iconsContainer}>
-        <CompletedIcon size={scale(10)} />
-        <FavoriteIcon size={scale(10)} />
-        <DownloadIcon size={scale(10)} />
+        <CompletedIcon size={14} />
+        <FavoriteIcon size={14} />
+        <DownloadIcon size={14} />
       </View>
     </View>
   );
