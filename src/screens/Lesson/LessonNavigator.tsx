@@ -5,6 +5,7 @@ import SongView from '~/components/SongView/SongView';
 import {LessonData, Song} from '~/data/content/interfaces';
 import {useTheme} from '~/theming';
 import {TextIcon} from '~/components/Icons/Text';
+import {scale, verticalScale} from 'react-native-size-matters';
 
 type LessonSongsType = {
   [key: string]: {song: Song};
@@ -42,10 +43,11 @@ const LessonNavigator = ({lesson}: Props) => {
       screenOptions={{
         tabBarLabelStyle: {
           textTransform: 'none',
+          fontSize: scale(10),
         },
         tabBarStyle: {
           backgroundColor: theme.colors.background,
-          maxHeight: 48,
+          maxHeight: verticalScale(40),
         },
         tabBarItemStyle: {
           flexDirection: 'row',
