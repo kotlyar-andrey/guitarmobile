@@ -12,6 +12,7 @@ const createStyles = (theme: Theme) => {
       color: theme.colors.text,
       fontWeight: 'bold',
       padding: '4@s',
+      fontSize: '12@s',
     },
   });
   return styles;

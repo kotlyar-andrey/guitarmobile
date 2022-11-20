@@ -1,7 +1,8 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {Text, ScrollView} from 'react-native';
 import {useTheme} from '~/theming';
 import createStyles from './SongView.styles';
+import SongMarkdown from '../Markdown/Markdown';
 
 /**
  * Главный компонент, который отображает песню или разбор с аккордами, боями,
@@ -14,10 +15,13 @@ const SongView = ({route}) => {
 
   const styles = createStyles(theme);
 
+  const song = route.params.song;
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>{route.params.song.title}</Text>
-    </View>
+    <ScrollView style={styles.container}>
+      <Text style={styles.title}>{song.title}</Text>
+      <SongMarkdown>{song.text}</SongMarkdown>
+    </ScrollView>
   );
 };
 
