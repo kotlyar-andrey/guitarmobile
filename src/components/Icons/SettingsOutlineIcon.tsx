@@ -3,7 +3,7 @@ import {scale} from 'react-native-size-matters';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useTheme} from '~/theming';
 
-export const SettingsIcon = () => {
+export const SettingsOutlineIcon = () => {
   const theme = useTheme();
 
   return (
