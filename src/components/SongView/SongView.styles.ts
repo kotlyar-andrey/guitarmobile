@@ -14,20 +14,6 @@ const createStyles = (theme: Theme) => {
       padding: '4@s',
       fontSize: '12@s',
     },
-    chordsContainer: {
-      flex: 2,
-      paddingHorizontal: '4@s',
-      flexDirection: 'row',
-      flexWrap: 'wrap',
-    },
-    accordHorizontalContainer: {
-      width: '140@s',
-      height: '70@s',
-    },
-    accordVerticalContainer: {
-      width: '75@s',
-      height: '150@s',
-    },
   });
   return styles;
 };
