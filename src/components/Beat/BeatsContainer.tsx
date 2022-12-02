@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {View} from 'react-native';
 import {useTheme} from '~/theming';
 import createStyles from './Beat.styles';
@@ -27,7 +27,13 @@ const BeatsContainer = ({beats}: Props) => {
   const theme = useTheme();
   const styles = createStyles(theme);
 
-  const [playingBeat, setPlayingBeat] = React.useState<number>(-1);
+  const [playingBeat, setPlayingBeat] = useState<number>(-1);
+
+  useEffect(() => {
+    return () => {
+      stop();
+    };
+  }, []);
 
   const onBeatClick = (beat: Beat) => () => {
     if (beat.id === playingBeat) {
