@@ -6,7 +6,12 @@ import {SettingsOutlineIcon} from '../Icons/SettingsOutlineIcon';
 import {ShowIcon} from '../Icons/ShowIcon';
 import createStyles from './AccordionContainer.styles';
 
-const AccordionContainer = ({title, children}) => {
+type Props = {
+  title: string;
+  children: React.ReactNode;
+};
+
+const AccordionContainer: React.FC<Props> = ({title, children}) => {
   const theme = useTheme();
   const styles = createStyles(theme);
 
@@ -27,7 +32,7 @@ const AccordionContainer = ({title, children}) => {
               <HideIcon />
             ) : (
               <>
-                <Text>Показать ритмические рисунки</Text>
+                <Text>Показать {title.toLowerCase()}</Text>
                 <ShowIcon />
               </>
             )}
