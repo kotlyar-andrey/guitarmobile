@@ -5,6 +5,7 @@ import createStyles from './SongView.styles';
 import SongMarkdown from '../Markdown/Markdown';
 import Chord from '../Chord/Chord';
 import BeatsContainer from '../Beat/BeatsContainer';
+import AccordionContainer from '../AccordionContainer/AccordionContainer';
 
 const beat1 = {
   id: 1,
@@ -51,7 +52,9 @@ const SongView = ({route}) => {
         ))}
       </View>
       {/* Показывать интерактивные бои, но если их нет, то обычные */}
-      <BeatsContainer beats={beats} bpm={120} />
+      <AccordionContainer title="Ритмические рисунки">
+        <BeatsContainer beats={beats} bpm={120} />
+      </AccordionContainer>
 
       <SongMarkdown>{song.text}</SongMarkdown>
     </ScrollView>

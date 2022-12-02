@@ -16,7 +16,7 @@ const createStyles = (theme: Theme) => {
     },
     chordsContainer: {
       flex: 2,
-      padding: '4@s',
+      paddingHorizontal: '4@s',
       flexDirection: 'row',
       flexWrap: 'wrap',
     },
