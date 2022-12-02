@@ -4,6 +4,27 @@ import {useTheme} from '~/theming';
 import createStyles from './SongView.styles';
 import SongMarkdown from '../Markdown/Markdown';
 import Chord from '../Chord/Chord';
+import BeatsContainer from '../Beat/BeatsContainer';
+
+const beat1 = {
+  id: 1,
+  name: 'Бой № 1',
+  strikes: ['down', 'up', 'x', 'up'],
+  duration: 2,
+};
+const beat2 = {
+  id: 2,
+  name: 'Бой № 2',
+  strikes: ['down', 'pause', 'x', 'up', 'pause', 'up', 'x', 'up'],
+  duration: 3,
+};
+const beat3 = {
+  id: 3,
+  name: 'test',
+  strikes: ['down', 'up', 'down', 'up', 'down', 'up', 'down', 'up'],
+  duration: 3,
+};
+const beats = [beat1, beat2, beat3];
 
 /**
  * Главный компонент, который отображает песню или разбор с аккордами, боями,
@@ -22,12 +43,15 @@ const SongView = ({route}) => {
     <ScrollView style={styles.container}>
       <Text style={styles.title}>{song.title}</Text>
       <View style={styles.chordsContainer}>
+        {/* Показывать слово Аккорды, а справа надпись скрыть. После скрытия надпись меняется на показать */}
         {song.accords.map(chord => (
           <View style={styles.accordHorizontalContainer} key={chord.pk}>
             <Chord chord={chord} orientation="horizontal" />
           </View>
         ))}
       </View>
+      {/* Показывать интерактивные бои, но если их нет, то обычные */}
+      <BeatsContainer beats={beats} bpm={120} />
 
       <SongMarkdown>{song.text}</SongMarkdown>
     </ScrollView>
