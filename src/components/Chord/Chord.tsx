@@ -19,7 +19,7 @@ interface Props {
   chord: Accord;
   orientation: 'horizontal' | 'vertical';
 }
-const BaseChord = ({chord, orientation}: Props) => {
+const ChordView = ({chord, orientation}: Props) => {
   return orientation === 'vertical' ? (
     <VerticalChord chord={chord} />
   ) : (
@@ -27,4 +27,4 @@ const BaseChord = ({chord, orientation}: Props) => {
   );
 };
 
-export default BaseChord;
+export default ChordView;
