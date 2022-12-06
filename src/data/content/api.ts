@@ -1,5 +1,5 @@
 import axios, {AxiosInstance} from 'axios';
-import {Accord, E_ContentType, LessonData} from './interfaces';
+import {I_Chord, E_ContentType, I_Lesson} from './interfaces';
 
 class ContentApi {
   _axios: AxiosInstance;
@@ -42,27 +42,27 @@ class ContentApi {
     }
   }
 
-  async loadLessons(): Promise<LessonData[]> {
+  async loadLessons(): Promise<I_Lesson[]> {
     return this.loadListOf(E_ContentType.LESSON);
   }
 
-  async loadHowToPlays(): Promise<LessonData[]> {
+  async loadHowToPlays(): Promise<I_Lesson[]> {
     return this.loadListOf(E_ContentType.HOWTOPLAY);
   }
 
-  async loadAccords(): Promise<Accord[]> {
+  async loadAccords(): Promise<I_Chord[]> {
     return this.loadListOf(E_ContentType.ACCORD);
   }
 
-  async loadLesson(id: number): Promise<LessonData | null> {
+  async loadLesson(id: number): Promise<I_Lesson | null> {
     return this.loadObjectOf(E_ContentType.LESSON, id);
   }
 
-  async loadHowToPlay(id: number): Promise<LessonData | null> {
+  async loadHowToPlay(id: number): Promise<I_Lesson | null> {
     return this.loadObjectOf(E_ContentType.HOWTOPLAY, id);
   }
 
-  async loadAccord(id: number): Promise<Accord | null> {
+  async loadAccord(id: number): Promise<I_Chord | null> {
     return this.loadObjectOf(E_ContentType.ACCORD, id);
   }
 }

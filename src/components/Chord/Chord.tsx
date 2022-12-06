@@ -1,5 +1,5 @@
 import React from 'react';
-import {Accord} from '~/data/content/interfaces';
+import {I_Chord} from '~/data/content/interfaces';
 import HorizontalChord from './HorizontalChord';
 import VerticalChord from './VerticalChord';
 
@@ -16,7 +16,7 @@ import VerticalChord from './VerticalChord';
  */
 
 interface Props {
-  chord: Accord;
+  chord: I_Chord;
   orientation: 'horizontal' | 'vertical';
 }
 const ChordView = ({chord, orientation}: Props) => {

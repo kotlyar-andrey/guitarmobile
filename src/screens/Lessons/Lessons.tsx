@@ -5,7 +5,7 @@ import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {NavigationType} from '~/main/MainNavigator';
 
 import data from '~/data';
-import {LessonData} from '~/data/content/interfaces';
+import {I_Lesson} from '~/data/content/interfaces';
 import TopBar from '~/components/TopBar/TopBar';
 import {useTheme} from '~/theming';
 import createStyles from './Lessons.styles';
@@ -19,7 +19,7 @@ const Lessons = ({navigation}: Props) => {
   const styles = createStyles(theme);
 
   const [loading, setLoading] = useState<boolean>(true);
-  const [lessons, setLessons] = useState<LessonData[]>([]);
+  const [lessons, setLessons] = useState<I_Lesson[]>([]);
 
   // Нужно получать всю необходимую информацию об уроке:
   // сам урок, а так же добавлен ли он в избранное, пройден ли, скачан ли.

@@ -2,13 +2,13 @@ import React from 'react';
 import {View, Text} from 'react-native';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import SongView from '~/components/SongView/SongView';
-import {LessonData, Song} from '~/data/content/interfaces';
+import {I_Lesson, I_Song} from '~/data/content/interfaces';
 import {useTheme} from '~/theming';
 import {TextIcon} from '~/components/Icons/Text';
 import {scale, verticalScale} from 'react-native-size-matters';
 
 type LessonSongsType = {
-  [key: string]: {song: Song};
+  [key: string]: {song: I_Song};
 };
 
 type LessonTabsType = LessonSongsType & {
@@ -26,7 +26,7 @@ function VideoScreen() {
 }
 
 interface Props {
-  lesson: LessonData;
+  lesson: I_Lesson;
 }
 
 /**
