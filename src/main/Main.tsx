@@ -3,6 +3,8 @@ import MainNavigator from './MainNavigator';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {ThemeProvider} from '~/theming';
 import StatusBar from '~/components/StatusBar/StatusBar';
+import DataLoader from '~/components/DataLoader/DataLoader';
+import Toaster from '~/components/Toaster/Toaster';
 
 /**
  * Основной компонент, который добавляет глобальные контексты вокруг главного навигатора
@@ -17,6 +19,8 @@ const Main = () => {
       <SafeAreaProvider>
         <MainNavigator />
       </SafeAreaProvider>
+      <DataLoader />
+      <Toaster />
     </ThemeProvider>
   );
 };

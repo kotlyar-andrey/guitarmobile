@@ -25,6 +25,7 @@
     "react-native-storage": "^1.0.1",
     "react-native-svg": "^13.6.0",
     "react-native-tab-view": "^3.3.0",
+    "react-native-toast-message": "^2.1.5",
     "react-native-vector-icons": "^9.2.0",
     "rn-chords-player": "https://github.com/kotlyar-andrey/rn-chords-player"
   },
