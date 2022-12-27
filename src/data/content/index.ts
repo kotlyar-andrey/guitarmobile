@@ -1,19 +1,9 @@
-import ContentStorage from './storage';
-import ContentApi from './api';
 import {I_Lesson} from './interfaces';
 
 /**
  * Высокоуровленевое АПИ для работы с контентом - загрузкой его из интернета, сохранением на диск и изменением
  */
 class Content {
-  _api: ContentApi;
-  _storage: ContentStorage;
-
-  constructor() {
-    this._api = new ContentApi();
-    this._storage = new ContentStorage();
-  }
-
   /**
    * Загружает уроки с сервера и сохраняет на устройстве. Возвращает скачанные уроки.
    */

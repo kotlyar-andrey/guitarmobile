@@ -58,8 +58,33 @@ export interface I_Lesson {
   additions: I_Addition[];
 }
 
+export interface I_InfoForUpdate {
+  lessons: number[];
+  howtoplays: number[];
+  chords: number[];
+  beats: number[];
+  last_version: number;
+}
+
+export interface I_UpdatedData {
+  lessons: I_Lesson[];
+  howtoplays: I_Lesson[];
+  chords: I_Chord[];
+  beats: I_Beat[];
+  lastVersion: number;
+}
+
 export enum E_ContentType {
   LESSON = 'lessons',
-  HOWTOPLAY = 'tracks', //TODO - change to howtoplays
-  ACCORD = 'accords',
+  HOWTOPLAY = 'howtoplays',
+  CHORD = 'chords',
+  BEAT = 'beats',
+  DATA_VERSION = 'dataVersion',
+}
+
+export enum E_LoadingState {
+  NONE,
+  LOADING,
+  ERROR,
+  SUCCESS,
 }
