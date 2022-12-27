@@ -7,6 +7,7 @@ import ButtonInline from '~/components/ButtonInline/ButtonInline';
 import {NavigationType} from '~/main/MainNavigator';
 import {ThemeContext} from '~/theming/context';
 import {E_ColorScheme, E_ThemeType} from '~/theming/interfaces';
+import {removeLessons} from '~/data/content/storage';
 
 type Props = NativeStackScreenProps<NavigationType, 'Settings'>;
 
@@ -55,6 +56,12 @@ const Settings = ({navigation}: Props) => {
       <Text>
         ColorScheme: {context.colorScheme}; ThemeType: {context.themeType}
       </Text>
+      <ButtonInline
+        title="Remove lessons"
+        onPressHandler={() => {
+          removeLessons();
+        }}
+      />
     </SafeAreaView>
   );
 };

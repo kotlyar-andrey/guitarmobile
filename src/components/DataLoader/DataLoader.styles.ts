@@ -4,13 +4,23 @@ import {Theme} from '~/theming';
 const createStyles = (theme: Theme) => {
   const styles = ScaledSheet.create({
     container: {
-      backgroundColor: theme.colors.primary,
       padding: '2@s',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
     },
     text: {
       textAlign: 'center',
-      color: theme.colors.onPrimary,
-      fontSize: '8@ms',
+      color: theme.colors.primary,
+      fontSize: '10@ms',
+    },
+    errorText: {
+      paddingLeft: '4@s',
+      color: theme.colors.errorText,
+    },
+    errorContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
     },
   });
   return styles;

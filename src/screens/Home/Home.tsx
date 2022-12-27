@@ -10,6 +10,7 @@ import {NavigationType} from '~/main/MainNavigator';
 import {useTheme} from '~/theming/hooks';
 import Logo from '~/components/Logo/Logo';
 import createStyles from './Home.styles';
+import DataLoader from '~/components/DataLoader/DataLoader';
 
 type Props = NativeStackScreenProps<NavigationType, 'Home'>;
 
@@ -72,6 +73,7 @@ const Home = ({navigation}: Props) => {
             />
           </View>
         </View>
+        <DataLoader />
       </ImageBackground>
     </SafeAreaView>
   );

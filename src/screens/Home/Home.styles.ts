@@ -8,6 +8,7 @@ const createStyles = (theme: Theme) => {
       backgroundColor: theme.colors.background,
     },
     menuColumnsContainer: {
+      flex: 1,
       flexDirection: 'row',
       justifyContent: 'center',
     },
