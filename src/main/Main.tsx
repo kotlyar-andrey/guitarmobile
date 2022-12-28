@@ -4,7 +4,7 @@ import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {ThemeProvider} from '~/theming';
 import StatusBar from '~/components/StatusBar/StatusBar';
 import Toaster from '~/components/Toaster/Toaster';
-import AppInitializer from '~/components/AppInitializer/AppInitializer';
+import AppInitializer from '~/main/AppInitializer';
 
 /**
  * Основной компонент, который добавляет глобальные контексты вокруг главного навигатора
