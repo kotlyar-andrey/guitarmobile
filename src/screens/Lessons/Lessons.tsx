@@ -4,7 +4,6 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {NavigationType} from '~/main/MainNavigator';
 
-import data from '~/data';
 import {I_Lesson} from '~/data/content/interfaces';
 import TopBar from '~/components/TopBar/TopBar';
 import {useTheme} from '~/theming';

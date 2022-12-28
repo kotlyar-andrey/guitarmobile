@@ -74,17 +74,16 @@ export interface I_UpdatedData {
   lastVersion: number;
 }
 
-export enum E_ContentType {
-  LESSON = 'lessons',
-  HOWTOPLAY = 'howtoplays',
-  CHORD = 'chords',
-  BEAT = 'beats',
-  DATA_VERSION = 'dataVersion',
+/**
+ * Интерфейсы для списка уроков, где представлены только названия уроков и список играемых песен
+ */
+
+interface I_ShortSong {
+  pk: number;
+  title: string;
 }
 
-export enum E_LoadingState {
-  NONE,
-  LOADING,
-  ERROR,
-  SUCCESS,
+export interface I_ShortLesson {
+  pk: number;
+  songs: I_ShortSong[];
 }

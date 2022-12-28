@@ -1,5 +1,5 @@
 import {I_Beat, I_Chord, I_Lesson, I_UpdatedData} from './interfaces';
-import {E_ContentType} from './interfaces';
+import {E_ContentType} from './enums';
 import localStorage from '~/config/localStorage';
 
 /**
@@ -17,14 +17,20 @@ export async function getDataVersion(): Promise<number | null> {
   }
 }
 
-// /**
-//  * Проверка наличия данных
-//  * @returns true if data is exists, else false
-//  */
-// export async function isDataExist(): Promise<boolean> {
-//   const version = await getDataVersion();
-//   return version !== null;
-// }
+export async function getLessons(): Promise<I_Lesson[]> {
+  const lessons: I_Lesson[] = await localStorage.load({
+    key: E_ContentType.LESSON,
+  });
+  return lessons;
+}
+
+export async function getLesson(lessonPk: number): Promise<I_Lesson> {
+  const lesson = await localStorage.load({
+    key: E_ContentType.LESSON,
+    id: lessonPk.toString(),
+  });
+  return lesson;
+}
 
 /**
  * Сохраняет обновленные данные на устройсве пользователя
@@ -47,7 +53,7 @@ export async function removeAllData() {
 }
 
 /**
- * Загружает список уроков, разборов или аккордов, сохраняет в хранилище и возвращает.
+ * Сохраняет список уроков, разборов или аккордов на устройстве пользователя.
  * @param subject lesson, howtoplay or accord
  * @param data list of lessons, howtoplays or accords
  */
@@ -69,16 +75,4 @@ async function _saveVersion(newVersion: number): Promise<void> {
     key: E_ContentType.DATA_VERSION,
     data: newVersion,
   });
-}
-
-export async function getLesson(lessonPk: number): Promise<I_Lesson> {
-  const lesson = await localStorage.load({
-    key: E_ContentType.LESSON,
-    id: lessonPk.toString(),
-  });
-  return lesson;
-}
-
-export function removeLessons(): void {
-  localStorage.clearMapForKey(E_ContentType.LESSON);
 }

@@ -7,7 +7,6 @@ import {NavigationType} from '~/main/MainNavigator';
 import TopBar from '~/components/TopBar/TopBar';
 import {useTheme} from '~/theming';
 import {I_Lesson} from '~/data/content/interfaces';
-import data from '~/data';
 import LessonNavigator from './LessonNavigator';
 import createStyles from './Lesson.styles';
 

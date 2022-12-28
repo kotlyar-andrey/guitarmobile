@@ -7,7 +7,7 @@ import {useTheme} from '~/theming';
 import createStyles from './DataLoader.styles';
 import stateContent from '~/data/content/state';
 import {removeAllData} from '~/data/content/storage';
-import {E_LoadingState} from '~/data/content/interfaces';
+import {E_LoadingState} from '~/data/content/enums';
 import {ReloadIcon} from '../Icons/ReloadIcon';
 
 /**

@@ -1,11 +1,11 @@
 import {
   I_Chord,
-  E_ContentType,
   I_Lesson,
   I_Beat,
   I_InfoForUpdate,
   I_UpdatedData,
 } from './interfaces';
+import {E_ContentType} from './enums';
 import requestExecutor from '~/config/requstExecutor';
 
 /**

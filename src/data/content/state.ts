@@ -1,18 +1,17 @@
 import {makeObservable, observable, runInAction} from 'mobx';
 import {loadAllData, loadUpdatedData} from './api';
-import {E_LoadingState, I_UpdatedData} from './interfaces';
+import {E_LoadingState, E_LoadingMessage} from './enums';
+import {I_UpdatedData} from './interfaces';
 import {getDataVersion, saveLoadedOrUpdatedData} from './storage';
 
 class Content {
-  loadingState: E_LoadingState = E_LoadingState.NONE;
-  progressMessage: string = '';
-  dataVersion: number | null = null;
+  loadingState: E_LoadingState = E_LoadingState.NONE; // Состояние загрузки данных с сервера
+  progressMessage: string = ''; // Сообщение на главном экране при загрузке или обновлении данных
 
   constructor() {
     makeObservable(this, {
       loadingState: observable,
       progressMessage: observable,
-      dataVersion: observable,
     });
   }
 
@@ -23,14 +22,12 @@ class Content {
     console.log('Start update');
     runInAction(() => {
       this.loadingState = E_LoadingState.LOADING;
-      this.progressMessage = 'Проверка обновлений';
+      this.progressMessage = E_LoadingMessage.UPDATING;
     });
     const localVersion = await getDataVersion();
     if (localVersion !== null) {
-      console.log('update data');
       await this._updateData(localVersion);
     } else {
-      console.log('download all data');
       await this._loadAndSaveDataFromServer();
     }
   }
@@ -42,20 +39,19 @@ class Content {
   async _updateData(localVersion: number): Promise<void> {
     try {
       runInAction(() => {
-        this.progressMessage = 'Обновление данных';
-        this.dataVersion = localVersion;
+        this.progressMessage = E_LoadingMessage.UPDATE_START;
       });
       const updatedData: I_UpdatedData = await loadUpdatedData(localVersion);
       await saveLoadedOrUpdatedData(updatedData);
       runInAction(() => {
-        this.progressMessage = 'Данные обновлены';
+        this.progressMessage = E_LoadingMessage.UPDATE_SUCCESS;
         this.loadingState = E_LoadingState.SUCCESS;
       });
     } catch (error: unknown) {
       console.log('ERROR in updateData: ', error);
       runInAction(() => {
         this.loadingState = E_LoadingState.ERROR;
-        this.progressMessage = 'Ошибка при обновлении';
+        this.progressMessage = E_LoadingMessage.UPDATE_ERROR;
       });
     }
   }
@@ -66,20 +62,19 @@ class Content {
   async _loadAndSaveDataFromServer() {
     try {
       runInAction(() => {
-        this.progressMessage = 'Загрузка данных, нужно подождать';
+        this.progressMessage = E_LoadingMessage.LOAD_START;
       });
       const data: I_UpdatedData = await loadAllData();
       await saveLoadedOrUpdatedData(data);
       runInAction(() => {
-        this.progressMessage = 'Данные загружены';
+        this.progressMessage = E_LoadingMessage.LOAD_SUCCESS;
         this.loadingState = E_LoadingState.SUCCESS;
-        this.dataVersion = data.lastVersion;
       });
     } catch (error: unknown) {
       console.log('ERROR in loadAndSaveDataFromServer', error);
       runInAction(() => {
         this.loadingState = E_LoadingState.ERROR;
-        this.progressMessage = 'Ошибка при загрузке';
+        this.progressMessage = E_LoadingMessage.LOAD_ERROR;
       });
     }
   }
