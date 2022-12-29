@@ -4,12 +4,16 @@ import {View, Text, TouchableOpacity} from 'react-native';
 import {CompletedIcon} from '~/components/Icons/CompletedIcon';
 import {DownloadIcon} from '~/components/Icons/DownloadIcon';
 import {FavoriteIcon} from '~/components/Icons/FavoriteIcon';
-import {I_Song} from '~/data/content/interfaces';
+import {I_ShortLesson} from '~/data/content/interfaces';
 
-const LessonsItem = ({lesson, styles, navigationToLesson}) => {
-  const soundsList: string[] = lesson.sounds.map(
-    (sound: I_Song) => sound.title,
-  );
+interface Props {
+  lesson: I_ShortLesson;
+  styles: any;
+  navigationToLesson: () => void;
+}
+
+const LessonsItem: React.FC<Props> = ({lesson, styles, navigationToLesson}) => {
+  const soundsList: string[] = lesson.songs.map(song => song.title);
 
   return (
     <View style={styles.itemListContainer}>

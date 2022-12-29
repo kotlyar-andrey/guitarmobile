@@ -85,5 +85,6 @@ interface I_ShortSong {
 
 export interface I_ShortLesson {
   pk: number;
+  title: string;
   songs: I_ShortSong[];
 }

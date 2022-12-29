@@ -1,32 +1,27 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import {Text, FlatList} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {NavigationType} from '~/main/MainNavigator';
-
-import {I_Lesson} from '~/data/content/interfaces';
 import TopBar from '~/components/TopBar/TopBar';
+import stateContent from '~/data/content/state';
 import {useTheme} from '~/theming';
 import createStyles from './Lessons.styles';
 import LessonsItem from './LessonsItem';
+import {observer} from 'mobx-react-lite';
 
 type Props = NativeStackScreenProps<NavigationType, 'Lessons'>;
 
-const Lessons = ({navigation}: Props) => {
+const Lessons = observer(({navigation}: Props) => {
   const theme = useTheme();
 
   const styles = createStyles(theme);
-
-  const [loading, setLoading] = useState<boolean>(true);
-  const [lessons, setLessons] = useState<I_Lesson[]>([]);
 
   // Нужно получать всю необходимую информацию об уроке:
   // сам урок, а так же добавлен ли он в избранное, пройден ли, скачан ли.
   useEffect(() => {
     const gettingLessons = async () => {
-      const loadedLessons = await data.content.getLessons();
-      setLessons(loadedLessons);
-      setLoading(false);
+      await stateContent.getLessons();
     };
     gettingLessons();
   }, []);
@@ -34,6 +29,8 @@ const Lessons = ({navigation}: Props) => {
   const navigationToLesson = (lessonPk: number) => () => {
     navigation.push('Lesson', {lessonPk});
   };
+
+  const {loading, lessons} = stateContent;
 
   return (
     <SafeAreaView edges={['right', 'bottom']} style={styles.container}>
@@ -55,6 +52,6 @@ const Lessons = ({navigation}: Props) => {
       )}
     </SafeAreaView>
   );
-};
+});
 
 export default Lessons;

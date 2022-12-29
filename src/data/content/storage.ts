@@ -18,9 +18,9 @@ export async function getDataVersion(): Promise<number | null> {
 }
 
 export async function getLessons(): Promise<I_Lesson[]> {
-  const lessons: I_Lesson[] = await localStorage.load({
-    key: E_ContentType.LESSON,
-  });
+  const lessons: I_Lesson[] = await localStorage.getAllDataForKey(
+    E_ContentType.LESSON,
+  );
   return lessons;
 }
 
