@@ -28,7 +28,7 @@ const DataLoader = observer(() => {
       )}
       {stateContent.loadingState === E_LoadingState.ERROR && (
         <TouchableOpacity
-          onPress={stateContent.update}
+          onPress={() => stateContent.update()}
           style={styles.errorContainer}>
           <ReloadIcon color={theme.colors.errorText} />
           <Text style={styles.errorText}>Попробовать еще раз</Text>
