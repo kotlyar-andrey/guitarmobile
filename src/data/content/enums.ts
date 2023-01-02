@@ -3,7 +3,6 @@ export enum E_ContentType {
   HOWTOPLAY = 'howtoplays',
   CHORD = 'chords',
   BEAT = 'beats',
-  DATA_VERSION = 'dataVersion',
 }
 
 export enum E_LoadingState {
