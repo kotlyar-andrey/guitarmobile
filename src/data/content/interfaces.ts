@@ -43,6 +43,7 @@ export interface I_Song {
   title: string;
   chords: I_Chord[];
   schemes: I_Scheme[];
+  beats: I_Beat[];
   text: string;
   metronome: number;
 }
@@ -87,4 +88,14 @@ export interface I_ShortLesson {
   pk: number;
   title: string;
   songs: I_ShortSong[];
+}
+
+export interface I_Song_Ids {
+  pk: number;
+  title: string;
+  chords: number[];
+  schemes: I_Scheme[];
+  beats: number[];
+  text: string;
+  metronome: number;
 }

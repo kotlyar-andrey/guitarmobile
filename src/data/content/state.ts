@@ -1,4 +1,4 @@
-import {makeObservable, observable, runInAction} from 'mobx';
+import {makeAutoObservable, runInAction} from 'mobx';
 import {loadAllData, updateData} from './api';
 import {shortLessonDto} from './dto';
 import {E_LoadingState, E_LoadingMessage} from './enums';
@@ -13,13 +13,7 @@ class Content {
   loading: boolean = false; // Индикатор загрузки при работе с локальным хранилищем
 
   constructor() {
-    makeObservable(this, {
-      loadingState: observable,
-      progressMessage: observable,
-      lessons: observable,
-      lesson: observable,
-      loading: observable,
-    });
+    makeAutoObservable(this);
   }
 
   /**
@@ -66,9 +60,12 @@ class Content {
   async getLesson(lessonPk: number): Promise<void> {
     runInAction(() => {
       this.loading = true;
+      this.lesson = null;
     });
     try {
+      console.log('STATE GET LESSON');
       const lesson: I_Lesson = await getLesson(lessonPk);
+      console.log('STATE LESSON GETTED');
       runInAction(() => {
         this.lesson = lesson;
         this.loading = false;
