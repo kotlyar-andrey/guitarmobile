@@ -1,32 +1,32 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 
 import {NavigationType} from '~/main/MainNavigator';
-
+import stateContent from '~/data/content/state';
 import TopBar from '~/components/TopBar/TopBar';
 import {useTheme} from '~/theming';
-import {I_Lesson} from '~/data/content/interfaces';
 import LessonNavigator from './LessonNavigator';
 import createStyles from './Lesson.styles';
+import {observer} from 'mobx-react-lite';
+// import {getLesson} from '~/data/content/storage';
 
 type Props = NativeStackScreenProps<NavigationType, 'Lesson'>;
 
-const Lesson = ({route, navigation}: Props) => {
+const Lesson: React.FC<Props> = observer(({route, navigation}) => {
   const theme = useTheme();
 
   const styles = createStyles(theme);
 
-  const [lesson, setLesson] = useState<I_Lesson>();
-
   useEffect(() => {
-    const getLesson = async () => {
-      const {lessonPk} = route.params;
-      const lesson_ = await data.content.getLesson(lessonPk);
-      setLesson(lesson_);
+    const gettingLesson = async () => {
+      await stateContent.getLesson(route.params.lessonPk);
     };
-    getLesson();
-  }, [route.params]);
+    gettingLesson();
+  }, [route.params.lessonPk]);
+
+  const {lesson} = stateContent;
+  console.log('LESSON IN LESSON SCREEN', lesson?.title, lesson?.songs[0].title);
 
   return (
     <SafeAreaView edges={['right', 'bottom']} style={styles.container}>
@@ -38,6 +38,6 @@ const Lesson = ({route, navigation}: Props) => {
       {lesson && <LessonNavigator lesson={lesson} />}
     </SafeAreaView>
   );
-};
+});
 
 export default Lesson;

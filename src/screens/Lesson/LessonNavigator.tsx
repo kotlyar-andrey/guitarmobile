@@ -1,11 +1,11 @@
 import React from 'react';
-import {View, Text} from 'react-native';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
-import SongView from '~/components/SongView/SongView';
 import {I_Lesson, I_Song} from '~/data/content/interfaces';
 import {useTheme} from '~/theming';
 import {TextIcon} from '~/components/Icons/Text';
 import {scale, verticalScale} from 'react-native-size-matters';
+import SongScreen from './screens/SongScreen';
+import VideoScreen from './screens/VideoScreen';
 
 type LessonSongsType = {
   [key: string]: {song: I_Song};
@@ -17,12 +17,21 @@ type LessonTabsType = LessonSongsType & {
 
 const Tabs = createMaterialTopTabNavigator<LessonTabsType>();
 
-function VideoScreen() {
-  return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text>Video!</Text>
-    </View>
-  );
+function getSongTabs(lesson: I_Lesson) {
+  const screens = lesson.songs.map((song: I_Song, index: number) => (
+    <Tabs.Screen
+      key={`song${index + 1}`}
+      name={`Song${index + 1}`}
+      component={SongScreen}
+      initialParams={{song}}
+      options={{
+        title: `Текст № ${index + 1}`,
+        tabBarShowIcon: true,
+        tabBarIcon: TextIcon,
+      }}
+    />
+  ));
+  return screens;
 }
 
 interface Props {
@@ -37,6 +46,8 @@ interface Props {
  */
 const LessonNavigator = ({lesson}: Props) => {
   const theme = useTheme();
+
+  const songTabs = getSongTabs(lesson);
 
   return (
     <Tabs.Navigator
@@ -66,20 +77,7 @@ const LessonNavigator = ({lesson}: Props) => {
         },
       }}
       initialRouteName="Song1">
-      {lesson.sounds.map((song, index) => (
-        <Tabs.Screen
-          key={`song${index + 1}`}
-          name={`Song${index + 1}`}
-          component={SongView}
-          initialParams={{song}}
-          options={{
-            title: `Текст № ${index + 1}`,
-            tabBarShowIcon: true,
-            tabBarIcon: TextIcon,
-          }}
-        />
-      ))}
-
+      {songTabs}
       <Tabs.Screen name="Video" component={VideoScreen} />
     </Tabs.Navigator>
   );
