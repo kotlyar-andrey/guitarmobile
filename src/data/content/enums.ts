@@ -20,4 +20,5 @@ export enum E_LoadingMessage {
   LOAD_START = 'Загрузка данных, нужно подождать',
   LOAD_SUCCESS = 'Данные загружены',
   LOAD_ERROR = 'Ошибка при загрузке',
+  NONE = '',
 }

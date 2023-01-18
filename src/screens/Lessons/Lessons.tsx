@@ -4,11 +4,12 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {NavigationType} from '~/main/MainNavigator';
 import TopBar from '~/components/TopBar/TopBar';
-import stateContent from '~/data/content/state';
+import lessonsListGetter from '~/data/states/lessonsList';
 import {useTheme} from '~/theming';
 import createStyles from './Lessons.styles';
 import LessonsItem from './LessonsItem';
 import {observer} from 'mobx-react-lite';
+import {E_LoadingState} from '~/data/content/enums';
 
 type Props = NativeStackScreenProps<NavigationType, 'Lessons'>;
 
@@ -21,7 +22,7 @@ const Lessons = observer(({navigation}: Props) => {
   // сам урок, а так же добавлен ли он в избранное, пройден ли, скачан ли.
   useEffect(() => {
     const gettingLessons = async () => {
-      await stateContent.getLessons();
+      await lessonsListGetter.getLessons();
     };
     gettingLessons();
   }, []);
@@ -30,14 +31,14 @@ const Lessons = observer(({navigation}: Props) => {
     navigation.push('Lesson', {lessonPk});
   };
 
-  const {loading, lessons} = stateContent;
+  const {status, lessons} = lessonsListGetter;
 
   return (
     <SafeAreaView edges={['right', 'bottom']} style={styles.container}>
       <TopBar title="Уроки" backArrow={true} navigation={navigation} />
 
-      {loading && <Text>Загрузка...</Text>}
-      {!loading && lessons.length > 0 && (
+      {status === E_LoadingState.LOADING && <Text>Загрузка...</Text>}
+      {status === E_LoadingState.SUCCESS && lessons.length > 0 && (
         <FlatList
           data={lessons}
           renderItem={({item}) => (
@@ -50,6 +51,7 @@ const Lessons = observer(({navigation}: Props) => {
           keyExtractor={lesson => `lessonID${lesson.pk}`}
         />
       )}
+      {status === E_LoadingState.ERROR && <Text>Ошибка. Уроки не найдены</Text>}
     </SafeAreaView>
   );
 });

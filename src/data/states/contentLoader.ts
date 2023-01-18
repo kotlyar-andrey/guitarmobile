@@ -1,16 +1,14 @@
 import {makeAutoObservable, runInAction} from 'mobx';
-import {loadAllData, updateData} from './api';
-import {shortLessonDto} from './dto';
-import {E_LoadingState, E_LoadingMessage} from './enums';
-import {I_Lesson, I_ShortLesson} from './interfaces';
-import {getDataVersion, getLesson, getLessons} from './storage';
+import {loadAllData, updateData} from '~/data/content/api';
+import {E_LoadingMessage, E_LoadingState} from '~/data/content/enums';
+import {getDataVersion} from '~/data/content/storage';
 
-class Content {
+/**
+ * Глобальное mobx состояние для загрузки или обновления контента (уроки, разборы, и т.п) из интернета.
+ */
+class ContentLoader {
   loadingState: E_LoadingState = E_LoadingState.NONE; // Состояние загрузки данных с сервера
-  progressMessage: string = ''; // Сообщение на главном экране при загрузке или обновлении данных
-  lessons: I_ShortLesson[] = []; // Список всех уроков в кратком виде
-  lesson: I_Lesson | null = null; // Активный урок
-  loading: boolean = false; // Индикатор загрузки при работе с локальным хранилищем
+  progressMessage: E_LoadingMessage = E_LoadingMessage.NONE; // Сообщение на главном экране при загрузке или обновлении данных
 
   constructor() {
     makeAutoObservable(this);
@@ -29,52 +27,6 @@ class Content {
       await this._updateData(localVersion);
     } else {
       await this._loadAndSaveDataFromServer();
-    }
-  }
-
-  /**
-   * Получение списка уроков из локального хранилища
-   */
-  async getLessons(): Promise<void> {
-    runInAction(() => {
-      this.loading = true;
-    });
-    try {
-      const fullLessons: I_Lesson[] = await getLessons();
-      const shortLessons = fullLessons.map(lesson => shortLessonDto(lesson));
-      runInAction(() => {
-        this.lessons = shortLessons;
-        this.loading = false;
-      });
-    } catch (error: unknown) {
-      console.log('ERROR in getLessons: ', error);
-      runInAction(() => {
-        this.loading = false;
-      });
-    }
-  }
-
-  /**
-   * Получение списка уроков из локального хранилища
-   */
-  async getLesson(lessonPk: number): Promise<void> {
-    runInAction(() => {
-      this.loading = true;
-      this.lesson = null;
-    });
-    try {
-      console.log('STATE GET LESSON');
-      const lesson: I_Lesson = await getLesson(lessonPk);
-      console.log('STATE LESSON GETTED');
-      runInAction(() => {
-        this.lesson = lesson;
-        this.loading = false;
-      });
-    } catch (error: unknown) {
-      console.log('ERROR in getLesson: ', error);
-      runInAction(() => {
-        this.loading = false;
-      });
     }
   }
 
@@ -124,4 +76,6 @@ class Content {
   }
 }
 
-export default new Content();
+const contentLoader = new ContentLoader();
+
+export default contentLoader;

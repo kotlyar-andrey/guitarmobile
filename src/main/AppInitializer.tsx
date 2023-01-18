@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {observer} from 'mobx-react-lite';
-import stateContent from '~/data/content/state';
+import contentLoader from '~/data/states/contentLoader';
 
 /**
  * Глобальный компонент, который отвечает за начальную инициализацию приложения. Выполняет:
@@ -9,7 +9,7 @@ import stateContent from '~/data/content/state';
  */
 const AppInitializer = observer(() => {
   useEffect(() => {
-    stateContent.update();
+    contentLoader.update();
   }, []);
 
   return <></>;
