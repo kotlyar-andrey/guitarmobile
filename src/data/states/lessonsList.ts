@@ -4,10 +4,6 @@ import {E_LoadingState} from '../content/enums';
 import {I_Lesson, I_ShortLesson} from '../content/interfaces';
 import {getLessons} from '../content/storage';
 
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-
 class LessonsList {
   lessons: I_ShortLesson[] = []; // Список всех уроков в кратком виде
   status: E_LoadingState = E_LoadingState.NONE;
@@ -23,10 +19,11 @@ class LessonsList {
     runInAction(() => {
       this.status = E_LoadingState.LOADING;
     });
-    await sleep(2000);
     try {
       const fullLessons: I_Lesson[] = await getLessons();
-      const shortLessons = fullLessons.map(lesson => shortLessonDto(lesson));
+      const shortLessons: I_ShortLesson[] = fullLessons.map(lesson =>
+        shortLessonDto(lesson),
+      );
       runInAction(() => {
         this.lessons = shortLessons;
         this.status = E_LoadingState.SUCCESS;
