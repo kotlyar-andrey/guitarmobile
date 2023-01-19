@@ -10,6 +10,7 @@ import createStyles from './Lessons.styles';
 import LessonsItem from './LessonsItem';
 import {observer} from 'mobx-react-lite';
 import {E_LoadingState} from '~/data/content/enums';
+import Loading from '~/components/Loading/Loading';
 
 type Props = NativeStackScreenProps<NavigationType, 'Lessons'>;
 
@@ -37,7 +38,7 @@ const Lessons = observer(({navigation}: Props) => {
     <SafeAreaView edges={['right', 'bottom']} style={styles.container}>
       <TopBar title="Уроки" backArrow={true} navigation={navigation} />
 
-      {status === E_LoadingState.LOADING && <Text>Загрузка...</Text>}
+      {status === E_LoadingState.LOADING && <Loading />}
       {status === E_LoadingState.SUCCESS && lessons.length > 0 && (
         <FlatList
           data={lessons}
