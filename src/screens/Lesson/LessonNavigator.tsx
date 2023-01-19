@@ -1,4 +1,5 @@
 import React from 'react';
+import {observer} from 'mobx-react-lite';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import {I_Lesson, I_Song} from '~/data/content/interfaces';
 import {useTheme} from '~/theming';
@@ -11,7 +12,7 @@ type LessonSongsType = {
   [key: string]: {song: I_Song};
 };
 
-type LessonTabsType = LessonSongsType & {
+export type LessonTabsType = LessonSongsType & {
   Video: undefined;
 };
 
@@ -44,7 +45,7 @@ interface Props {
  * @param param0 lesson: LessonData
  * @returns TabsNavigator
  */
-const LessonNavigator = ({lesson}: Props) => {
+const LessonNavigator: React.FC<Props> = observer(({lesson}) => {
   const theme = useTheme();
 
   const songTabs = getSongTabs(lesson);
@@ -81,6 +82,6 @@ const LessonNavigator = ({lesson}: Props) => {
       <Tabs.Screen name="Video" component={VideoScreen} />
     </Tabs.Navigator>
   );
-};
+});
 
 export default LessonNavigator;

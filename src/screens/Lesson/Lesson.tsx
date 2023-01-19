@@ -3,13 +3,15 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 
 import {NavigationType} from '~/main/MainNavigator';
-import stateContent from '~/data/content/state';
+
 import TopBar from '~/components/TopBar/TopBar';
 import {useTheme} from '~/theming';
 import LessonNavigator from './LessonNavigator';
 import createStyles from './Lesson.styles';
 import {observer} from 'mobx-react-lite';
-// import {getLesson} from '~/data/content/storage';
+import lessonView from '~/data/states/lessonView';
+import {E_LoadingState} from '~/data/content/enums';
+import Loading from '~/components/Loading/Loading';
 
 type Props = NativeStackScreenProps<NavigationType, 'Lesson'>;
 
@@ -18,24 +20,32 @@ const Lesson: React.FC<Props> = observer(({route, navigation}) => {
 
   const styles = createStyles(theme);
 
+  const lessonPk = route.params.lessonPk;
+
   useEffect(() => {
     const gettingLesson = async () => {
-      await stateContent.getLesson(route.params.lessonPk);
+      await lessonView.getLesson(lessonPk);
     };
     gettingLesson();
-  }, [route.params.lessonPk]);
+  }, [lessonPk]);
 
-  const {lesson} = stateContent;
-  console.log('LESSON IN LESSON SCREEN', lesson?.title, lesson?.songs[0].title);
+  const {lesson, status} = lessonView;
 
   return (
     <SafeAreaView edges={['right', 'bottom']} style={styles.container}>
       <TopBar
-        title={lesson ? `Урок № ${lesson.number}` : 'Загрузка...'}
+        title={
+          status === E_LoadingState.LOADING || !lesson
+            ? 'Урок'
+            : `Урок  № ${lesson.number}`
+        }
         backArrow={true}
         navigation={navigation}
       />
-      {lesson && <LessonNavigator lesson={lesson} />}
+      {status === E_LoadingState.LOADING && <Loading />}
+      {status === E_LoadingState.SUCCESS && lesson && (
+        <LessonNavigator lesson={lesson} />
+      )}
     </SafeAreaView>
   );
 });
