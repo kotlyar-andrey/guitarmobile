@@ -5,16 +5,11 @@ import createStyles from './Beat.styles';
 import BeatView from './BeatView';
 
 import {playBeat, stop} from 'rn-chords-player';
-
-interface Beat {
-  id: number;
-  name?: string;
-  strikes: string[];
-  duration: number;
-}
+import {I_Beat} from '~/data/content/interfaces';
+import {makeBeat} from './Beat.dto';
 
 type Props = {
-  beats: Beat[];
+  beats: I_Beat[];
   bpm: number;
 };
 
@@ -35,23 +30,23 @@ const BeatsContainer = ({beats}: Props) => {
     };
   }, []);
 
-  const onBeatClick = (beat: Beat) => () => {
-    if (beat.id === playingBeat) {
+  const onBeatClick = (beat: I_Beat) => () => {
+    if (beat.pk === playingBeat) {
       setPlayingBeat(-1);
       stop();
     } else {
-      setPlayingBeat(beat.id);
-      playBeat(beat, 120); //TODO with bpm
+      setPlayingBeat(beat.pk);
+      playBeat(makeBeat(beat), 120); //TODO with bpm
     }
   };
 
   return (
     <View style={styles.container}>
       {beats.map(beat => (
-        <View style={styles.beat} key={beat.id}>
+        <View style={styles.beat} key={beat.pk}>
           <BeatView
             beat={beat}
-            playing={playingBeat === beat.id}
+            playing={playingBeat === beat.pk}
             onBeatClick={onBeatClick(beat)}
           />
         </View>
