@@ -16,6 +16,7 @@ const createStyles = (theme: Theme) => {
     },
     errorText: {
       paddingLeft: '4@s',
+      fontSize: '10@ms',
       color: theme.colors.errorText,
     },
     errorContainer: {

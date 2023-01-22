@@ -35,7 +35,7 @@ const DataLoader = observer(() => {
         </TouchableOpacity>
       )}
       {contentLoader.loadingState === E_LoadingState.SUCCESS && (
-        <Text>Приятного пользования!</Text>
+        <Text style={styles.text}>Приятного пользования!</Text>
       )}
     </View>
   );
