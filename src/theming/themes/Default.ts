@@ -10,6 +10,7 @@ const DefaultLightTheme: Theme = {
     secondary: '#999999',
     errorText: '#f90000',
     errorBackground: '#eda19a',
+    inactive: '#907790',
     divider: '#eeeeee',
   },
   images: {
@@ -27,6 +28,7 @@ const DefaultDarkTheme: Theme = {
     secondary: '#cccccc',
     errorText: '#f90000',
     errorBackground: '#eda19a',
+    inactive: '#aaaaaa',
     divider: '#000000',
   },
   images: {

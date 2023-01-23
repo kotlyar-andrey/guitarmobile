@@ -3,9 +3,21 @@ import {E_LoadingState} from '../content/enums';
 import {I_Lesson} from '../content/interfaces';
 import {getLesson} from '../content/storage';
 
+export enum E_ScrollSpeed {
+  NONE = 0,
+  LOW = 80,
+  MEDIUM = 50,
+  HIGH = 10,
+}
+
 class LessonView {
   lesson: I_Lesson | null = null;
   status: E_LoadingState = E_LoadingState.NONE;
+
+  scrollSpeed: E_ScrollSpeed = E_ScrollSpeed.NONE;
+
+  isMetronomePlay: boolean = false;
+  metronomeBpm: number = 0;
 
   constructor() {
     makeAutoObservable(this);
@@ -23,6 +35,7 @@ class LessonView {
       runInAction(() => {
         this.lesson = lesson;
         this.status = E_LoadingState.SUCCESS;
+        this.scrollSpeed = E_ScrollSpeed.NONE;
       });
     } catch (error: unknown) {
       console.log('ERROR in getLessons: ', error);
@@ -30,6 +43,13 @@ class LessonView {
         this.status = E_LoadingState.ERROR;
       });
     }
+  }
+
+  /**
+   * Устанока скорости автопрокрутки урока
+   */
+  setScrollSpeed(newSpeed: E_ScrollSpeed) {
+    this.scrollSpeed = newSpeed;
   }
 }
 const lessonView = new LessonView();

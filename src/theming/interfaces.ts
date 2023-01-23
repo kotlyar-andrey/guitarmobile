@@ -11,6 +11,7 @@ interface Colors {
   secondary: string; // цвет для второстепенных или неактивных элементов
   errorText: string; // текст ошибки
   errorBackground: string; // фон блока с ошибкой
+  inactive: string; //неактивный элемент
   divider: string; // Разделитель в списках
 }
 

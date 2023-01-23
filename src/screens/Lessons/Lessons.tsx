@@ -52,7 +52,10 @@ const Lessons = observer(({navigation}: Props) => {
           keyExtractor={lesson => `lessonID${lesson.pk}`}
         />
       )}
-      {status === E_LoadingState.ERROR && <Text>Ошибка. Уроки не найдены</Text>}
+      {status === E_LoadingState.ERROR ||
+        (status === E_LoadingState.SUCCESS && lessons.length === 0 && (
+          <Text>Ошибка. Уроки не найдены</Text>
+        ))}
     </SafeAreaView>
   );
 });

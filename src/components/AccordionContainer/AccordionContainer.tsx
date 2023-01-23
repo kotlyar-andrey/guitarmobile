@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import {useTheme} from '~/theming';
 import {HideIcon} from '../Icons/HideIcon';
-import {SettingsOutlineIcon} from '../Icons/SettingsOutlineIcon';
 import {ShowIcon} from '../Icons/ShowIcon';
 import createStyles from './AccordionContainer.styles';
 
@@ -36,9 +35,6 @@ const AccordionContainer: React.FC<Props> = ({title, children}) => {
                 <ShowIcon />
               </>
             )}
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.toolbarItem}>
-            <SettingsOutlineIcon />
           </TouchableOpacity>
         </View>
       </View>
