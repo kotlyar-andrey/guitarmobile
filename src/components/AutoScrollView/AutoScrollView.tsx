@@ -3,6 +3,7 @@ import {ScrollView} from 'react-native';
 import {E_ScrollSpeed} from '~/data/states/lessonView';
 import {useTheme} from '~/theming';
 import createStyles from './AutoScrollView.styles';
+import lessonView from '~/data/states/lessonView';
 
 type Props = {
   children: React.ReactNode;
@@ -53,10 +54,12 @@ const AutoScrollView: React.FC<Props> = ({children, scrollSpeed}) => {
   const endHandScroll = () => {
     clearInterval(savedInfo.current.timerId);
     autoScroll();
+    lessonView.hideBottomPanel();
   };
 
   const startHandScroll = () => {
     clearInterval(savedInfo.current.timerId);
+    lessonView.showBottomPanel();
   };
 
   clearInterval(savedInfo.current.timerId);

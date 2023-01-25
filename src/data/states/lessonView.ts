@@ -19,6 +19,10 @@ class LessonView {
   isMetronomePlay: boolean = false;
   metronomeBpm: number = 0;
 
+  pinned: boolean = true;
+  bottomPanelVisible: boolean = true;
+  hidePanelTimerId: any = 0;
+
   constructor() {
     makeAutoObservable(this);
   }
@@ -50,6 +54,26 @@ class LessonView {
    */
   setScrollSpeed(newSpeed: E_ScrollSpeed) {
     this.scrollSpeed = newSpeed;
+    this.hideBottomPanel();
+  }
+
+  togglePinned() {
+    this.pinned = !this.pinned;
+    this.hideBottomPanel();
+  }
+
+  showBottomPanel() {
+    this.bottomPanelVisible = true;
+    clearTimeout(this.hidePanelTimerId);
+  }
+
+  hideBottomPanel() {
+    if (!this.pinned) {
+      clearTimeout(this.hidePanelTimerId);
+      this.hidePanelTimerId = setTimeout(() => {
+        runInAction(() => (this.bottomPanelVisible = false));
+      }, 2000);
+    }
   }
 }
 const lessonView = new LessonView();
