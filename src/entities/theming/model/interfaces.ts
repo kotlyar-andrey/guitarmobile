@@ -11,12 +11,12 @@ interface Colors {
   secondary: string; // цвет для второстепенных или неактивных элементов
   errorText: string; // текст ошибки
   errorBackground: string; // фон блока с ошибкой
-  inactive: string; //неактивный элемент
   divider: string; // Разделитель в списках
 }
 
 /**
- * Набор изображений (фоновое изображение, иконки и т.п), специфических для данной темы
+ * Набор изображений (фоновое изображение, необычные иконки и т.п),
+ * специфических для данной темы
  */
 interface Images {
   backgroundHome: ImageSourcePropType;
@@ -37,32 +37,4 @@ export interface Theme {
 export interface ColorScheme {
   light: Theme;
   dark: Theme;
-}
-
-/**
- * Перечисление для доступных пользователю цветовых схем
- */
-export enum E_ColorScheme {
-  default = 'default',
-  red = 'red',
-}
-
-/**
- * Перечисление для типов темы
- */
-export enum E_ThemeType {
-  light = 'light',
-  dark = 'dark',
-  system = 'system',
-}
-
-/**
- * Интерфейст контекстного процессора
- */
-export interface ThemeContextValue {
-  theme: Theme;
-  colorScheme: E_ColorScheme;
-  themeType: E_ThemeType;
-  changeColorScheme: (newColorScheme: E_ColorScheme) => void;
-  changeThemeType: (newThemeType: E_ThemeType) => void;
 }

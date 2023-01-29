@@ -1,4 +1,4 @@
-import {ColorScheme, Theme} from '../interfaces';
+import {ColorScheme, Theme} from '../model/interfaces';
 
 const DefaultLightTheme: Theme = {
   dark: false,
@@ -10,11 +10,10 @@ const DefaultLightTheme: Theme = {
     secondary: '#999999',
     errorText: '#f90000',
     errorBackground: '#eda19a',
-    inactive: '#907790',
     divider: '#eeeeee',
   },
   images: {
-    backgroundHome: require('~/assets/images/homeLightBackground.jpg'),
+    backgroundHome: require('../assets/images/homeLightBackground.jpg'),
   },
 };
 
@@ -28,17 +27,14 @@ const DefaultDarkTheme: Theme = {
     secondary: '#cccccc',
     errorText: '#f90000',
     errorBackground: '#eda19a',
-    inactive: '#aaaaaa',
     divider: '#000000',
   },
   images: {
-    backgroundHome: require('~/assets/images/homeDarkBackground.jpg'),
+    backgroundHome: require('../assets/images/homeDarkBackground.jpg'),
   },
 };
 
-const DefaultTheme: ColorScheme = {
+export const DefaultTheme: ColorScheme = {
   light: DefaultLightTheme,
   dark: DefaultDarkTheme,
 };
-
-export default DefaultTheme;
