@@ -3,24 +3,17 @@ import {Theme} from '~/entities/theming';
 
 const createStyles = (theme: Theme) => {
   const styles = ScaledSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: theme.colors.background,
-    },
-    menuColumnsContainer: {
-      flex: 1,
+    buttonContainer: {
       flexDirection: 'row',
+      alignItems: 'center',
       justifyContent: 'center',
+      margin: '4@s',
     },
-    menuColumn: {
-      flexDirection: 'column',
-      justifyContent: 'space-around',
-      alignItems: 'flex-start',
-    },
-    text: {
+    buttonText: {
       color: theme.colors.primary,
       fontFamily: 'SpriteGraffiti',
       fontSize: '28@s',
+      flexWrap: 'wrap',
     },
   });
   return styles;

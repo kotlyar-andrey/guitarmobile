@@ -1,16 +1,19 @@
 import React from 'react';
-import {ImageBackground, View} from 'react-native';
+import {View} from 'react-native';
+import {ImageBackground} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
-import ButtonInline from '~/components/ButtonInline/ButtonInline';
-import {SettingsIcon} from '~/components/Icons/SettingsIcon';
+
+// import {SettingsIcon} from '~/components/Icons/SettingsIcon';
 
 import {NavigationType} from '~/main/MainNavigator';
 
-import {useTheme} from '~/theming/hooks';
-import Logo from '~/components/Logo/Logo';
+import {useTheme} from '~/entities/theming';
+import {Logo} from '~/shared/components/Logo';
+import {InlineButton} from '~/shared/components/Buttons';
 import createStyles from './Home.styles';
-import DataLoader from '~/components/DataLoader/DataLoader';
+
+// import DataLoader from '~/components/DataLoader/DataLoader';
 
 type Props = NativeStackScreenProps<NavigationType, 'Home'>;
 
@@ -25,7 +28,7 @@ type Props = NativeStackScreenProps<NavigationType, 'Home'>;
  * @param navigation объект навигации
  * @returns React Component
  */
-const Home = ({navigation}: Props) => {
+export const Home = ({navigation}: Props) => {
   const theme = useTheme();
 
   const styles = createStyles(theme);
@@ -38,45 +41,42 @@ const Home = ({navigation}: Props) => {
         <Logo />
         <View style={styles.menuColumnsContainer}>
           <View style={styles.menuColumn}>
-            <ButtonInline
-              title="Уроки"
+            <InlineButton
+              text="Уроки"
               onPressHandler={() => {
                 navigation.push('Lessons');
               }}
             />
-            <ButtonInline
-              title="Разборы"
+            <InlineButton
+              text="Разборы"
               onPressHandler={() => {
                 navigation.push('Settings');
               }}
             />
-            <ButtonInline
-              title="Аккорды"
+            <InlineButton
+              text="Аккорды"
               onPressHandler={() => {
                 navigation.push('Settings');
               }}
             />
-            <ButtonInline
-              title="Упражнения"
+            <InlineButton
+              text="Упражнения"
               onPressHandler={() => {
                 navigation.push('Settings');
               }}
             />
           </View>
           <View style={styles.menuColumn}>
-            <ButtonInline
-              title="Аккорды"
+            <InlineButton
+              text="Аккорды"
               onPressHandler={() => {
                 navigation.push('Settings');
               }}
-              icon={<SettingsIcon />}
             />
           </View>
         </View>
-        <DataLoader />
+        {/* <DataLoader /> */}
       </ImageBackground>
     </SafeAreaView>
   );
 };
-
-export default Home;

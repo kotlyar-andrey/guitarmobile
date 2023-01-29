@@ -4,23 +4,21 @@ import {Theme} from '~/entities/theming';
 const createStyles = (theme: Theme) => {
   const styles = ScaledSheet.create({
     container: {
-      flex: 1,
-      backgroundColor: theme.colors.background,
-    },
-    menuColumnsContainer: {
-      flex: 1,
+      height: '100@vs',
       flexDirection: 'row',
       justifyContent: 'center',
+      alignItems: 'center',
     },
-    menuColumn: {
-      flexDirection: 'column',
-      justifyContent: 'space-around',
-      alignItems: 'flex-start',
+    logoImage: {
+      width: '64@ms',
+      height: '64@ms',
+      marginRight: '12@ms',
     },
-    text: {
+    logoText: {
+      fontFamily: 'Debby',
+      fontSize: '42@s',
+      flexWrap: 'wrap',
       color: theme.colors.primary,
-      fontFamily: 'SpriteGraffiti',
-      fontSize: '28@s',
     },
   });
   return styles;
