@@ -8,15 +8,17 @@ import {
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {Theme, useTheme} from '~/entities/theming';
 import {Home} from '~/screens/Home';
+import {Lessons} from '~/screens/Lessons';
 
-export type NavigationType = {
+export type MainNavigationType = {
   Home: undefined;
-  // Lessons: undefined;
+  Lessons: undefined;
   // Lesson: {lessonPk: number};
   // Settings: undefined;
 };
 
-const {Navigator, Group, Screen} = createNativeStackNavigator<NavigationType>();
+const {Navigator, Group, Screen} =
+  createNativeStackNavigator<MainNavigationType>();
 
 /**
  * Главный навигатор приложения. Описывает структуру приложения - какие экраны будут в приложении
@@ -37,8 +39,8 @@ export const MainNavigator = () => {
         <Navigator screenOptions={{headerShown: false}}>
           <Group>
             <Screen name="Home" component={Home} />
-            {/* <Screen name="Lessons" component={Lessons} />
-            <Screen name="Lesson" component={Lesson} />
+            <Screen name="Lessons" component={Lessons} />
+            {/* <Screen name="Lesson" component={Lesson} />
             <Screen name="Settings" component={Settings} /> */}
           </Group>
         </Navigator>

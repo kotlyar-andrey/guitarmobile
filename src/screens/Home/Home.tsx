@@ -4,18 +4,14 @@ import {ImageBackground} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 
-// import {SettingsIcon} from '~/components/Icons/SettingsIcon';
-
-import {NavigationType} from '~/main/MainNavigator';
-
 import {useTheme} from '~/entities/theming';
 import {Logo} from '~/shared/components/Logo';
 import {InlineButton} from '~/shared/components/Buttons';
 import createStyles from './Home.styles';
+import {ContentLoader} from '~/features/contentLoader';
+import {MainNavigationType} from '~/app/navigation';
 
-// import DataLoader from '~/components/DataLoader/DataLoader';
-
-type Props = NativeStackScreenProps<NavigationType, 'Home'>;
+type Props = NativeStackScreenProps<MainNavigationType, 'Home'>;
 
 /**
  * Стартовый экран приложения.
@@ -50,19 +46,19 @@ export const Home = ({navigation}: Props) => {
             <InlineButton
               text="Разборы"
               onPressHandler={() => {
-                navigation.push('Settings');
+                navigation.push('Lessons');
               }}
             />
             <InlineButton
               text="Аккорды"
               onPressHandler={() => {
-                navigation.push('Settings');
+                navigation.push('Lessons');
               }}
             />
             <InlineButton
               text="Упражнения"
               onPressHandler={() => {
-                navigation.push('Settings');
+                navigation.push('Lessons');
               }}
             />
           </View>
@@ -70,12 +66,12 @@ export const Home = ({navigation}: Props) => {
             <InlineButton
               text="Аккорды"
               onPressHandler={() => {
-                navigation.push('Settings');
+                navigation.push('Lessons');
               }}
             />
           </View>
         </View>
-        {/* <DataLoader /> */}
+        <ContentLoader />
       </ImageBackground>
     </SafeAreaView>
   );

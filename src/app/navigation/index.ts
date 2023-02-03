@@ -1,1 +1,1 @@
-export {MainNavigator} from './Main';
+export {MainNavigator, type MainNavigationType} from './Main';
