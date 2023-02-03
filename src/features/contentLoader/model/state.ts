@@ -94,7 +94,7 @@ export const useContentState = create<LoaderState>()(
               set({
                 loading: false,
                 error: true,
-                message: `Ошибка при обновлении:\n${err}`,
+                message: `Ошибка при обновлении: ${err}`,
               });
             }
           }
@@ -144,7 +144,7 @@ export const useContentState = create<LoaderState>()(
             set({
               loading: false,
               error: true,
-              message: `Ошибка при загрузке:\n${err}`,
+              message: `Ошибка при загрузке: ${err}`,
             });
           }
         },
