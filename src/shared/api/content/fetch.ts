@@ -40,16 +40,24 @@ export async function reloadListOfContent<T extends {pk: number}>(
   pks: number[],
   oldData: T[],
 ): Promise<T[]> {
-  const newData: T[] = await Promise.all(
+  // Обновленные или новые данные, скачанные с сервера
+  const dataForUpdate: T[] = await Promise.all(
     pks.map(async pk => {
       return await loadObjectOfContent<T>(contentType, pk);
     }),
   );
+  // Заменяем в списке oldData данные на новые, обновленные
   const resultData = oldData.map(
     oldObject =>
-      newData.find(newObject => newObject.pk === oldObject.pk) || oldObject,
+      dataForUpdate.find(newObject => newObject.pk === oldObject.pk) ||
+      oldObject,
   );
-  return resultData;
+  // Новые данные (не изменненные старые записи, а именно новые, которые нужно просто добавить)
+  const oldDataPks = oldData.map(obj => obj.pk);
+  const newData = dataForUpdate.filter(
+    object => !oldDataPks.includes(object.pk),
+  );
+  return resultData.concat(newData);
 }
 
 /**
