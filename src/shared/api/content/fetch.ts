@@ -1,4 +1,4 @@
-import requestExecutor from '~/config/requstExecutor';
+import {requests} from '~/shared/config/requests';
 import {ContentTypes} from '~/shared/enums';
 import {InfoForUpdate} from './interfaces';
 
@@ -10,7 +10,7 @@ import {InfoForUpdate} from './interfaces';
 export async function loadListOfContent<T>(
   contentType: ContentTypes,
 ): Promise<T[]> {
-  const response = await requestExecutor.get(`/data/${contentType}/`);
+  const response = await requests.get(`/data/${contentType}/`);
   return response.data;
 }
 
@@ -24,7 +24,7 @@ export async function loadObjectOfContent<T>(
   contentType: ContentTypes,
   pk: number,
 ): Promise<T> {
-  const response = await requestExecutor.get(`/data/${contentType}/${pk}/`);
+  const response = await requests.get(`/data/${contentType}/${pk}/`);
   return response.data;
 }
 
@@ -65,7 +65,7 @@ export async function reloadListOfContent<T extends {pk: number}>(
  * @returns Номер версии данных
  */
 export async function loadDataVersion(): Promise<number> {
-  const response = await requestExecutor.get('/data/update/');
+  const response = await requests.get('/data/update/');
   const data = response.data;
   return data.last_version;
 }
@@ -73,6 +73,6 @@ export async function loadDataVersion(): Promise<number> {
 export async function loadDataForUpdate(
   localVersion: number,
 ): Promise<InfoForUpdate> {
-  const response = await requestExecutor.get(`/data/update/${localVersion}/`);
+  const response = await requests.get(`/data/update/${localVersion}/`);
   return response.data;
 }
