@@ -27,6 +27,9 @@ export const TopBar: React.FC<Props> = ({
       <View style={styles.horizontalBlock}>
         {backArrow && (
           <MaterialCommunityIcons
+            accessibilityLabel="Назад"
+            accessibilityHint="Нажмите, чтобы вернуть на предыдущий экран"
+            accessibilityRole="button"
             name="arrow-left"
             color={theme.colors.onPrimary}
             size={moderateScale(24)}

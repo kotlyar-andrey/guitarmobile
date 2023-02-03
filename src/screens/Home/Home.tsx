@@ -39,24 +39,8 @@ export const Home = ({navigation}: Props) => {
           <View style={styles.menuColumn}>
             <InlineButton
               text="Уроки"
-              onPressHandler={() => {
-                navigation.push('Lessons');
-              }}
-            />
-            <InlineButton
-              text="Разборы"
-              onPressHandler={() => {
-                navigation.push('Lessons');
-              }}
-            />
-            <InlineButton
-              text="Аккорды"
-              onPressHandler={() => {
-                navigation.push('Lessons');
-              }}
-            />
-            <InlineButton
-              text="Упражнения"
+              a11yLabel="Уроки"
+              a11yHint="Перейти к списку уроков"
               onPressHandler={() => {
                 navigation.push('Lessons');
               }}
@@ -64,6 +48,8 @@ export const Home = ({navigation}: Props) => {
           </View>
           <View style={styles.menuColumn}>
             <InlineButton
+              a11yLabel="Уроки"
+              a11yHint="Перейти к списку уроков"
               text="Аккорды"
               onPressHandler={() => {
                 navigation.push('Lessons');
