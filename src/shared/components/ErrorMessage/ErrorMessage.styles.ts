@@ -7,18 +7,21 @@ const createStyles = (theme: Theme) => {
       flex: 1,
       backgroundColor: theme.colors.background,
       flexDirection: 'column',
-      justifyContent: 'center',
-      alignItems: 'center',
+      justifyContent: 'flex-start',
+      alignItems: 'stretch',
     },
-    buttonContainer: {
-      minWidth: '200@ms',
+    errorContainer: {
+      backgroundColor: theme.colors.errorBackground,
+      margin: '4@s',
+      borderRadius: '8@s',
+      padding: '4@s',
     },
     text: {
       color: theme.colors.errorText,
-      fontSize: '24@ms',
+      fontSize: '18@ms',
       paddingHorizontal: '2@ms',
       textAlign: 'center',
-      marginTop: '24@s',
+      marginTop: '4@s',
     },
   });
   return styles;

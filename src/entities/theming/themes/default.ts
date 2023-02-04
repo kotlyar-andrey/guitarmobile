@@ -8,8 +8,8 @@ const DefaultLightTheme: Theme = {
     primary: '#69306d',
     onPrimary: '#f9f9f9',
     secondary: '#999999',
-    errorText: '#f90000',
-    errorBackground: '#eda19a',
+    errorText: '#a94442',
+    errorBackground: '#fdc1ba',
     divider: '#eeeeee',
   },
   images: {

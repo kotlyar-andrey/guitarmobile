@@ -23,25 +23,29 @@ export const ErrorMessage: React.FC<Props> = ({text, handler}) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>{text}</Text>
-      {handler && (
+      <View style={styles.errorContainer}>
+        <Text style={styles.text}>{text}</Text>
+        {handler && (
+          <FillButton
+            onPressHandler={handler}
+            a11yLabel="Попробовать еще раз"
+            a11yHint="Нажмите, чтобы попытать решить проблему"
+            text="Попробовать еще раз"
+          />
+        )}
+      </View>
+      <View style={styles.errorContainer}>
+        <Text style={styles.text}>
+          Если проблема остается, подробно опишите ее в письме по адресу {'\n'}
+          {ADMIN_EMAIL}
+        </Text>
         <FillButton
-          onPressHandler={handler}
-          a11yLabel="Попробовать еще раз"
-          a11yHint="Нажмите, чтобы попытать решить проблему"
-          text="Попробовать еще раз"
+          text="Написать нам"
+          a11yLabel="Написать письмо"
+          a11yHint="Написать электронное письмо с описанием ошибки"
+          onPressHandler={goToUrl(mailto)}
         />
-      )}
-      <Text style={styles.text}>
-        Если проблема остается, подробно опишите ее в письме по адресу {'\n'}
-        {ADMIN_EMAIL}
-      </Text>
-      <FillButton
-        text="Написать нам"
-        a11yLabel="Написать письмо"
-        a11yHint="Написать электронное письмо с описанием ошибки"
-        onPressHandler={goToUrl(mailto)}
-      />
+      </View>
     </View>
   );
 };
