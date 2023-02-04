@@ -1,63 +1,23 @@
-import React, {useEffect} from 'react';
-import {Text, FlatList} from 'react-native';
+import React from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {NavigationType} from '~/main/MainNavigator';
-import TopBar from '~/components/TopBar/TopBar';
-import lessonsListGetter from '~/data/states/lessonsList';
-import {useTheme} from '~/theming';
+import {MainNavigationType} from '~/app/navigation';
+import {useTheme} from '~/entities/theming';
 import createStyles from './Lessons.styles';
-import LessonsItem from './LessonsItem';
-import {observer} from 'mobx-react-lite';
-import {E_LoadingState} from '~/data/content/enums';
-import Loading from '~/components/Loading/Loading';
+import {TopBar} from '~/shared/components/TopBar';
+import {LessonsList} from '~/widgets/lessons';
 
-type Props = NativeStackScreenProps<NavigationType, 'Lessons'>;
+type Props = NativeStackScreenProps<MainNavigationType, 'Lessons'>;
 
-const Lessons = observer(({navigation}: Props) => {
+export const Lessons = ({navigation}: Props) => {
   const theme = useTheme();
 
   const styles = createStyles(theme);
 
-  // Нужно получать всю необходимую информацию об уроке:
-  // сам урок, а так же добавлен ли он в избранное, пройден ли, скачан ли.
-  useEffect(() => {
-    const gettingLessons = async () => {
-      await lessonsListGetter.getLessons();
-    };
-    gettingLessons();
-  }, []);
-
-  const navigationToLesson = (lessonPk: number) => () => {
-    navigation.push('Lesson', {lessonPk});
-  };
-
-  const {status, lessons} = lessonsListGetter;
-
   return (
     <SafeAreaView edges={['right', 'bottom']} style={styles.container}>
       <TopBar title="Уроки" backArrow={true} navigation={navigation} />
-
-      {status === E_LoadingState.LOADING && <Loading />}
-      {status === E_LoadingState.SUCCESS && lessons.length > 0 && (
-        <FlatList
-          data={lessons}
-          renderItem={({item}) => (
-            <LessonsItem
-              lesson={item}
-              styles={styles}
-              navigationToLesson={navigationToLesson(item.pk)}
-            />
-          )}
-          keyExtractor={lesson => `lessonID${lesson.pk}`}
-        />
-      )}
-      {status === E_LoadingState.ERROR ||
-        (status === E_LoadingState.SUCCESS && lessons.length === 0 && (
-          <Text>Ошибка. Уроки не найдены</Text>
-        ))}
+      <LessonsList navigation={navigation} />
     </SafeAreaView>
   );
-});
-
-export default Lessons;
+};

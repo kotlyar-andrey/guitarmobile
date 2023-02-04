@@ -1,0 +1,1 @@
+export {goToUrl} from './openUrls';
