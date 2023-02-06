@@ -1,53 +1,37 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 
-import {NavigationType} from '~/main/MainNavigator';
-
-import TopBar from '~/components/TopBar/TopBar';
-import {useTheme} from '~/theming';
-import LessonNavigator from './LessonNavigator';
+import {LessonNavigator, MainNavigationType} from '~/app/navigation';
+import {useTheme} from '~/entities/theming';
 import createStyles from './Lesson.styles';
-import {observer} from 'mobx-react-lite';
-import lessonView from '~/data/states/lessonView';
-import {E_LoadingState} from '~/data/content/enums';
-import Loading from '~/components/Loading/Loading';
+import {TopBar} from '~/shared/components/TopBar';
+import {useContentState} from '~/features/contentLoader';
 
-type Props = NativeStackScreenProps<NavigationType, 'Lesson'>;
+type Props = NativeStackScreenProps<MainNavigationType, 'Lesson'>;
 
-const Lesson: React.FC<Props> = observer(({route, navigation}) => {
+export const Lesson: React.FC<Props> = ({route, navigation}) => {
   const theme = useTheme();
 
   const styles = createStyles(theme);
 
   const lessonPk = route.params.lessonPk;
 
-  useEffect(() => {
-    const gettingLesson = async () => {
-      await lessonView.getLesson(lessonPk);
-    };
-    gettingLesson();
-  }, [lessonPk]);
-
-  const {lesson, status} = lessonView;
+  const lesson = useContentState(state =>
+    state.lessons.find(lessonItem => lessonItem.pk === lessonPk),
+  );
 
   return (
     <SafeAreaView edges={['right', 'bottom']} style={styles.container}>
       <TopBar
-        title={
-          status === E_LoadingState.LOADING || !lesson
-            ? 'Урок'
-            : `Урок  № ${lesson.number}`
-        }
         backArrow={true}
         navigation={navigation}
+        title={lesson ? `Урок  № ${lesson.number}` : 'Урок'}
       />
-      {status === E_LoadingState.LOADING && <Loading />}
-      {status === E_LoadingState.SUCCESS && lesson && (
-        <LessonNavigator lesson={lesson} />
-      )}
+
+      {lesson && <LessonNavigator lesson={lesson} />}
     </SafeAreaView>
   );
-});
+};
 
 export default Lesson;

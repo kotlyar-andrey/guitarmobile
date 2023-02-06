@@ -5,12 +5,10 @@ import {LessonTabsType} from '../LessonNavigator';
 
 type Props = MaterialTopTabScreenProps<LessonTabsType, 'Video'>;
 
-const VideoScreen: React.FC<Props> = () => {
+export const VideoScreen: React.FC<Props> = () => {
   return (
     <View>
       <Text>Video</Text>
     </View>
   );
 };
-
-export default VideoScreen;
