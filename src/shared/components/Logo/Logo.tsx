@@ -1,8 +1,8 @@
 import {View, Text, Image} from 'react-native';
 import React from 'react';
-import {useTheme} from '~/entities/theming';
 
 import createStyles from './Logo.styles';
+import {useTheme} from '~/features/themeSwitcher';
 
 const logoImage = require('~/entities/theming/assets/images/logo.png');
 

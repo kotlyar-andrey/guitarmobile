@@ -2,9 +2,9 @@ import {View, Text, ActivityIndicator} from 'react-native';
 import React from 'react';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useContentState} from '../../model';
-import {useTheme} from '~/entities/theming';
 import createStyles from './ContentLoader.styles';
 import {scale} from 'react-native-size-matters';
+import {useTheme} from '~/features/themeSwitcher';
 
 export const ContentLoader: React.FC = () => {
   const contentState = useContentState(state => ({
@@ -12,8 +12,9 @@ export const ContentLoader: React.FC = () => {
     loading: state.loading,
     error: state.error,
     checkUpdate: state.checkUpdate,
+    clearData: state.clearData,
   }));
-  const {loading, error, message, checkUpdate} = contentState;
+  const {loading, error, message, checkUpdate, clearData} = contentState;
 
   const theme = useTheme();
   const styles = createStyles(theme);
@@ -26,6 +27,7 @@ export const ContentLoader: React.FC = () => {
 
   return (
     <View style={styles.container}>
+      <Text onPress={clearData}>Test (clear)</Text>
       {loading && <ActivityIndicator color={theme.colors.primary} />}
       {!loading && error && (
         <MaterialCommunityIcons

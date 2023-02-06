@@ -149,7 +149,7 @@ export const useContentState = create<LoaderState>()(
           }
         },
         clearData: () => {
-          set({dataVersion: 0});
+          set({dataVersion: 0, lessons: []});
         },
       }),
       {

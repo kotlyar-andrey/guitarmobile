@@ -4,12 +4,12 @@ import {ImageBackground} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 
-import {useTheme} from '~/entities/theming';
 import {Logo} from '~/shared/components/Logo';
 import {InlineButton} from '~/shared/components/Buttons';
 import createStyles from './Home.styles';
 import {ContentLoader} from '~/features/contentLoader';
 import {MainNavigationType} from '~/app/navigation';
+import {useTheme} from '~/features/themeSwitcher';
 
 type Props = NativeStackScreenProps<MainNavigationType, 'Home'>;
 

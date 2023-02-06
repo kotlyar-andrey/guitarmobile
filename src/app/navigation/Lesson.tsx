@@ -2,12 +2,12 @@ import React from 'react';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import {moderateScale, scale, verticalScale} from 'react-native-size-matters';
 import {FullSong, Lesson, SimpleSong} from '~/entities/lesson';
-import {useTheme} from '~/entities/theming';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {SongScreen, VideoScreen} from '~/screens/Lesson';
 import {useContentState} from '~/features/contentLoader';
 import {Beat} from '~/entities/beat';
 import {Chord} from '~/entities/chord';
+import {useTheme} from '~/features/themeSwitcher';
 
 type LessonSongsType = {
   [key: string]: {song: FullSong};

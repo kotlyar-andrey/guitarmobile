@@ -1,9 +1,9 @@
 import {Text, View} from 'react-native';
 import React from 'react';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {useTheme} from '~/entities/theming';
 import createStyles from './TopBar.styles';
 import {moderateScale} from 'react-native-size-matters';
+import {useTheme} from '~/features/themeSwitcher';
 
 interface Props {
   title: string;

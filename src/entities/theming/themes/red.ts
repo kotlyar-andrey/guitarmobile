@@ -1,11 +1,11 @@
 import {ColorScheme, Theme} from '../model/interfaces';
 
-const DefaultLightTheme: Theme = {
+const RedLightTheme: Theme = {
   dark: false,
   colors: {
     background: '#f9f9f9',
     text: '#2d2d2d',
-    primary: '#69306d',
+    primary: '#ff306d',
     onPrimary: '#f9f9f9',
     secondary: '#999999',
     errorText: '#a94442',
@@ -17,10 +17,10 @@ const DefaultLightTheme: Theme = {
   },
 };
 
-const DefaultDarkTheme: Theme = {
+const RedDarkTheme: Theme = {
   dark: true,
   colors: {
-    background: '#2d2d2d',
+    background: '#fd2d2d',
     text: '#f9f9f9',
     primary: '#f9acfa',
     onPrimary: '#f9f9f9',
@@ -34,8 +34,8 @@ const DefaultDarkTheme: Theme = {
   },
 };
 
-export const DefaultTheme: ColorScheme = {
-  title: 'По-умолчанию',
-  light: DefaultLightTheme,
-  dark: DefaultDarkTheme,
+export const RedTheme: ColorScheme = {
+  title: 'Красная',
+  light: RedLightTheme,
+  dark: RedDarkTheme,
 };

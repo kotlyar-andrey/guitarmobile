@@ -1,10 +1,10 @@
 import {View, Text} from 'react-native';
 import React from 'react';
-import {useTheme} from '~/entities/theming';
 import createStyles from './ErrorMessage.styles';
 import {FillButton} from '../Buttons';
 import {goToUrl} from '~/shared/utils';
 import {ADMIN_EMAIL} from '~/shared/config/consts';
+import {useTheme} from '~/features/themeSwitcher';
 
 interface Props {
   text: string;

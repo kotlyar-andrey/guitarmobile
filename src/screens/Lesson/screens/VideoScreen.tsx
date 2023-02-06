@@ -1,7 +1,7 @@
 import React from 'react';
 import {MaterialTopTabScreenProps} from '@react-navigation/material-top-tabs';
 import {View, Text} from 'react-native';
-import {LessonTabsType} from '../LessonNavigator';
+import {LessonTabsType} from '~/app/navigation';
 
 type Props = MaterialTopTabScreenProps<LessonTabsType, 'Video'>;
 

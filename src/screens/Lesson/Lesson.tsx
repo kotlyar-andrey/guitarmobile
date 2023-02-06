@@ -3,10 +3,10 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 
 import {LessonNavigator, MainNavigationType} from '~/app/navigation';
-import {useTheme} from '~/entities/theming';
 import createStyles from './Lesson.styles';
 import {TopBar} from '~/shared/components/TopBar';
 import {useContentState} from '~/features/contentLoader';
+import {useTheme} from '~/features/themeSwitcher';
 
 type Props = NativeStackScreenProps<MainNavigationType, 'Lesson'>;
 

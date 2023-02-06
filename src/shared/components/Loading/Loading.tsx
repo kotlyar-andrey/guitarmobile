@@ -1,6 +1,6 @@
 import React from 'react';
 import {Text} from 'react-native';
-import {useTheme} from '~/entities/theming';
+import {useTheme} from '~/features/themeSwitcher';
 import createStyles from './Loading.styles';
 
 export const Loading: React.FC = () => {

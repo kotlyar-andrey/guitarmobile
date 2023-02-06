@@ -6,10 +6,11 @@ import {
   DefaultTheme as NavigationDefaultTheme,
 } from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {Theme, useTheme} from '~/entities/theming';
+import {Theme} from '~/entities/theming';
 import {Home} from '~/screens/Home';
 import {Lessons} from '~/screens/Lessons';
 import {Lesson} from '~/screens/Lesson';
+import {useTheme} from '~/features/themeSwitcher';
 
 export type MainNavigationType = {
   Home: undefined;

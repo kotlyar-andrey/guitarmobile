@@ -35,6 +35,7 @@ export interface Theme {
  * Цветовая схема; имеет светлую и темную тему
  */
 export interface ColorScheme {
+  title: string;
   light: Theme;
   dark: Theme;
 }

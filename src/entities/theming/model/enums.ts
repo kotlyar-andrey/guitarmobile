@@ -3,6 +3,7 @@
  */
 export enum ColorSchemes {
   default = 'default',
+  red = 'red',
 }
 
 /**

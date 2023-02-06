@@ -2,8 +2,8 @@ import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import {moderateScale} from 'react-native-size-matters';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {useTheme} from '~/features/themeSwitcher';
 
-import {useTheme} from '~/entities/theming';
 import {Lesson} from '../../model';
 import createStyles from './LessonRow.styles';
 
