@@ -16,6 +16,9 @@ export interface Scheme {
   image: string;
 }
 
+/**
+ * Содержит только идентификаторы аккордов и боев, которые используются в уроке
+ */
 export interface SimpleSong {
   pk: number;
   title: string;
@@ -26,7 +29,10 @@ export interface SimpleSong {
   metronome: number;
 }
 
-export interface Song {
+/**
+ * Песня с полученными аккордами и боями. Используется на экране самого урока
+ */
+export interface FullSong {
   pk: number;
   title: string;
   chords: Chord[];
@@ -36,6 +42,9 @@ export interface Song {
   metronome: number;
 }
 
+/**
+ * Урок или разбор, скачанный с сервера. Песня содрежит только идентификаторы аккордов и боев
+ */
 export interface Lesson {
   pk: number;
   lesson_type: 0 | 1;
@@ -43,6 +52,6 @@ export interface Lesson {
   title: string;
   video: string;
   intro: number;
-  songs: Song[] | SimpleSong[];
+  songs: SimpleSong[];
   additions: Addition[];
 }
