@@ -1,0 +1,1 @@
+export {AutoScrollView} from './AutoScrollView';
