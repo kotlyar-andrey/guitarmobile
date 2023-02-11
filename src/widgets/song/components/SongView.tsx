@@ -6,6 +6,7 @@ import {AccordionContainer} from '~/shared/components/AccordionContainer';
 import {AutoScrollView} from '~/shared/components/AutoScrollView';
 import {BeatsContainer} from '~/widgets/beats';
 import {ChordsContainer} from '~/widgets/chords';
+import {MarkdownContainer} from '~/widgets/text';
 
 import createStyles from './SongView.styles';
 
@@ -38,6 +39,7 @@ export const SongView: React.FC<Props> = ({song}) => {
             <BeatsContainer beats={song.beats} />
           </AccordionContainer>
         )}
+        <MarkdownContainer text={song.text} />
       </AutoScrollView>
     </View>
   );
