@@ -4,6 +4,7 @@ import {FullSong} from '~/entities/lesson';
 import {useTheme} from '~/features/themeSwitcher';
 import {AccordionContainer} from '~/shared/components/AccordionContainer';
 import {AutoScrollView} from '~/shared/components/AutoScrollView';
+import {BeatsContainer} from '~/widgets/beats';
 import {ChordsContainer} from '~/widgets/chords';
 
 import createStyles from './SongView.styles';
@@ -34,7 +35,7 @@ export const SongView: React.FC<Props> = ({song}) => {
             title="Ритмические рисунки"
             visible={test}
             toggleVisible={() => setTest(!test)}>
-            {/* <BeatsContainer beats={song.beats} bpm={120} /> */}
+            <BeatsContainer beats={song.beats} />
           </AccordionContainer>
         )}
       </AutoScrollView>
