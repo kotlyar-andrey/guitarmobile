@@ -7,6 +7,13 @@ const createStyles = (theme: Theme) => {
       flex: 1,
       backgroundColor: theme.colors.background,
     },
+    title: {
+      textAlign: 'center',
+      color: theme.colors.text,
+      fontWeight: 'bold',
+      padding: '4@s',
+      fontSize: '12@s',
+    },
   });
   return styles;
 };
