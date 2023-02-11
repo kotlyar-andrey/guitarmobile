@@ -35,7 +35,9 @@ export const AccordionContainer: React.FC<Props> = ({
               />
             ) : (
               <>
-                <Text>Показать {title.toLowerCase()}</Text>
+                <Text style={styles.toolbarText}>
+                  Показать {title.toLowerCase()}
+                </Text>
                 <MaterialCommunityIcons
                   name="eye-off-outline"
                   color={theme.colors.secondary}

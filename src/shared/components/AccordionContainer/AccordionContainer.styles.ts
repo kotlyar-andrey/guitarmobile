@@ -28,8 +28,13 @@ const createStyles = (theme: Theme) => {
     title: {
       textAlign: 'center',
       color: theme.colors.text,
-      fontSize: '9@s',
+      fontSize: '11@s',
       textDecorationColor: theme.colors.primary,
+    },
+    toolbarText: {
+      color: theme.colors.secondary,
+      fontSize: '7@s',
+      padding: '2@s',
     },
   });
   return styles;
