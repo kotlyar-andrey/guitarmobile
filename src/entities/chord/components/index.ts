@@ -1,0 +1,1 @@
+export {BaseChordView} from './Chord';
