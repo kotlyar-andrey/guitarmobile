@@ -1,9 +1,10 @@
 import React from 'react';
 import {Text, View} from 'react-native';
 import {FullSong} from '~/entities/lesson';
+import {AutoscrollToolbar, AutoscrollView} from '~/features/autoScroller';
 import {useTheme} from '~/features/themeSwitcher';
 import {AccordionContainer} from '~/shared/components/AccordionContainer';
-import {AutoScrollView} from '~/shared/components/AutoScrollView';
+import {SongBottomPanel} from '~/shared/components/SongBottomPanel';
 import {BeatsContainer} from '~/widgets/beats';
 import {ChordsContainer} from '~/widgets/chords';
 import {MarkdownContainer} from '~/widgets/text';
@@ -17,11 +18,14 @@ export const SongView: React.FC<Props> = ({song}) => {
   const theme = useTheme();
   const styles = createStyles(theme);
   const [test, setTest] = React.useState(true);
+
+  const autoscrollToolbar = <AutoscrollToolbar />;
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{song.title}</Text>
 
-      <AutoScrollView scrollSpeed={0}>
+      <AutoscrollView>
         {song.chords.length > 0 && (
           <AccordionContainer
             title="Аккорды"
@@ -40,7 +44,8 @@ export const SongView: React.FC<Props> = ({song}) => {
           </AccordionContainer>
         )}
         <MarkdownContainer text={song.text} />
-      </AutoScrollView>
+      </AutoscrollView>
+      <SongBottomPanel toolbars={[autoscrollToolbar]} visible={true} />
     </View>
   );
 };
