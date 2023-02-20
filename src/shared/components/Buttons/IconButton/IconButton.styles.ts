@@ -9,7 +9,7 @@ const createStyles = (theme: Theme) => {
       padding: '1@s',
       borderWidth: 1,
       borderColor: theme.colors.primary,
-      elevation: 2,
+      elevation: 1,
     },
     pressedButton: {
       backgroundColor: theme.colors.divider,

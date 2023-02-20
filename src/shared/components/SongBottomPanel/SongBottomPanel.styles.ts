@@ -16,11 +16,13 @@ const createStyles = (theme: Theme) => {
       paddingHorizontal: '2@s',
       elevation: 4,
     },
-    // categoryContainer: {
-    //   flexDirection: 'row',
-    //   alignItems: 'center',
-    //   justifyContent: 'space-around',
-    // },
+    hidden: {
+      position: 'absolute',
+      right: 0,
+      bottom: 0,
+      paddingVertical: '5@s',
+      paddingHorizontal: '2@s',
+    },
   });
   return styles;
 };

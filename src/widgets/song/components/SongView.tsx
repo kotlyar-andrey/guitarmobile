@@ -2,6 +2,7 @@ import React from 'react';
 import {Text, View} from 'react-native';
 import {FullSong} from '~/entities/lesson';
 import {AutoscrollToolbar, AutoscrollView} from '~/features/autoScroller';
+import {SongSettingsToolbar} from '~/features/songSettings';
 import {useTheme} from '~/features/themeSwitcher';
 import {AccordionContainer} from '~/shared/components/AccordionContainer';
 import {SongBottomPanel} from '~/shared/components/SongBottomPanel';
@@ -20,6 +21,7 @@ export const SongView: React.FC<Props> = ({song}) => {
   const [test, setTest] = React.useState(true);
 
   const autoscrollToolbar = <AutoscrollToolbar />;
+  const songSettingsToolbar = <SongSettingsToolbar />;
 
   return (
     <View style={styles.container}>
@@ -45,7 +47,7 @@ export const SongView: React.FC<Props> = ({song}) => {
         )}
         <MarkdownContainer text={song.text} />
       </AutoscrollView>
-      <SongBottomPanel toolbars={[autoscrollToolbar]} visible={true} />
+      <SongBottomPanel toolbars={[autoscrollToolbar, songSettingsToolbar]} />
     </View>
   );
 };

@@ -39,7 +39,7 @@ export const AccordionContainer: React.FC<Props> = ({
                   Показать {title.toLowerCase()}
                 </Text>
                 <MaterialCommunityIcons
-                  name="eye-off-outline"
+                  name="eye-outline"
                   color={theme.colors.secondary}
                   size={moderateScale(14)}
                 />
