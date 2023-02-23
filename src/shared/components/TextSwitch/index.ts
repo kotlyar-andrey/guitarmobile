@@ -1,0 +1,1 @@
+export {TextSwitch} from './TextSwitch';

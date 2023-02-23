@@ -5,17 +5,14 @@ const createStyles = (theme: Theme) => {
   const styles = ScaledSheet.create({
     container: {
       flexDirection: 'row',
+      alignItems: 'center',
       justifyContent: 'space-between',
-      borderBottomWidth: 1,
-      borderBottomColor: theme.colors.divider,
-    },
-    dropdown: {
       backgroundColor: theme.colors.background,
-      minWidth: '100@ms',
+      paddingRight: '4@s',
     },
-    dropdownItem: {
-      backgroundColor: theme.colors.background,
+    text: {
       fontSize: '10@ms',
+      color: theme.colors.text,
     },
   });
   return styles;

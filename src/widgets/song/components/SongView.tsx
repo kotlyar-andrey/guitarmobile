@@ -3,6 +3,7 @@ import {Text, View} from 'react-native';
 import {FullSong} from '~/entities/lesson';
 import {AutoscrollToolbar, AutoscrollView} from '~/features/autoScroller';
 import {SongSettingsToolbar} from '~/features/songSettings';
+import {SongSettingsModal} from '~/features/songSettings/components';
 import {useTheme} from '~/features/themeSwitcher';
 import {AccordionContainer} from '~/shared/components/AccordionContainer';
 import {SongBottomPanel} from '~/shared/components/SongBottomPanel';
@@ -20,8 +21,17 @@ export const SongView: React.FC<Props> = ({song}) => {
   const styles = createStyles(theme);
   const [test, setTest] = React.useState(true);
 
+  const [settingsModalVisible, setSettingsModalVisible] =
+    React.useState<boolean>(false);
+
+  const toggleSettingsModalVisible = () => {
+    setSettingsModalVisible(!settingsModalVisible);
+  };
+
   const autoscrollToolbar = <AutoscrollToolbar />;
-  const songSettingsToolbar = <SongSettingsToolbar />;
+  const songSettingsToolbar = (
+    <SongSettingsToolbar showSettings={toggleSettingsModalVisible} />
+  );
 
   return (
     <View style={styles.container}>
@@ -48,6 +58,10 @@ export const SongView: React.FC<Props> = ({song}) => {
         <MarkdownContainer text={song.text} />
       </AutoscrollView>
       <SongBottomPanel toolbars={[autoscrollToolbar, songSettingsToolbar]} />
+      <SongSettingsModal
+        visible={settingsModalVisible}
+        toggleVisible={toggleSettingsModalVisible}
+      />
     </View>
   );
 };

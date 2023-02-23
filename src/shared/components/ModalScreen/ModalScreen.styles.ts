@@ -4,18 +4,21 @@ import {Theme} from '~/entities/theming';
 const createStyles = (theme: Theme) => {
   const styles = ScaledSheet.create({
     container: {
+      backgroundColor: theme.colors.background,
+    },
+    titleContainer: {
       flexDirection: 'row',
       justifyContent: 'space-between',
-      borderBottomWidth: 1,
-      borderBottomColor: theme.colors.divider,
-    },
-    dropdown: {
+      alignItems: 'center',
       backgroundColor: theme.colors.background,
-      minWidth: '100@ms',
+      padding: '6@ms',
+      borderBottomWidth: 2,
+      borderBottomColor: theme.colors.primary,
     },
-    dropdownItem: {
-      backgroundColor: theme.colors.background,
-      fontSize: '10@ms',
+    titleText: {
+      color: theme.colors.primary,
+      fontSize: '12@s',
+      textAlign: 'center',
     },
   });
   return styles;

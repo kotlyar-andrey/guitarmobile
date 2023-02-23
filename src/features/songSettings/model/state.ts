@@ -9,12 +9,12 @@ export type BeatSize = 1 | 2 | 3 | 4 | 5;
 interface SongSetting {
   chordOrientation: 'horizontal' | 'vertical';
   chordSize: ChordSize;
-  setChordSize: (newChordSize: ChordSize) => void;
   beatSize: BeatSize;
-  setBeatSize: (newChordSize: ChordSize) => void;
   textSize: number;
-  setTextSize: (newTextSize: number) => void;
   panelPinned: boolean;
+  setChordSize: (newChordSize: ChordSize) => void;
+  setBeatSize: (newBeatSize: BeatSize) => void;
+  setTextSize: (newTextSize: number) => void;
   togglePanelPinned: () => void;
   toggleOrientation: () => void;
 }
@@ -28,12 +28,7 @@ export const useSongSettings = create<SongSetting>()(
         beatSize: 3,
         textSize: 10,
         panelPinned: true,
-        toggleOrientation: () => {
-          const currentOrientation = get().chordOrientation;
-          const newOrientation =
-            currentOrientation === 'horizontal' ? 'vertical' : 'horizontal';
-          set({chordOrientation: newOrientation});
-        },
+
         setChordSize: (newChordSize: ChordSize) => {
           set({chordSize: newChordSize});
         },
@@ -47,6 +42,12 @@ export const useSongSettings = create<SongSetting>()(
           const currentPinned = get().panelPinned;
           const newPinned = !currentPinned;
           set({panelPinned: newPinned});
+        },
+        toggleOrientation: () => {
+          const currentOrientation = get().chordOrientation;
+          const newOrientation =
+            currentOrientation === 'horizontal' ? 'vertical' : 'horizontal';
+          set({chordOrientation: newOrientation});
         },
       }),
       {

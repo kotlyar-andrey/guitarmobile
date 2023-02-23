@@ -5,7 +5,11 @@ import {IconButton} from '~/shared/components/Buttons';
 import {useSongSettings} from '../model';
 import createStyles from './SongSettingsToolbar.styles';
 
-export const SongSettingsToolbar: React.FC = () => {
+interface Props {
+  showSettings: () => void;
+}
+
+export const SongSettingsToolbar: React.FC<Props> = ({showSettings}) => {
   const theme = useTheme();
   const styles = createStyles(theme);
 
@@ -16,7 +20,9 @@ export const SongSettingsToolbar: React.FC = () => {
       <IconButton
         active={false}
         iconName={'cog-outline'}
-        onPressHandler={() => {}}
+        onPressHandler={() => {
+          showSettings();
+        }}
       />
       <IconButton
         active={false}
