@@ -17,7 +17,7 @@ const createStyles = (theme: Theme) => {
     },
     iconsContainer: {
       flexDirection: 'column',
-      justifyContent: 'flex-start',
+      justifyContent: 'center',
     },
     lessonTitle: {
       fontSize: '12@s',

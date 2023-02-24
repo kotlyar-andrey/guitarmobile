@@ -2,6 +2,7 @@ import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import {moderateScale} from 'react-native-size-matters';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {useLessonSettings} from '~/features/lessonsSettings';
 import {useTheme} from '~/features/themeSwitcher';
 
 import {Lesson} from '../../model';
@@ -17,6 +18,10 @@ export const LessonRow: React.FC<Props> = ({lesson, navigationToLesson}) => {
 
   const theme = useTheme();
   const styles = createStyles(theme);
+
+  const settingsGetter = useLessonSettings(state => state.getSettingsByPk);
+  const lessonSettings = settingsGetter(lesson.pk);
+  const {isLessonComplite, isLessonFavorite} = lessonSettings;
 
   return (
     <View style={styles.itemListContainer}>
@@ -34,21 +39,25 @@ export const LessonRow: React.FC<Props> = ({lesson, navigationToLesson}) => {
         ))}
       </TouchableOpacity>
       <View style={styles.iconsContainer}>
-        <MaterialCommunityIcons
-          name="check-circle"
-          color="green"
-          size={moderateScale(14)}
-        />
-        <MaterialCommunityIcons
-          name="heart"
-          color="red"
-          size={moderateScale(14)}
-        />
-        <MaterialCommunityIcons
+        {isLessonComplite && (
+          <MaterialCommunityIcons
+            name="check-circle"
+            color="green"
+            size={moderateScale(14)}
+          />
+        )}
+        {isLessonFavorite && (
+          <MaterialCommunityIcons
+            name="heart"
+            color="red"
+            size={moderateScale(14)}
+          />
+        )}
+        {/* <MaterialCommunityIcons
           name="download"
           color="7777ff"
           size={moderateScale(14)}
-        />
+        /> */}
       </View>
     </View>
   );

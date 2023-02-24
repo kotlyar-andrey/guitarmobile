@@ -4,6 +4,7 @@ import {useContentState} from '~/features/contentLoader';
 import {LessonRow} from '~/entities/lesson';
 import {ErrorMessage} from '~/shared/components/ErrorMessage';
 import {Loading} from '~/shared/components/Loading';
+import {useLessonSettings} from '~/features/lessonsSettings';
 
 interface Props {
   navigation: any;
@@ -17,6 +18,8 @@ export const LessonsList = ({navigation}: Props) => {
     loadAllContent: state.loadAllContent,
   }));
   const {lessons, loading, loadAllContent} = contentState;
+
+  useLessonSettings(state => state.settings);
 
   const navigationToLesson = (lessonPk: number) => () => {
     navigation.push('Lesson', {lessonPk});

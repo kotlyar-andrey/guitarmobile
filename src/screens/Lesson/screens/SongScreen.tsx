@@ -6,6 +6,6 @@ import {SongView} from '~/widgets/song';
 type Props = MaterialTopTabScreenProps<LessonTabsType>;
 
 export const SongScreen: React.FC<Props> = ({route}) => {
-  const song = route.params.song;
-  return <SongView song={song} />;
+  const {song, lessonPk} = route.params;
+  return <SongView song={song} lessonPk={lessonPk} />;
 };

@@ -10,7 +10,7 @@ import {Chord} from '~/entities/chord';
 import {useTheme} from '~/features/themeSwitcher';
 
 type LessonSongsType = {
-  [key: string]: {song: FullSong};
+  [key: string]: {song: FullSong; lessonPk: number};
 };
 
 export type LessonTabsType = LessonSongsType & {
@@ -51,7 +51,7 @@ export const LessonNavigator: React.FC<Props> = ({lesson}) => {
       key={`song${index + 1}`}
       name={`Song${index + 1}`}
       component={SongScreen}
-      initialParams={{song}}
+      initialParams={{song, lessonPk: lesson.pk}}
       options={{
         title: `Текст № ${index + 1}`,
         tabBarIcon: ({focused}) => (

@@ -2,6 +2,7 @@ import React from 'react';
 import {Text, View} from 'react-native';
 import {FullSong} from '~/entities/lesson';
 import {AutoscrollToolbar, AutoscrollView} from '~/features/autoScroller';
+import {useLessonSettings} from '~/features/lessonsSettings';
 import {SongSettingsToolbar} from '~/features/songSettings';
 import {SongSettingsModal} from '~/features/songSettings/components';
 import {useTheme} from '~/features/themeSwitcher';
@@ -15,11 +16,19 @@ import createStyles from './SongView.styles';
 
 interface Props {
   song: FullSong;
+  lessonPk: number;
 }
-export const SongView: React.FC<Props> = ({song}) => {
+export const SongView: React.FC<Props> = ({song, lessonPk}) => {
   const theme = useTheme();
   const styles = createStyles(theme);
-  const [test, setTest] = React.useState(true);
+
+  const {getLessonSettings, toggleChordsVisible, toggleBeatsVisible} =
+    useLessonSettings(state => ({
+      getLessonSettings: state.getSettingsByPk,
+      toggleChordsVisible: state.toggleChordsVisible,
+      toggleBeatsVisible: state.toggleBeatsVisible,
+    }));
+  const {chordsVisible, beatsVisible} = getLessonSettings(lessonPk);
 
   const [settingsModalVisible, setSettingsModalVisible] =
     React.useState<boolean>(false);
@@ -35,14 +44,13 @@ export const SongView: React.FC<Props> = ({song}) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{song.title}</Text>
-
       <AutoscrollView>
+        <Text style={styles.title}>{song.title}</Text>
         {song.chords.length > 0 && (
           <AccordionContainer
             title="Аккорды"
-            visible={test}
-            toggleVisible={() => setTest(!test)}>
+            visible={chordsVisible}
+            toggleVisible={() => toggleChordsVisible(lessonPk)}>
             <ChordsContainer chords={song.chords} />
           </AccordionContainer>
         )}
@@ -50,8 +58,8 @@ export const SongView: React.FC<Props> = ({song}) => {
         {song.beats.length > 0 && (
           <AccordionContainer
             title="Ритмические рисунки"
-            visible={test}
-            toggleVisible={() => setTest(!test)}>
+            visible={beatsVisible}
+            toggleVisible={() => toggleBeatsVisible(lessonPk)}>
             <BeatsContainer beats={song.beats} />
           </AccordionContainer>
         )}
