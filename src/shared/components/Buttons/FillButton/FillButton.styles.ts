@@ -16,10 +16,12 @@ const createStyles = (theme: Theme) => {
     },
     buttonText: {
       color: theme.colors.onPrimary,
-      fontSize: '22@ms',
+      fontSize: '18@ms',
       flexWrap: 'wrap',
       letterSpacing: 0.25,
-      lineHeight: '40@ms',
+      lineHeight: '32@ms',
+      paddingHorizontal: '8@ms',
+      textAlign: 'center',
     },
   });
   return styles;

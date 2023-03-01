@@ -9,13 +9,14 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {Theme} from '~/entities/theming';
 import {Home} from '~/screens/Home';
 import {Lessons} from '~/screens/Lessons';
-import {Lesson} from '~/screens/Lesson';
+import {Lesson, ModalVideo} from '~/screens/Lesson';
 import {useTheme} from '~/features/themeSwitcher';
 
 export type MainNavigationType = {
   Home: undefined;
   Lessons: undefined;
   Lesson: {lessonPk: number};
+  ModalVideo: {type: 'online' | 'offline'; uri: string};
 };
 
 const {Navigator, Group, Screen} =
@@ -42,6 +43,9 @@ export const MainNavigator = () => {
             <Screen name="Home" component={Home} />
             <Screen name="Lessons" component={Lessons} />
             <Screen name="Lesson" component={Lesson} />
+          </Group>
+          <Group screenOptions={{presentation: 'modal'}}>
+            <Screen name="ModalVideo" component={ModalVideo} />
           </Group>
         </Navigator>
       </NavigationContainer>

@@ -30,6 +30,10 @@
     "react-native-tab-view": "^3.3.0",
     "react-native-toast-message": "^2.1.5",
     "react-native-vector-icons": "^9.2.0",
+    "react-native-video": "^5.2.1",
+    "react-native-video-controls": "^2.8.1",
+    "react-native-webview": "^11.26.1",
+    "react-native-youtube-iframe": "^2.2.2",
     "rn-chords-player": "https://github.com/kotlyar-andrey/rn-chords-player",
     "zustand": "^4.3.2"
   },

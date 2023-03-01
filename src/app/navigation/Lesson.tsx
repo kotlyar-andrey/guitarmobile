@@ -1,7 +1,7 @@
 import React from 'react';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import {moderateScale, scale, verticalScale} from 'react-native-size-matters';
-import {FullSong, Lesson, SimpleSong} from '~/entities/lesson';
+import {Addition, FullSong, Lesson, SimpleSong} from '~/entities/lesson';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {SongScreen, VideoScreen} from '~/screens/Lesson';
 import {useContentState} from '~/features/contentLoader';
@@ -13,9 +13,11 @@ type LessonSongsType = {
   [key: string]: {song: FullSong; lessonPk: number};
 };
 
-export type LessonTabsType = LessonSongsType & {
-  Video: undefined;
+type LesonVideoType = {
+  Video: {video: string; additions: Addition[]};
 };
+
+export type LessonTabsType = LessonSongsType & LesonVideoType;
 
 const Tabs = createMaterialTopTabNavigator<LessonTabsType>();
 
@@ -94,7 +96,21 @@ export const LessonNavigator: React.FC<Props> = ({lesson}) => {
       }}
       initialRouteName="Song1">
       {songTabs}
-      <Tabs.Screen name="Video" component={VideoScreen} />
+      <Tabs.Screen
+        name="Video"
+        options={{
+          title: 'Дополнительно',
+          tabBarIcon: ({focused}) => (
+            <MaterialCommunityIcons
+              name="clipboard-play-outline"
+              color={focused ? theme.colors.primary : theme.colors.text}
+              size={moderateScale(14)}
+            />
+          ),
+        }}
+        component={VideoScreen}
+        initialParams={{video: lesson.video, additions: lesson.additions}}
+      />
     </Tabs.Navigator>
   );
 };
