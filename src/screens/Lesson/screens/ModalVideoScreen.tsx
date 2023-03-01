@@ -61,7 +61,7 @@ export const ModalVideo: React.FC<Props> = ({navigation, route}) => {
       {type === 'offline' && (
         <VideoPlayer
           source={{
-            uri: 'http://guitar0.kotdatacenter.net/files/lessons/lesson1.mp4', // TODO
+            uri: uri,
           }}
           disableBack={true}
           disableVolume={true}
@@ -91,7 +91,5 @@ const styles = StyleSheet.create({
   },
   footer: {
     height: 160,
-    width: 1999,
-    backgroundColor: 'red',
   },
 });

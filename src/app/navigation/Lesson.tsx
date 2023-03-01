@@ -14,7 +14,13 @@ type LessonSongsType = {
 };
 
 type LesonVideoType = {
-  Video: {video: string; additions: Addition[]};
+  Video: {
+    video: string;
+    additions: Addition[];
+    lessonType: 'lesson' | 'howtoplay';
+    lessonNumber: number;
+    lessonPk: number;
+  };
 };
 
 export type LessonTabsType = LessonSongsType & LesonVideoType;
@@ -99,7 +105,7 @@ export const LessonNavigator: React.FC<Props> = ({lesson}) => {
       <Tabs.Screen
         name="Video"
         options={{
-          title: 'Дополнительно',
+          title: 'Видео',
           tabBarIcon: ({focused}) => (
             <MaterialCommunityIcons
               name="clipboard-play-outline"
@@ -109,7 +115,13 @@ export const LessonNavigator: React.FC<Props> = ({lesson}) => {
           ),
         }}
         component={VideoScreen}
-        initialParams={{video: lesson.video, additions: lesson.additions}}
+        initialParams={{
+          video: lesson.video,
+          additions: lesson.additions,
+          lessonType: 'lesson',
+          lessonNumber: lesson.number,
+          lessonPk: lesson.pk,
+        }}
       />
     </Tabs.Navigator>
   );

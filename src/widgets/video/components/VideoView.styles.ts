@@ -7,9 +7,19 @@ const createStyles = (theme: Theme) => {
       flex: 1,
       backgroundColor: theme.colors.background,
     },
-    backgroundVideo: {
-      height: 200,
-      borderWidth: 1,
+    row: {
+      flexDirection: 'row',
+    },
+    flex4: {
+      flex: 4,
+    },
+    flex1: {
+      flex: 1,
+    },
+    hintText: {
+      paddingHorizontal: '6@ms',
+      color: theme.colors.secondary,
+      fontSize: '8@ms',
     },
   });
   return styles;

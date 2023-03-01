@@ -5,7 +5,7 @@ import {useTheme} from '~/features/themeSwitcher';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 interface Props {
-  text: string;
+  text?: string;
   iconName?: string;
   a11yLabel: string;
   a11yHint: string;
@@ -38,7 +38,7 @@ export const FillButton: React.FC<Props> = ({
           color={theme.colors.onPrimary}
         />
       )}
-      <Text style={styles.buttonText}>{text}</Text>
+      {text && <Text style={styles.buttonText}>{text}</Text>}
     </TouchableOpacity>
   );
 };

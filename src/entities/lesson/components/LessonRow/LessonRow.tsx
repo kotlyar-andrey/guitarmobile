@@ -19,9 +19,10 @@ export const LessonRow: React.FC<Props> = ({lesson, navigationToLesson}) => {
   const theme = useTheme();
   const styles = createStyles(theme);
 
-  const settingsGetter = useLessonSettings(state => state.getSettingsByPk);
-  const lessonSettings = settingsGetter(lesson.pk);
-  const {isLessonComplite, isLessonFavorite} = lessonSettings;
+  const getSettingsByPk = useLessonSettings(state => state.getSettingsByPk);
+  const lessonSettings = getSettingsByPk(lesson.pk);
+  const {isLessonComplite, isLessonFavorite, downloadedVideoPath} =
+    lessonSettings;
 
   return (
     <View style={styles.itemListContainer}>
@@ -53,11 +54,13 @@ export const LessonRow: React.FC<Props> = ({lesson, navigationToLesson}) => {
             size={moderateScale(14)}
           />
         )}
-        {/* <MaterialCommunityIcons
-          name="download"
-          color="7777ff"
-          size={moderateScale(14)}
-        /> */}
+        {downloadedVideoPath && (
+          <MaterialCommunityIcons
+            name="download"
+            color="7777ff"
+            size={moderateScale(14)}
+          />
+        )}
       </View>
     </View>
   );

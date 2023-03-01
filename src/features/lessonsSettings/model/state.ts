@@ -11,6 +11,7 @@ interface OneLessonSettings {
   beatsVisible: boolean;
   isLessonComplite: boolean;
   isLessonFavorite: boolean;
+  downloadedVideoPath: string | null;
 }
 
 interface LessonsSettings {
@@ -22,6 +23,8 @@ interface LessonsSettings {
   toggleIsLessonComplite: (lessonPk: number) => void;
   toggleIsLessonFavorite: (lessonPk: number) => void;
   getSettingsByPk: (lessonPk: number) => OneLessonSettings;
+  saveVideoPath: (lessonPk: number, path: string) => void;
+  removeVideoPath: (lessonPk: number) => void;
 }
 
 const defaultLessonSettings: OneLessonSettings = {
@@ -29,6 +32,7 @@ const defaultLessonSettings: OneLessonSettings = {
   beatsVisible: true,
   isLessonComplite: false,
   isLessonFavorite: false,
+  downloadedVideoPath: null,
 };
 
 export const useLessonSettings = create<LessonsSettings>()(
@@ -80,6 +84,16 @@ export const useLessonSettings = create<LessonsSettings>()(
             return defaultLessonSettings;
           }
           return lessonSettings;
+        },
+        saveVideoPath: (lessonPk: number, path: string) => {
+          set(state => {
+            state.settings[lessonPk].downloadedVideoPath = path;
+          });
+        },
+        removeVideoPath: (lessonPk: number) => {
+          set(state => {
+            state.settings[lessonPk].downloadedVideoPath = null;
+          });
         },
       }),
       {
