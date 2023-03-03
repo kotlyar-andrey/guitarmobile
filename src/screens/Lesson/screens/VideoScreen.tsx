@@ -1,21 +1,40 @@
 import React from 'react';
+import {ScrollView, StyleSheet} from 'react-native';
 import {MaterialTopTabScreenProps} from '@react-navigation/material-top-tabs';
 import {LessonTabsType} from '~/app/navigation';
-import {VideoView} from '~/widgets/video';
+import {AdditionView, VideoView} from '~/widgets/video';
+import {useTheme} from '~/features/themeSwitcher';
+import {Theme} from '~/entities/theming';
 
 type Props = MaterialTopTabScreenProps<LessonTabsType, 'Video'>;
 
 export const VideoScreen: React.FC<Props> = ({navigation, route}) => {
   const {video, additions, lessonType, lessonNumber, lessonPk} = route.params;
 
+  const theme = useTheme();
+  const styles = createStyles(theme);
+
   return (
-    <VideoView
-      video={video}
-      additions={additions}
-      navigation={navigation}
-      lessonType={lessonType}
-      lessonNumber={lessonNumber}
-      lessonPk={lessonPk}
-    />
+    <ScrollView style={styles.container}>
+      <VideoView
+        video={video}
+        navigation={navigation}
+        lessonType={lessonType}
+        lessonNumber={lessonNumber}
+        lessonPk={lessonPk}
+      />
+      {additions.length && (
+        <AdditionView additions={additions} navigation={navigation} />
+      )}
+    </ScrollView>
   );
 };
+
+const createStyles = (theme: Theme) =>
+  StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: theme.colors.background,
+      padding: 10,
+    },
+  });

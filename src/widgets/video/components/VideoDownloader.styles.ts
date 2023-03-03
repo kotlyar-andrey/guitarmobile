@@ -5,7 +5,7 @@ const createStyles = (theme: Theme) => {
   const styles = ScaledSheet.create({
     progressText: {
       fontSize: '18@ms',
-      backgroundColor: theme.colors.primary,
+      backgroundColor: theme.colors.secondary,
       color: theme.colors.onPrimary,
       textAlign: 'center',
       paddingVertical: '6@ms',

@@ -1,17 +1,16 @@
 import React from 'react';
-import {ScrollView, View, Linking, Text} from 'react-native';
+import {View, Linking, Text} from 'react-native';
 import ReactNativeBlobUtil from 'react-native-blob-util';
-import {Addition} from '~/entities/lesson';
 import {useLessonSettings} from '~/features/lessonsSettings';
 import {useTheme} from '~/features/themeSwitcher';
 import {FillButton} from '~/shared/components/Buttons';
+import {TitleContainer} from '~/shared/components/TitleContainer';
 import {VideoDownloader} from './VideoDownloader';
 
 import createStyles from './VideoView.styles';
 
 interface Props {
   video: string;
-  additions: Addition[];
   lessonType: 'lesson' | 'howtoplay';
   lessonNumber: number;
   lessonPk: number;
@@ -20,7 +19,6 @@ interface Props {
 
 export const VideoView: React.FC<Props> = ({
   video,
-  // additions,
   lessonType,
   lessonNumber,
   lessonPk,
@@ -75,7 +73,7 @@ export const VideoView: React.FC<Props> = ({
   };
 
   return (
-    <ScrollView style={styles.container}>
+    <TitleContainer title="Видео-урок:">
       <FillButton
         text="Смотреть онлайн"
         iconName="youtube"
@@ -115,6 +113,6 @@ export const VideoView: React.FC<Props> = ({
           lessonPk={lessonPk}
         />
       )}
-    </ScrollView>
+    </TitleContainer>
   );
 };
