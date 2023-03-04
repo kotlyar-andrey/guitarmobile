@@ -12,9 +12,8 @@ export const ContentLoader: React.FC = () => {
     loading: state.loading,
     error: state.error,
     checkUpdate: state.checkUpdate,
-    clearData: state.clearData,
   }));
-  const {loading, error, message, checkUpdate, clearData} = contentState;
+  const {loading, error, message, checkUpdate} = contentState;
 
   const theme = useTheme();
   const styles = createStyles(theme);
@@ -27,7 +26,6 @@ export const ContentLoader: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      <Text onPress={clearData}>Test (clear)</Text>
       {loading && <ActivityIndicator color={theme.colors.primary} />}
       {!loading && error && (
         <MaterialCommunityIcons

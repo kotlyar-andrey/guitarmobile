@@ -36,6 +36,7 @@ export const AdditionView: React.FC<Props> = ({additions, navigation}) => {
         <>
           {additions.map(addition => (
             <FillButton
+              key={addition.pk}
               a11yLabel={addition.title}
               a11yHint="Дополнение к уроку"
               text={addition.title}
