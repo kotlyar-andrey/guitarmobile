@@ -1,6 +1,6 @@
 import React from 'react';
 import {View} from 'react-native';
-import {BaseBeatView, Beat} from '~/entities/beat';
+import {BaseBeatView, BasePlunkView, Beat} from '~/entities/beat';
 import {useSongSettings} from '~/features/songSettings';
 import {useTheme} from '~/features/themeSwitcher';
 import createStyles from './CustomizedBeat.styles';
@@ -40,9 +40,13 @@ export const CustomizedBeatView: React.FC<Props> = ({beat}) => {
 
   const styles = createStyles(theme, beatSize);
 
-  return (
+  return beat.beat_type === 0 ? (
     <View style={styles.beatContainer}>
       <BaseBeatView beat={beat} />
+    </View>
+  ) : (
+    <View style={styles.plunkContainer}>
+      <BasePlunkView beat={beat} />
     </View>
   );
 };

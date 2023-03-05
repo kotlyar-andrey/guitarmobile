@@ -35,7 +35,7 @@ export const BaseBeatView: React.FC<Props> = ({beat}) => {
       <Rect x={2} y={2} width={198} height={98} stroke={'#e5e5e5'} />
       {beat.inscription && (
         <Text
-          fill={theme.colors.text}
+          fill={theme.colors.primary}
           fontSize="10"
           x="100"
           y="12"
