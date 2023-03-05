@@ -55,6 +55,14 @@ export const Home = ({navigation}: Props) => {
                 navigation.push('Lessons');
               }}
             />
+            <InlineButton
+              a11yLabel="Разборы"
+              a11yHint="Перейти к списку разборов"
+              text="Разборы"
+              onPressHandler={() => {
+                navigation.push('HowToPlays');
+              }}
+            />
           </View>
         </View>
         <ContentLoader />
