@@ -1,7 +1,7 @@
 import React from 'react';
 import Svg, {Circle, Ellipse, Text, Line} from 'react-native-svg';
 import {useTheme} from '~/features/themeSwitcher';
-import {Chord} from '../../model';
+import {Chord} from '../model';
 import {
   getRoomeNumber,
   getTonicCoords,
