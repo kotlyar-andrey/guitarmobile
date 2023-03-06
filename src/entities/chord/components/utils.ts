@@ -1,4 +1,4 @@
-import {Chord} from '../../model';
+import {Chord} from '../model';
 
 /**
  * Получить номер лада в виде числа римской системы записи чисел

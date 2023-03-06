@@ -1,5 +1,5 @@
 import React from 'react';
-import {Chord} from '~/entities/chord';
+import {Chord} from '../model/interfaces';
 import {HorizontalChord} from './HorizontalChord';
 import {VerticalChord} from './VerticalChord';
 
