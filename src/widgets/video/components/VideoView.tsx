@@ -1,9 +1,10 @@
 import React from 'react';
-import {View, Linking, Text} from 'react-native';
+import {View, Text} from 'react-native';
 import ReactNativeBlobUtil from 'react-native-blob-util';
 import {useLessonSettings} from '~/features/lessonsSettings';
 import {useTheme} from '~/features/themeSwitcher';
 import {FillButton} from '~/shared/components/Buttons';
+import {OnlineVideoViewer} from '~/shared/components/OnlineVideoViewer';
 import {TitleContainer} from '~/shared/components/TitleContainer';
 import {VideoDownloader} from './VideoDownloader';
 
@@ -27,33 +28,12 @@ export const VideoView: React.FC<Props> = ({
   const theme = useTheme();
   const styles = createStyles(theme);
 
-  const videoId = video.split('/').pop();
-  const videoUrl = `https://www.youtube.com/watch?v=${videoId}`;
-
   const {getSettingsByPk, removeVideoPath} = useLessonSettings(state => ({
     getSettingsByPk: state.getSettingsByPk,
     removeVideoPath: state.removeVideoPath,
   }));
 
   const {downloadedVideoPath} = getSettingsByPk(lessonPk);
-
-  const watchVideoInYoutube = () => {
-    Linking.canOpenURL(videoUrl)
-      .then(supported => {
-        if (supported) {
-          Linking.openURL(videoUrl);
-        } else {
-          watchVideoOnlineInApp();
-        }
-      })
-      .catch(() => {
-        watchVideoOnlineInApp();
-      });
-  };
-
-  const watchVideoOnlineInApp = () => {
-    navigation.push('ModalVideo', {type: 'online', uri: videoId});
-  };
 
   const watchvideoOffline = () => {
     navigation.push('ModalVideo', {type: 'offline', uri: downloadedVideoPath});
@@ -74,13 +54,7 @@ export const VideoView: React.FC<Props> = ({
 
   return (
     <TitleContainer title="Видео-урок:">
-      <FillButton
-        text="Смотреть онлайн"
-        iconName="youtube"
-        a11yHint="Смотреть видео-урок"
-        a11yLabel="Нажмите, чтобы смотреть видео-урок онлайн"
-        onPressHandler={watchVideoInYoutube}
-      />
+      <OnlineVideoViewer video={video} navigation={navigation} />
       {downloadedVideoPath && (
         <View style={styles.row}>
           <View style={styles.flex4}>

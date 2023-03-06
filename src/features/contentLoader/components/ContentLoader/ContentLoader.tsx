@@ -12,8 +12,9 @@ export const ContentLoader: React.FC = () => {
     loading: state.loading,
     error: state.error,
     checkUpdate: state.checkUpdate,
+    clearData: state.clearData,
   }));
-  const {loading, error, message, checkUpdate} = contentState;
+  const {loading, error, message, checkUpdate, clearData} = contentState;
 
   const theme = useTheme();
   const styles = createStyles(theme);
@@ -35,6 +36,12 @@ export const ContentLoader: React.FC = () => {
           onPress={tryToUpdate}
         />
       )}
+      <Text
+        onPress={() => {
+          clearData();
+        }}>
+        Clear
+      </Text>
       {message && (
         <Text
           onPress={tryToUpdate}

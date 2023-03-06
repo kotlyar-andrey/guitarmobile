@@ -4,21 +4,26 @@ import {persist, createJSONStorage} from 'zustand/middleware';
 import {immer} from 'zustand/middleware/immer';
 import {Beat} from '~/entities/beat';
 import {Chord} from '~/entities/chord';
-import {Lesson} from '~/entities/lesson';
+import {FullSong, Lesson, SimpleSong} from '~/entities/lesson';
 import {contentApi} from '~/shared/api/content';
 import {ContentTypes} from '~/shared/enums';
+
+export type HowToPlaysSortType = 'normal' | 'abc' | 'difficult';
 
 interface LoaderState {
   loading: boolean;
   error: boolean;
   message: string;
   lessons: Lesson[];
+  howtoplaysSortType: HowToPlaysSortType;
   howtoplays: Lesson[];
   chords: Chord[];
   beats: Beat[];
   dataVersion: number;
   checkUpdate: () => void;
   loadAllContent: () => void;
+  getFullSong: (song: SimpleSong) => FullSong;
+  sortHowToPlays: (sortType: HowToPlaysSortType) => void;
   clearData: () => void;
 }
 
@@ -33,6 +38,7 @@ export const useContentState = create<LoaderState>()(
         error: false,
         message: '',
         lessons: [],
+        howtoplaysSortType: 'normal',
         howtoplays: [],
         chords: [],
         beats: [],
@@ -148,8 +154,42 @@ export const useContentState = create<LoaderState>()(
             });
           }
         },
+        getFullSong: (song: SimpleSong) => {
+          const chords = song.chords
+            .map((chordPk: number) =>
+              get().chords.find((chordItem: Chord) => chordItem.pk === chordPk),
+            )
+            .filter((item): item is Chord => !!item);
+          const beats = song.beats
+            .map((beatPk: number) =>
+              get().beats.find((beatItem: Beat) => beatItem.pk === beatPk),
+            )
+            .filter((item): item is Beat => !!item);
+          return {...song, chords: chords, beats, schemes: []};
+        },
+        sortHowToPlays: (sortType: HowToPlaysSortType) => {
+          const data = get().howtoplays;
+          switch (sortType) {
+            case 'normal':
+              data.sort((a, b) => a.number - b.number);
+              break;
+            case 'abc':
+              data.sort((a, b) => (a.title > b.title ? 1 : -1));
+              break;
+            case 'difficult':
+              data.sort((a, b) =>
+                a.start_lesson && b.start_lesson
+                  ? a.start_lesson - b.start_lesson
+                  : 0,
+              );
+              break;
+            default:
+              break;
+          }
+          set({howtoplaysSortType: sortType});
+        },
         clearData: () => {
-          set({dataVersion: 0, lessons: []});
+          set({dataVersion: 0, lessons: [], howtoplays: []});
         },
       }),
       {

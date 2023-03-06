@@ -1,10 +1,10 @@
 import React from 'react';
 import {FlatList} from 'react-native';
 import {useContentState} from '~/features/contentLoader';
-import {LessonRow} from '~/entities/lesson';
 import {ErrorMessage} from '~/shared/components/ErrorMessage';
 import {Loading} from '~/shared/components/Loading';
 import {useLessonSettings} from '~/features/lessonsSettings';
+import {HowToPlayRow} from '~/entities/howtoplay';
 
 interface Props {
   navigation: any;
@@ -12,38 +12,38 @@ interface Props {
 
 export const HowToPlaysList = ({navigation}: Props) => {
   const contentState = useContentState(state => ({
-    lessons: state.lessons,
+    howtoplays: state.howtoplays,
     loading: state.loading,
     error: state.error,
     loadAllContent: state.loadAllContent,
   }));
-  const {lessons, loading, loadAllContent} = contentState;
+  const {howtoplays, loading, loadAllContent} = contentState;
 
   useLessonSettings(state => state.settings);
 
-  const navigationToLesson = (lessonPk: number) => () => {
-    navigation.push('Lesson', {lessonPk});
+  const navigationToHowToPlay = (lessonPk: number) => () => {
+    navigation.push('HowToPlay', {lessonPk});
   };
 
   return (
     <>
-      {lessons.length === 0 && loading && <Loading />}
-      {lessons.length === 0 && !loading && (
+      {howtoplays.length === 0 && loading && <Loading />}
+      {howtoplays.length === 0 && !loading && (
         <ErrorMessage
-          text="Уроки не загружены. Убедитесь в наличии стабильного Интернет-соединения и нажмите на кнопку ниже"
+          text="Разборы не загружены. Убедитесь в наличии стабильного Интернет-соединения и нажмите на кнопку ниже"
           handler={loadAllContent}
         />
       )}
-      {lessons.length > 0 && (
+      {howtoplays.length > 0 && (
         <FlatList
-          data={lessons}
+          data={howtoplays}
           renderItem={({item}) => (
-            <LessonRow
-              lesson={item}
-              navigationToLesson={navigationToLesson(item.pk)}
+            <HowToPlayRow
+              howtoplay={item}
+              navigationToHowToPlay={navigationToHowToPlay(item.pk)}
             />
           )}
-          keyExtractor={lesson => `lessonID${lesson.pk}`}
+          keyExtractor={howtoplay => `howToPlayID${howtoplay.pk}`}
         />
       )}
     </>

@@ -5,8 +5,6 @@ import {Addition, FullSong, Lesson, SimpleSong} from '~/entities/lesson';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {SongScreen, VideoScreen} from '~/screens/Lesson';
 import {useContentState} from '~/features/contentLoader';
-import {Beat} from '~/entities/beat';
-import {Chord} from '~/entities/chord';
 import {useTheme} from '~/features/themeSwitcher';
 
 type LessonSongsType = {
@@ -39,19 +37,7 @@ export const LessonNavigator: React.FC<Props> = ({lesson}) => {
   const theme = useTheme();
 
   const songs: FullSong[] = useContentState(state =>
-    lesson?.songs.map((song: SimpleSong) => {
-      const chords = song.chords
-        .map((chordPk: number) =>
-          state.chords.find((chordItem: Chord) => chordItem.pk === chordPk),
-        )
-        .filter((item): item is Chord => !!item);
-      const beats = song.beats
-        .map((beatPk: number) =>
-          state.beats.find((beatItem: Beat) => beatItem.pk === beatPk),
-        )
-        .filter((item): item is Beat => !!item);
-      return {...song, chords: chords, beats, schemes: []};
-    }),
+    lesson?.songs.map((song: SimpleSong) => state.getFullSong(song)),
   );
 
   const songTabs = songs.map((song: FullSong, index: number) => (

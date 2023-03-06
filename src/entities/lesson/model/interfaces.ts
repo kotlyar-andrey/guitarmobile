@@ -54,4 +54,5 @@ export interface Lesson {
   intro: number;
   songs: SimpleSong[];
   additions: Addition[];
+  start_lesson?: number;
 }
