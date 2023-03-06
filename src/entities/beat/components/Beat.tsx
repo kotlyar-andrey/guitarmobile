@@ -3,6 +3,7 @@ import React from 'react';
 import Svg, {Text, Line, Symbol, Use, G, Rect} from 'react-native-svg';
 import {useTheme} from '~/features/themeSwitcher';
 import {Beat} from '../model';
+import {getA11yHint, getA11yLabel} from './utils';
 
 interface Props {
   beat: Beat;
@@ -16,7 +17,13 @@ export const BaseBeatView: React.FC<Props> = ({beat}) => {
   const beatColor = 'blue';
 
   return (
-    <Svg height="100%" width="100%" viewBox="0 0 200 100">
+    <Svg
+      height="100%"
+      width="100%"
+      viewBox="0 0 200 100"
+      accessible={true}
+      accessibilityLabel={getA11yLabel(beat)}
+      accessibilityHint={getA11yHint(beat)}>
       <Symbol id="down" viewBox="0 0 10 100">
         <Line x1="5" y1="0" x2="5" y2="96" strokeWidth={3} />
         <Line x1="5" y1="100" x2="9" y2="80" strokeWidth={1.2} />

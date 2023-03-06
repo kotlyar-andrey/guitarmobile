@@ -3,6 +3,7 @@ import React from 'react';
 import Svg, {Text, Line, Symbol, Use, G, Rect, Circle} from 'react-native-svg';
 import {useTheme} from '~/features/themeSwitcher';
 import {Beat} from '../model';
+import {getA11yHint, getA11yLabel} from './utils';
 
 interface Props {
   beat: Beat;
@@ -15,7 +16,13 @@ export const BasePlunkView: React.FC<Props> = ({beat}) => {
   const oneFretSize = (100 - inscriptionHeight) / beat.strikes.length;
 
   return (
-    <Svg height="100%" width="100%" viewBox="0 0 40 100">
+    <Svg
+      height="100%"
+      width="100%"
+      viewBox="0 0 40 100"
+      accessible={true}
+      accessibilityLabel={getA11yLabel(beat)}
+      accessibilityHint={getA11yHint(beat)}>
       <Symbol id="t" viewBox="0 0 40 40">
         <Circle cx="20" cy="20" r="15" strokeWidth="2" />
         <Text
