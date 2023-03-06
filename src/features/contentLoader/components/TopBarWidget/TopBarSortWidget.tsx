@@ -1,8 +1,6 @@
 import React from 'react';
 import {View} from 'react-native';
 import {Picker} from '@react-native-picker/picker';
-// import {moderateScale} from 'react-native-size-matters';
-// import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useTheme} from '~/features/themeSwitcher';
 import createStyles from './TopBarSortWidget.syles';
 import {HowToPlaysSortType} from '../../model';

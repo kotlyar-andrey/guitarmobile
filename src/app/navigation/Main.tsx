@@ -13,6 +13,7 @@ import {Lesson, ModalVideo} from '~/screens/Lesson';
 import {useTheme} from '~/features/themeSwitcher';
 import {HowToPlays} from '~/screens/HowToPlays';
 import {HowToPlay} from '~/screens/HowToPlay/HowToPlay';
+import {Chords} from '~/screens/Chords';
 
 export type MainNavigationType = {
   Home: undefined;
@@ -20,6 +21,7 @@ export type MainNavigationType = {
   Lesson: {lessonPk: number};
   HowToPlays: undefined;
   HowToPlay: {lessonPk: number};
+  Chords: undefined;
   ModalVideo: {type: 'online' | 'offline'; uri: string};
 };
 
@@ -49,6 +51,7 @@ export const MainNavigator = () => {
             <Screen name="Lesson" component={Lesson} />
             <Screen name="HowToPlays" component={HowToPlays} />
             <Screen name="HowToPlay" component={HowToPlay} />
+            <Screen name="Chords" component={Chords} />
           </Group>
           <Group screenOptions={{presentation: 'modal'}}>
             <Screen name="ModalVideo" component={ModalVideo} />

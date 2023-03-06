@@ -48,11 +48,11 @@ export const Home = ({navigation}: Props) => {
           </View>
           <View style={styles.menuColumn}>
             <InlineButton
-              a11yLabel="Уроки"
-              a11yHint="Перейти к списку уроков"
+              a11yLabel="Аккорды"
+              a11yHint="Перейти к списку аккордов"
               text="Аккорды"
               onPressHandler={() => {
-                navigation.push('Lessons');
+                navigation.push('Chords');
               }}
             />
             <InlineButton

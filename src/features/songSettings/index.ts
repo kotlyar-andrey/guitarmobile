@@ -1,2 +1,2 @@
 export {useSongSettings} from './model';
-export {SongSettingsToolbar} from './components';
+export {SongSettingsToolbar, SongSettingsTopBarWidget} from './components';
