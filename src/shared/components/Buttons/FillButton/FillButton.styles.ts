@@ -11,8 +11,7 @@ const createStyles = (theme: Theme) => {
       paddingHorizontal: '10@s',
       paddingVertical: '5@ms',
       backgroundColor: theme.colors.primary,
-      borderRadius: '4@s',
-      elevation: 3,
+      elevation: 4,
     },
     buttonText: {
       color: theme.colors.onPrimary,
