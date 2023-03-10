@@ -3,6 +3,7 @@ import {Text, View} from 'react-native';
 import {FullSong} from '~/entities/lesson';
 import {AutoscrollToolbar, AutoscrollView} from '~/features/autoScroller';
 import {useLessonSettings} from '~/features/lessonsSettings';
+import {MetronomeToolbar} from '~/features/metronome';
 import {SongSettingsToolbar} from '~/features/songSettings';
 import {SongSettingsModal} from '~/features/songSettings/components';
 import {useTheme} from '~/features/themeSwitcher';
@@ -38,6 +39,9 @@ export const SongView: React.FC<Props> = ({song, lessonPk}) => {
   };
 
   const autoscrollToolbar = <AutoscrollToolbar />;
+  const metronomeToolbar = (
+    <MetronomeToolbar originalMetronome={song.metronome} />
+  );
   const songSettingsToolbar = (
     <SongSettingsToolbar showSettings={toggleSettingsModalVisible} />
   );
@@ -65,7 +69,9 @@ export const SongView: React.FC<Props> = ({song, lessonPk}) => {
         )}
         <MarkdownContainer text={song.text} />
       </AutoscrollView>
-      <SongBottomPanel toolbars={[autoscrollToolbar, songSettingsToolbar]} />
+      <SongBottomPanel
+        toolbars={[autoscrollToolbar, metronomeToolbar, songSettingsToolbar]}
+      />
       <SongSettingsModal
         visible={settingsModalVisible}
         toggleVisible={toggleSettingsModalVisible}

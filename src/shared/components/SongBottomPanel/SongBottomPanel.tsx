@@ -20,13 +20,13 @@ export const SongBottomPanel: React.FC<Props> = ({toolbars}) => {
 
   return (
     <>
-      {visible ? (
-        <View style={visible ? styles.container : styles.hidden}>
-          {toolbars.map((toolbar, index) => (
-            <View key={`toolbar${index}`}>{toolbar}</View>
-          ))}
-        </View>
-      ) : (
+      <View style={visible ? styles.container : styles.containerHide}>
+        {toolbars.map((toolbar, index) => (
+          <View key={`toolbar${index}`}>{toolbar}</View>
+        ))}
+      </View>
+
+      {!visible && (
         <View style={styles.hidden}>
           <IconButton
             active={false}

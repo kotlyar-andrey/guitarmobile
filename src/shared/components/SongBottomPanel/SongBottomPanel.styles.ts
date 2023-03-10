@@ -14,13 +14,19 @@ const createStyles = (theme: Theme) => {
       backgroundColor: theme.colors.background,
       paddingVertical: '1@s',
       paddingHorizontal: '2@s',
+      marginBottom: 0,
       elevation: 4,
+    },
+    containerHide: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      marginBottom: -100,
     },
     hidden: {
       position: 'absolute',
       right: 0,
       bottom: 0,
-      paddingVertical: '5@s',
+      paddingVertical: '4@s',
       paddingHorizontal: '2@s',
     },
   });

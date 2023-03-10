@@ -85,6 +85,7 @@ export const LessonNavigator: React.FC<Props> = ({lesson}) => {
         tabBarIndicatorStyle: {
           backgroundColor: theme.colors.primary,
         },
+        lazy: true,
       }}
       initialRouteName="Song1">
       {songTabs}
