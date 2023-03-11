@@ -15,6 +15,7 @@ import {HowToPlays} from '~/screens/HowToPlays';
 import {HowToPlay} from '~/screens/HowToPlay/HowToPlay';
 import {Chords} from '~/screens/Chords';
 import {Favorites} from '~/screens/Favorites';
+import {Settings} from '~/screens/Settings';
 
 export type MainNavigationType = {
   Home: undefined;
@@ -24,6 +25,7 @@ export type MainNavigationType = {
   HowToPlay: {lessonPk: number};
   Chords: undefined;
   Favorites: undefined;
+  Settings: undefined;
   ModalVideo: {type: 'online' | 'offline'; uri: string};
 };
 
@@ -55,6 +57,7 @@ export const MainNavigator = () => {
             <Screen name="HowToPlay" component={HowToPlay} />
             <Screen name="Chords" component={Chords} />
             <Screen name="Favorites" component={Favorites} />
+            <Screen name="Settings" component={Settings} />
           </Group>
           <Group screenOptions={{presentation: 'modal'}}>
             <Screen name="ModalVideo" component={ModalVideo} />

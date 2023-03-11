@@ -11,7 +11,7 @@ const createStyles = (theme: Theme) => {
     },
     dropdown: {
       backgroundColor: theme.colors.background,
-      minWidth: '100@ms',
+      minWidth: '110@ms',
     },
     dropdownItem: {
       backgroundColor: theme.colors.background,

@@ -71,6 +71,14 @@ export const Home = ({navigation}: Props) => {
                 navigation.push('HowToPlays');
               }}
             />
+            <InlineButton
+              a11yLabel="Настройки"
+              a11yHint="Перейти к настройкам приложения"
+              text="Настройки"
+              onPressHandler={() => {
+                navigation.push('Settings');
+              }}
+            />
           </View>
         </View>
         <ContentLoader />
