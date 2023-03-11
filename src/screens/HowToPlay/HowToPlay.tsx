@@ -1,6 +1,7 @@
 import React from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
+import KeepAwake from '@sayem314/react-native-keep-awake';
 
 import {MainNavigationType} from '~/app/navigation';
 import {TopBar} from '~/shared/components/TopBar';
@@ -36,6 +37,7 @@ export const HowToPlay: React.FC<Props> = ({route, navigation}) => {
 
   return (
     <SafeAreaView edges={['right', 'bottom']} style={styles.container}>
+      <KeepAwake />
       <TopBar
         backArrow={true}
         navigation={navigation}
