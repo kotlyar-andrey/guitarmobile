@@ -45,6 +45,14 @@ export const Home = ({navigation}: Props) => {
                 navigation.push('Lessons');
               }}
             />
+            <InlineButton
+              text="Избранное"
+              a11yLabel="Избранные уроки и разборы"
+              a11yHint="Перейти к списку избранного"
+              onPressHandler={() => {
+                navigation.push('Favorites');
+              }}
+            />
           </View>
           <View style={styles.menuColumn}>
             <InlineButton

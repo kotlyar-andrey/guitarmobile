@@ -23,6 +23,7 @@ interface LessonsSettings {
   toggleIsLessonComplite: (lessonPk: number) => void;
   toggleIsLessonFavorite: (lessonPk: number) => void;
   getSettingsByPk: (lessonPk: number) => OneLessonSettings;
+  getFavoritePks: () => number[];
   saveVideoPath: (lessonPk: number, path: string) => void;
   removeVideoPath: (lessonPk: number) => void;
 }
@@ -84,6 +85,11 @@ export const useLessonSettings = create<LessonsSettings>()(
             return defaultLessonSettings;
           }
           return lessonSettings;
+        },
+        getFavoritePks: () => {
+          return Object.entries(get().settings)
+            .filter(item => item[1].isLessonFavorite)
+            .map(item => parseInt(item[0], 10));
         },
         saveVideoPath: (lessonPk: number, path: string) => {
           set(state => {
