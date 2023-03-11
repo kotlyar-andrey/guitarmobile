@@ -4,8 +4,10 @@ import {Theme} from '~/entities/theming';
 const createStyles = (theme: Theme) => {
   const styles = ScaledSheet.create({
     container: {
-      flexDirection: 'row',
-      justifyContent: 'space-around',
+      flexDirection: 'column',
+    },
+    item: {
+      flex: 1,
     },
     text: {
       fontSize: '14@ms',

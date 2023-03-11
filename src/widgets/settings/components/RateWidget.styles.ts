@@ -6,24 +6,22 @@ const createStyles = (theme: Theme) => {
     container: {
       flexDirection: 'row',
       justifyContent: 'space-between',
+      alignItems: 'center',
       borderBottomWidth: 1,
       borderBottomColor: theme.colors.divider,
     },
-    leftColumn: {
+    column: {
       flex: 1,
     },
-    rightColumn: {
+    title: {
       flex: 1,
-      flexDirection: 'column',
-      alignItems: 'center',
+      fontSize: '14@ms',
+      color: theme.colors.text,
     },
-    dropdown: {
-      backgroundColor: theme.colors.background,
-      minWidth: '120@ms',
-    },
-    dropdownItem: {
-      backgroundColor: theme.colors.background,
-      fontSize: '12@ms',
+    starsContainer: {
+      flex: 1,
+      flexDirection: 'row',
+      justifyContent: 'center',
     },
   });
   return styles;

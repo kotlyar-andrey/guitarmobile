@@ -6,6 +6,7 @@ import {MainNavigationType} from '~/app/navigation';
 import {ThemeSwitcher, useTheme} from '~/features/themeSwitcher';
 import {TopBar} from '~/shared/components/TopBar';
 import createStyles from './Settings.styles';
+import {RateWidget} from '~/widgets/settings';
 
 type Props = NativeStackScreenProps<MainNavigationType, 'Settings'>;
 
@@ -17,6 +18,7 @@ export const Settings = ({navigation}: Props) => {
       <TopBar title="Настройки" backArrow={true} navigation={navigation} />
       <ScrollView style={styles.container}>
         <ThemeSwitcher />
+        <RateWidget />
       </ScrollView>
     </SafeAreaView>
   );

@@ -20,29 +20,33 @@ export const ThemeSwitcher: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      <Dropdown
-        title="Цветовая схема:"
-        items={[
-          {label: 'По-умолчанию', value: 'default'},
-          {label: 'Красная', value: 'red'},
-        ]}
-        selectedValue={colorScheme}
-        setNewValue={(newValue: string) =>
-          changeColorScheme(ColorSchemes[newValue])
-        }
-      />
-      <Dropdown
-        title="Тема:"
-        items={[
-          {label: 'Светлая', value: 'light'},
-          {label: 'Тёмная', value: 'dark'},
-          {label: 'Системная', value: 'system'},
-        ]}
-        selectedValue={themeType}
-        setNewValue={(newValue: string) =>
-          changeThemeType(ThemeTypes[newValue])
-        }
-      />
+      <View style={styles.item}>
+        <Dropdown
+          title="Цветовая схема:"
+          items={[
+            {label: 'По-умолчанию', value: 'default'},
+            {label: 'Красная', value: 'red'},
+          ]}
+          selectedValue={colorScheme}
+          setNewValue={(newValue: string) =>
+            changeColorScheme(ColorSchemes[newValue])
+          }
+        />
+      </View>
+      <View style={styles.item}>
+        <Dropdown
+          title="Тема:"
+          items={[
+            {label: 'Светлая', value: 'light'},
+            {label: 'Тёмная', value: 'dark'},
+            {label: 'Системная', value: 'system'},
+          ]}
+          selectedValue={themeType}
+          setNewValue={(newValue: string) =>
+            changeThemeType(ThemeTypes[newValue])
+          }
+        />
+      </View>
     </View>
   );
 };

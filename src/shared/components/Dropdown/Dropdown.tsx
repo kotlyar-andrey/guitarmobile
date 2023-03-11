@@ -23,26 +23,32 @@ export const Dropdown: React.FC<Props> = ({
 
   return (
     <View style={styles.container}>
-      <ControlText text={title} />
-      <Picker
-        selectedValue={selectedValue}
-        onValueChange={itemValue => setNewValue(itemValue)}
-        mode="dropdown"
-        prompt={title}
-        style={styles.dropdown}
-        dropdownIconColor={theme.colors.primary}>
-        {items.map(({label, value}) => (
-          <Picker.Item
-            label={label}
-            value={value}
-            key={value}
-            color={
-              selectedValue === value ? theme.colors.primary : theme.colors.text
-            }
-            style={styles.dropdownItem}
-          />
-        ))}
-      </Picker>
+      <View style={styles.leftColumn}>
+        <ControlText text={title} />
+      </View>
+      <View style={styles.rightColumn}>
+        <Picker
+          selectedValue={selectedValue}
+          onValueChange={itemValue => setNewValue(itemValue)}
+          mode="dropdown"
+          prompt={title}
+          style={styles.dropdown}
+          dropdownIconColor={theme.colors.primary}>
+          {items.map(({label, value}) => (
+            <Picker.Item
+              label={label}
+              value={value}
+              key={value}
+              color={
+                selectedValue === value
+                  ? theme.colors.primary
+                  : theme.colors.text
+              }
+              style={styles.dropdownItem}
+            />
+          ))}
+        </Picker>
+      </View>
     </View>
   );
 };
