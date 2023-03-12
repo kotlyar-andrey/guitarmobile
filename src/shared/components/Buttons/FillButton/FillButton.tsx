@@ -6,6 +6,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 interface Props {
   text?: string;
+  size?: 'small' | 'medium' | 'large';
   iconName?: string;
   a11yLabel: string;
   a11yHint: string;
@@ -14,6 +15,7 @@ interface Props {
 
 export const FillButton: React.FC<Props> = ({
   text,
+  size,
   onPressHandler,
   iconName,
   a11yLabel,
@@ -21,7 +23,7 @@ export const FillButton: React.FC<Props> = ({
 }) => {
   const theme = useTheme();
 
-  const styles = createStyles(theme);
+  const styles = createStyles(theme, size);
 
   return (
     <TouchableOpacity
@@ -34,7 +36,7 @@ export const FillButton: React.FC<Props> = ({
       {iconName && (
         <MaterialCommunityIcons
           name={iconName}
-          size={48}
+          size={size === 'small' ? 28 : size === 'medium' ? 44 : 52}
           color={theme.colors.onPrimary}
         />
       )}
