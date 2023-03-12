@@ -23,6 +23,9 @@ interface LoaderState {
   checkUpdate: () => void;
   loadAllContent: () => void;
   getFullSong: (song: SimpleSong) => FullSong;
+  getHowtoplaysForLesson: (
+    lessonNumber: number,
+  ) => {pk: number; title: string}[];
   sortHowToPlays: (sortType: HowToPlaysSortType) => void;
   clearData: () => void;
 }
@@ -166,6 +169,21 @@ export const useContentState = create<LoaderState>()(
             )
             .filter((item): item is Beat => !!item);
           return {...song, chords: chords, beats, schemes: []};
+        },
+        getHowtoplaysForLesson: (lessonNumber: number) => {
+          const allhowtoplays = get().howtoplays;
+          const result = allhowtoplays
+            .filter(
+              item => item.start_lesson && item.start_lesson <= lessonNumber,
+            )
+            .sort((item1, item2) =>
+              item1.start_lesson && item2.start_lesson
+                ? item2.start_lesson - item1.start_lesson
+                : -1,
+            )
+            .slice(0, 5)
+            .map(item => ({pk: item.pk, title: item.title}));
+          return result;
         },
         sortHowToPlays: (sortType: HowToPlaysSortType) => {
           const data = get().howtoplays;

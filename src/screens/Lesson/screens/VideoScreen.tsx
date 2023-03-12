@@ -2,7 +2,7 @@ import React from 'react';
 import {ScrollView, StyleSheet} from 'react-native';
 import {MaterialTopTabScreenProps} from '@react-navigation/material-top-tabs';
 import {LessonTabsType} from '~/app/navigation';
-import {AdditionView, VideoView} from '~/widgets/video';
+import {AdditionView, HowToPlaysForLesson, VideoView} from '~/widgets/video';
 import {useTheme} from '~/features/themeSwitcher';
 import {Theme} from '~/entities/theming';
 
@@ -23,9 +23,13 @@ export const VideoScreen: React.FC<Props> = ({navigation, route}) => {
         lessonNumber={lessonNumber}
         lessonPk={lessonPk}
       />
-      {additions.length && (
+      {additions.length > 0 && (
         <AdditionView additions={additions} navigation={navigation} />
       )}
+      <HowToPlaysForLesson
+        navigation={navigation}
+        lessonNumber={lessonNumber}
+      />
     </ScrollView>
   );
 };
