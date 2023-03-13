@@ -32,27 +32,27 @@ export const RateWidget = () => {
         <MaterialCommunityIcons
           name="star"
           size={moderateScale(20)}
-          color="gold"
+          color={theme.colors.primary}
         />
         <MaterialCommunityIcons
           name="star"
           size={moderateScale(20)}
-          color="gold"
+          color={theme.colors.primary}
         />
         <MaterialCommunityIcons
           name="star"
           size={moderateScale(20)}
-          color="gold"
+          color={theme.colors.primary}
         />
         <MaterialCommunityIcons
           name="star"
           size={moderateScale(20)}
-          color="gold"
+          color={theme.colors.primary}
         />
         <MaterialCommunityIcons
           name="star"
           size={moderateScale(20)}
-          color="gold"
+          color={theme.colors.primary}
         />
       </TouchableOpacity>
     </View>

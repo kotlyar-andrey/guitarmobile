@@ -11,7 +11,6 @@ const createStyles = (theme: Theme) => {
       paddingVertical: '6@ms',
       paddingHorizontal: '10@s',
       margin: '4@s',
-      borderRadius: '4@s',
       elevation: 4,
     },
   });

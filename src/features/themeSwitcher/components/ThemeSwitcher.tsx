@@ -26,6 +26,7 @@ export const ThemeSwitcher: React.FC = () => {
           items={[
             {label: 'По-умолчанию', value: 'default'},
             {label: 'Красная', value: 'red'},
+            {label: 'Контрастная', value: 'contrast'},
           ]}
           selectedValue={colorScheme}
           setNewValue={(newValue: string) =>
