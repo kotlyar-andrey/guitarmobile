@@ -2,7 +2,6 @@ import React from 'react';
 import {View} from 'react-native';
 import {BaseBeatView, BasePlunkView, Beat} from '~/entities/beat';
 import {useSongSettings} from '~/features/songSettings';
-import {useTheme} from '~/features/themeSwitcher';
 import createStyles from './CustomizedBeat.styles';
 
 /**
@@ -36,9 +35,7 @@ interface Props {
 export const CustomizedBeatView: React.FC<Props> = ({beat}) => {
   const beatSize = useSongSettings(state => state.beatSize);
 
-  const theme = useTheme();
-
-  const styles = createStyles(theme, beatSize);
+  const styles = createStyles(beatSize);
 
   return beat.beat_type === 0 ? (
     <View style={styles.beatContainer}>

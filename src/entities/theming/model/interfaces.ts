@@ -12,6 +12,11 @@ interface Colors {
   errorText: string; // текст ошибки
   errorBackground: string; // фон блока с ошибкой
   divider: string; // Разделитель в списках
+  beat: string; // Цвет боя
+  plunk: string; // Цвет переборов
+  isFavoriteColor: string;
+  isCompliteColor: string;
+  isDownloadedColor: string;
 }
 
 /**

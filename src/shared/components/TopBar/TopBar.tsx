@@ -31,7 +31,7 @@ export const TopBar: React.FC<Props> = ({
             accessibilityHint="Нажмите, чтобы вернуть на предыдущий экран"
             accessibilityRole="button"
             name="arrow-left"
-            color={theme.colors.onPrimary}
+            color={theme.colors.primary}
             size={moderateScale(24)}
             onPress={() => {
               navigation.goBack();

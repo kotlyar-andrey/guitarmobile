@@ -7,16 +7,12 @@ const createStyles = (theme: Theme) => {
       backgroundColor: theme.colors.background,
       marginHorizontal: '2@s',
       padding: '2@s',
-      borderWidth: 1,
-      borderColor: theme.colors.primary,
-      elevation: 1,
+      elevation: 2,
     },
     pressedButton: {
       backgroundColor: theme.colors.divider,
       marginHorizontal: '2@s',
       padding: '2@s',
-      borderWidth: 1,
-      borderColor: theme.colors.secondary,
       elevation: 0,
     },
   });

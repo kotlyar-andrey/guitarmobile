@@ -24,7 +24,8 @@ export const TopBarSortWidget: React.FC<Props> = ({
         selectedValue={howtoplaysSortType}
         onValueChange={itemValue => sortHowToPlays(itemValue)}
         prompt="Сортировать по"
-        dropdownIconColor={theme.colors.onPrimary}
+        mode="dropdown"
+        dropdownIconColor={theme.colors.primary}
         style={styles.picker}>
         <Picker.Item
           label="По порядку"

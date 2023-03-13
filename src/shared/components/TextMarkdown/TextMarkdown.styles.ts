@@ -7,25 +7,25 @@ const createStyles = (theme: Theme, size: number) => {
       fontSize: moderateScale(size),
       marginTop: 0,
       padding: moderateScale(2),
-      backgroundColor: theme.dark ? '#ED424D' : '#F2D7EE',
+      backgroundColor: theme.dark ? '#bD4242' : '#F2D7EE',
     },
     heading2: {
       fontSize: moderateScale(size),
       marginTop: 0,
       padding: moderateScale(2),
-      backgroundColor: theme.dark ? '#ED424D' : '#F2D7EE',
+      backgroundColor: theme.dark ? '#ED4242' : '#F2D7EE',
     },
     heading3: {
       fontSize: moderateScale(size),
       marginTop: 0,
       padding: moderateScale(2),
-      backgroundColor: theme.dark ? '#ED424D' : '#F2D7EE',
+      backgroundColor: theme.dark ? '#ED4242' : '#F2D7EE',
     },
     heading6: {
       padding: moderateScale(2),
       fontSize: moderateScale(size + 2),
       fontWeight: 'bold',
-      backgroundColor: '#D5E0FF',
+      backgroundColor: theme.dark ? '#202025' : '#D5E0FF',
     },
     strong: {
       fontWeight: 'bold',
@@ -38,7 +38,8 @@ const createStyles = (theme: Theme, size: number) => {
     paragraph: {
       marginTop: moderateScale(2),
       marginBottom: moderateScale(2),
-      padding: moderateScale(2),
+      paddingVertical: moderateScale(2),
+      paddingHorizontal: moderateScale(4),
     },
   };
   return styles;

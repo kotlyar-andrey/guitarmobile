@@ -16,7 +16,6 @@ const createStyles = (theme: Theme) => {
       flexDirection: 'row',
       justifyContent: 'space-between',
       borderBottomColor: theme.colors.primary,
-
       borderBottomWidth: 1,
     },
     topBarItem: {

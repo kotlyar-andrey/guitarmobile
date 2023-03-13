@@ -20,33 +20,37 @@ export const TopBarWidget: React.FC<Props> = ({
 }) => {
   const theme = useTheme();
 
-  const styles = createStyles(theme);
+  const styles = createStyles();
 
   return (
     <View style={styles.container}>
       <MaterialCommunityIcons
+        style={styles.icon}
         accessibilityLabel={
           isFavorite ? 'Удалить из избранного' : 'Добавить в избранное'
         }
         accessibilityRole="button"
-        name="heart"
-        color={isFavorite ? 'red' : theme.colors.background}
-        size={moderateScale(22)}
+        name={isFavorite ? 'heart' : 'heart-outline'}
+        color={isFavorite ? theme.colors.isFavoriteColor : theme.colors.primary}
+        size={moderateScale(24)}
         onPress={() => {
           toggleFavorite();
         }}
       />
       {toggleComplite && (
         <MaterialCommunityIcons
+          style={styles.icon}
           accessibilityLabel={
             isComplite
               ? 'Отметить урок как не пройденный'
               : 'Отметить урок как пройденный'
           }
           accessibilityRole="button"
-          name="check-circle"
-          color={isComplite ? 'green' : theme.colors.background}
-          size={moderateScale(22)}
+          name={isComplite ? 'check-circle' : 'check-circle-outline'}
+          color={
+            isComplite ? theme.colors.isCompliteColor : theme.colors.primary
+          }
+          size={moderateScale(24)}
           onPress={() => {
             toggleComplite();
           }}

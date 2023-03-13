@@ -43,21 +43,21 @@ export const LessonRow: React.FC<Props> = ({lesson, navigationToLesson}) => {
         {isLessonComplite && (
           <MaterialCommunityIcons
             name="check-circle"
-            color="green"
+            color={theme.colors.isCompliteColor}
             size={moderateScale(14)}
           />
         )}
         {isLessonFavorite && (
           <MaterialCommunityIcons
             name="heart"
-            color="red"
+            color={theme.colors.isFavoriteColor}
             size={moderateScale(14)}
           />
         )}
         {downloadedVideoPath && (
           <MaterialCommunityIcons
             name="download"
-            color="7777ff"
+            color={theme.colors.isDownloadedColor}
             size={moderateScale(14)}
           />
         )}

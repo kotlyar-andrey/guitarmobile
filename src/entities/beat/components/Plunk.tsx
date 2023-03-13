@@ -31,7 +31,7 @@ export const BasePlunkView: React.FC<Props> = ({beat}) => {
           y="28"
           textAnchor="middle"
           letterSpacing="1"
-          fill={theme.colors.text}>
+          fill={theme.colors.plunk}>
           T
         </Text>
       </Symbol>
@@ -63,10 +63,17 @@ export const BasePlunkView: React.FC<Props> = ({beat}) => {
           4
         </Text>
       </Symbol>
-      <Rect x={2} y={2} width={38} height={98} stroke={'#e5e5e5'} />
+      <Rect
+        x={1}
+        y={1}
+        width={38}
+        height={98}
+        stroke={theme.colors.divider}
+        strokeWidth={1}
+      />
       {beat.inscription && (
         <Text
-          fill={theme.colors.primary}
+          fill={theme.colors.text}
           fontSize="8"
           x="20"
           y={inscriptionHeight - 2}
@@ -78,20 +85,20 @@ export const BasePlunkView: React.FC<Props> = ({beat}) => {
         switch (fret) {
           case 't':
             return (
-              <G key={`fret${fretIndex}`} stroke={theme.colors.text}>
+              <G key={`fret${fretIndex}`} stroke={theme.colors.plunk}>
                 <Use
                   href="#t"
                   x={(40 - oneFretSize) / 2}
                   y={fretIndex * oneFretSize + inscriptionHeight}
                   width={oneFretSize}
                   height={oneFretSize}
-                  stroke={theme.colors.text}
+                  stroke={theme.colors.plunk}
                 />
               </G>
             );
           case 'downup':
             return (
-              <G key={`fret${fretIndex}`} stroke={theme.colors.text}>
+              <G key={`fret${fretIndex}`} stroke={theme.colors.plunk}>
                 <Use
                   href="#downup"
                   x={(40 - oneFretSize) / 2}
@@ -106,15 +113,15 @@ export const BasePlunkView: React.FC<Props> = ({beat}) => {
           case '3':
           case '4':
             return (
-              <G key={`fret${fretIndex}`} stroke={theme.colors.text}>
+              <G key={`fret${fretIndex}`} stroke={theme.colors.plunk}>
                 <Use
                   href={`#fret${fret}`}
                   x={(40 - oneFretSize) / 2}
                   y={fretIndex * oneFretSize + inscriptionHeight}
                   width={oneFretSize}
                   height={oneFretSize}
-                  stroke={theme.colors.text}
-                  fill={theme.colors.text}
+                  stroke={theme.colors.plunk}
+                  fill={theme.colors.plunk}
                 />
               </G>
             );

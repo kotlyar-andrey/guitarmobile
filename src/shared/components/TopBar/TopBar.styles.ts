@@ -9,7 +9,9 @@ const createStyles = (theme: Theme) => {
       justifyContent: 'space-between',
       alignItems: 'center',
       padding: '4@vs',
-      backgroundColor: theme.colors.primary,
+      backgroundColor: theme.colors.background,
+      elevation: 4,
+      marginBottom: '4@ms',
     },
     horizontalBlock: {
       flexDirection: 'row',
@@ -20,7 +22,7 @@ const createStyles = (theme: Theme) => {
       fontFamily: 'SpriteGraffiti',
       fontSize: '16@s',
       flexWrap: 'wrap',
-      color: theme.colors.onPrimary,
+      color: theme.colors.primary,
     },
   });
   return styles;

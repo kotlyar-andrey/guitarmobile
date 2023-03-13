@@ -14,8 +14,6 @@ export const BaseBeatView: React.FC<Props> = ({beat}) => {
 
   const oneBeatWidth = 200 / beat.strikes.length;
 
-  const beatColor = 'blue';
-
   return (
     <Svg
       height="100%"
@@ -39,10 +37,17 @@ export const BaseBeatView: React.FC<Props> = ({beat}) => {
           Щ
         </Text>
       </Symbol>
-      <Rect x={2} y={2} width={198} height={98} stroke={'#e5e5e5'} />
+      <Rect
+        x={1}
+        y={1}
+        width={198}
+        height={98}
+        stroke={theme.colors.divider}
+        strokeWidth={1}
+      />
       {beat.inscription && (
         <Text
-          fill={theme.colors.primary}
+          fill={theme.colors.text}
           fontSize="10"
           x="100"
           y="12"
@@ -54,7 +59,7 @@ export const BaseBeatView: React.FC<Props> = ({beat}) => {
         switch (strike) {
           case 'down':
             return (
-              <G key={`strike${strikeIndex}`} stroke={beatColor}>
+              <G key={`strike${strikeIndex}`} stroke={theme.colors.beat}>
                 <Use
                   href="#down"
                   x={strikeIndex * oneBeatWidth}
@@ -66,7 +71,7 @@ export const BaseBeatView: React.FC<Props> = ({beat}) => {
             );
           case 'up':
             return (
-              <G key={`strike${strikeIndex}`} stroke={beatColor}>
+              <G key={`strike${strikeIndex}`} stroke={theme.colors.beat}>
                 <Use
                   href="#up"
                   x={strikeIndex * oneBeatWidth}
@@ -80,8 +85,8 @@ export const BaseBeatView: React.FC<Props> = ({beat}) => {
             return (
               <G
                 key={`strike${strikeIndex}`}
-                stroke={beatColor}
-                fill={beatColor}>
+                stroke={theme.colors.beat}
+                fill={theme.colors.beat}>
                 <Use
                   href="#x"
                   x={strikeIndex * oneBeatWidth}

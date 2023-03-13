@@ -15,8 +15,8 @@ export const SongSettingsTopBarWidget: React.FC<Props> = ({
   return (
     <MaterialCommunityIcons
       name="cog-outline"
-      size={moderateScale(16)}
-      color={theme.colors.onPrimary}
+      size={moderateScale(22)}
+      color={theme.colors.primary}
       onPress={toggleSettingsModalVisible}
     />
   );
