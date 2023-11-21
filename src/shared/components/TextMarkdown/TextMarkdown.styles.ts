@@ -21,6 +21,12 @@ const createStyles = (theme: Theme, size: number) => {
       padding: moderateScale(2),
       backgroundColor: theme.dark ? '#ED4242' : '#F2D7EE',
     },
+    heading4: {
+      fontSize: moderateScale(size),
+      marginTop: 0,
+      padding: moderateScale(2),
+      backgroundColor: theme.dark ? '#bD4242' : '#F2D7EE',
+    },
     heading6: {
       padding: moderateScale(2),
       fontSize: moderateScale(size + 2),
