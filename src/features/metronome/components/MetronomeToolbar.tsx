@@ -36,10 +36,6 @@ export const MetronomeToolbar: React.FC<Props> = ({originalMetronome}) => {
     if (originalMetronome !== 0) {
       setBpm(originalMetronome);
     }
-    return () => {
-      stop();
-      setBpm(80);
-    };
   }, [originalMetronome, setBpm, stop]);
 
   const onPlusPress = () => {

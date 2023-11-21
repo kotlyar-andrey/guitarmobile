@@ -1,5 +1,6 @@
 import {create} from 'zustand';
 import {immer} from 'zustand/middleware/immer';
+import {cancelNotification, showNotification} from '../services/notificator';
 
 interface MetronomeState {
   isPlaying: boolean;
@@ -14,11 +15,16 @@ const MIN_BPM = 10;
 const MAX_BPM = 600;
 
 export const useMetronomeState = create<MetronomeState>()(
-  immer(set => ({
+  immer((set, get) => ({
     isPlaying: false,
     bpm: 80,
     isFirstVisit: false,
     setIsPlaying: (newValue: boolean) => {
+      if (newValue) {
+        showNotification(get().bpm);
+      } else {
+        cancelNotification();
+      }
       set({isPlaying: newValue});
     },
     setBpm: (newBpm: number) => {

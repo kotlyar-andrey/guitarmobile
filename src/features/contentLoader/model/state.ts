@@ -7,6 +7,7 @@ import {Chord} from '~/entities/chord';
 import {FullSong, Lesson, SimpleSong} from '~/entities/lesson';
 import {contentApi} from '~/shared/api/content';
 import {ContentTypes} from '~/shared/enums';
+import {showNotification, cancelNotification} from '../services/notificator';
 
 export type HowToPlaysSortType = 'normal' | 'abc' | 'difficult';
 
@@ -114,6 +115,7 @@ export const useContentState = create<LoaderState>()(
             error: false,
             message: 'Скачиваем уроки, нужно подождать',
           });
+          showNotification('Скачивание уроков');
           try {
             const downloadedLessons =
               await contentApi.loadListOfContent<Lesson>(ContentTypes.LESSON);
@@ -121,6 +123,7 @@ export const useContentState = create<LoaderState>()(
               message: 'Скачиваем разборы, нужно подождать',
               lessons: downloadedLessons,
             });
+            showNotification('Скачивание разборов', 1);
             const loadedHowtoplayes =
               await contentApi.loadListOfContent<Lesson>(
                 ContentTypes.HOWTOPLAY,
@@ -129,6 +132,7 @@ export const useContentState = create<LoaderState>()(
               message: 'Скачиваем аккорды и бои',
               howtoplays: loadedHowtoplayes,
             });
+            showNotification('Скачивание аккордов', 2);
             const loadedChords = await contentApi.loadListOfContent<Chord>(
               ContentTypes.CHORD,
             );
@@ -140,12 +144,14 @@ export const useContentState = create<LoaderState>()(
               chords: loadedChords,
               beats: loadedBeats,
             });
+            showNotification('Последние приготовления', 3);
             const loadedDataVersion = await contentApi.loadDataVersion();
             set({
               loading: false,
               dataVersion: loadedDataVersion,
               message: 'Готово, приятного пользования',
             });
+            cancelNotification();
             setTimeout(() => {
               set({message: ''});
             }, 1500);
@@ -155,6 +161,7 @@ export const useContentState = create<LoaderState>()(
               error: true,
               message: `Ошибка при загрузке: ${err}`,
             });
+            cancelNotification();
           }
         },
         getFullSong: (song: SimpleSong) => {
