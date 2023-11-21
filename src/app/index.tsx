@@ -7,7 +7,7 @@ import {MainNavigator} from './navigation';
 const App = () => {
   return (
     <>
-      <StatusBar hidden={true} />
+      <StatusBar hidden={false} />
       <SafeAreaProvider>
         <MainNavigator />
       </SafeAreaProvider>
