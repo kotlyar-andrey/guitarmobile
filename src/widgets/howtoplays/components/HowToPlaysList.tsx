@@ -19,7 +19,8 @@ export const HowToPlaysList = ({navigation}: Props) => {
   }));
   const {howtoplays, loading, loadAllContent} = contentState;
 
-  useLessonSettings(state => state.settings);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const lessonSettings = useLessonSettings(state => state.settings);
 
   const navigationToHowToPlay = (lessonPk: number) => () => {
     navigation.push('HowToPlay', {lessonPk});
