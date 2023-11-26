@@ -3,17 +3,9 @@ import React from 'react';
 import createStyles from './FillButton.styles';
 import {useTheme} from '~/features/themeSwitcher';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {ButtonInterface} from '../interfaces';
 
-interface Props {
-  text?: string;
-  size?: 'small' | 'medium' | 'large';
-  iconName?: string;
-  a11yLabel: string;
-  a11yHint: string;
-  onPressHandler: () => void;
-}
-
-export const FillButton: React.FC<Props> = ({
+export const FillButton: React.FC<ButtonInterface> = ({
   text,
   size,
   onPressHandler,
@@ -24,6 +16,17 @@ export const FillButton: React.FC<Props> = ({
   const theme = useTheme();
 
   const styles = createStyles(theme, size);
+
+  const getIconSize = (buttonSize = 3) =>
+    buttonSize === 1
+      ? 28
+      : buttonSize === 2
+      ? 36
+      : buttonSize === 3
+      ? 44
+      : buttonSize === 4
+      ? 50
+      : 64;
 
   return (
     <TouchableOpacity
@@ -36,7 +39,7 @@ export const FillButton: React.FC<Props> = ({
       {iconName && (
         <MaterialCommunityIcons
           name={iconName}
-          size={size === 'small' ? 28 : size === 'medium' ? 44 : 52}
+          size={getIconSize(size)}
           color={theme.colors.onPrimary}
         />
       )}
