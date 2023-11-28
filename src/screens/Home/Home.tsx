@@ -53,6 +53,14 @@ export const Home = ({navigation}: Props) => {
                 navigation.push('Favorites');
               }}
             />
+            <InlineButton
+              text="Метроном"
+              a11yLabel="Метроном"
+              a11yHint="Перейти к экрану с настройками метронома"
+              onPressHandler={() => {
+                navigation.push('Metronome');
+              }}
+            />
           </View>
           <View style={styles.menuColumn}>
             <InlineButton

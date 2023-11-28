@@ -16,6 +16,7 @@ import {HowToPlay} from '~/screens/HowToPlay/HowToPlay';
 import {Chords} from '~/screens/Chords';
 import {Favorites} from '~/screens/Favorites';
 import {Settings} from '~/screens/Settings';
+import {Metronome} from '~/screens/Metronome';
 
 export type MainNavigationType = {
   Home: undefined;
@@ -26,6 +27,7 @@ export type MainNavigationType = {
   Chords: undefined;
   Favorites: undefined;
   Settings: undefined;
+  Metronome: undefined;
   ModalVideo: {type: 'online' | 'offline'; uri: string};
 };
 
@@ -58,6 +60,7 @@ export const MainNavigator = () => {
             <Screen name="Chords" component={Chords} />
             <Screen name="Favorites" component={Favorites} />
             <Screen name="Settings" component={Settings} />
+            <Screen name="Metronome" component={Metronome} />
           </Group>
           <Group screenOptions={{presentation: 'modal'}}>
             <Screen name="ModalVideo" component={ModalVideo} />
