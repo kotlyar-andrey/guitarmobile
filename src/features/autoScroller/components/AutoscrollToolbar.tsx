@@ -13,12 +13,6 @@ export const AutoscrollToolbar: React.FC = () => {
 
   const {speed, setSpeed, scrollToTop} = useAutoScroll();
 
-  React.useEffect(() => {
-    return () => {
-      setSpeed(0);
-    };
-  }, [setSpeed]);
-
   return (
     <View style={styles.container}>
       <MaterialCommunityIcons

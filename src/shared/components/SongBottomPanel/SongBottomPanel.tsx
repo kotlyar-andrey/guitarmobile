@@ -20,20 +20,24 @@ export const SongBottomPanel: React.FC<Props> = ({toolbars}) => {
 
   return (
     <>
-      <View style={visible ? styles.container : styles.containerHide}>
-        {toolbars.map((toolbar, index) => (
-          <View key={`toolbar${index}`}>{toolbar}</View>
-        ))}
-      </View>
+      {visible && (
+        <View style={styles.container}>
+          {toolbars.map((toolbar, index) => (
+            <View key={`toolbar${index}`}>{toolbar}</View>
+          ))}
+        </View>
+      )}
 
       {!visible && (
         <View style={styles.hidden}>
           <IconButton
-            active={false}
+            isActive={false}
             iconName={'eye-outline'}
             onPressHandler={() => {
               togglePanelVisible();
             }}
+            a11yLabel="Показать или спрятать панель"
+            a11yHint="Показать или спрятать панель с автопрокруткой и метрономом"
           />
         </View>
       )}
