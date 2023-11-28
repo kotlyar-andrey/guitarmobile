@@ -1,12 +1,14 @@
 import {create} from 'zustand';
 import {immer} from 'zustand/middleware/immer';
+// @ts-ignore
+import {Metronome} from 'react-native-guitar';
 import {cancelNotification, showNotification} from '../services/notificator';
 
 interface MetronomeState {
-  isPlaying: boolean;
   bpm: number;
-  isFirstVisit: boolean;
-  setIsPlaying: (newValue: boolean) => void;
+  isPlaying: boolean;
+  start: () => void;
+  stop: () => void;
   setBpm: (newBpm: number) => void;
   changeBpm: (changeBy: number) => void;
 }
@@ -16,31 +18,36 @@ const MAX_BPM = 600;
 
 export const useMetronomeState = create<MetronomeState>()(
   immer((set, get) => ({
-    isPlaying: false,
     bpm: 80,
-    isFirstVisit: false,
-    setIsPlaying: (newValue: boolean) => {
-      if (newValue) {
-        showNotification(get().bpm);
-      } else {
-        cancelNotification();
+    isPlaying: false,
+    start: () => {
+      Metronome.play(get().bpm);
+      if (!get().isPlaying) {
+        set({isPlaying: true});
       }
-      set({isPlaying: newValue});
+      showNotification(get().bpm);
+    },
+    stop: () => {
+      Metronome.stop();
+      set({isPlaying: false});
+      cancelNotification();
     },
     setBpm: (newBpm: number) => {
       if (newBpm >= MIN_BPM && newBpm <= MAX_BPM) {
         set({bpm: newBpm});
+        if (get().isPlaying) {
+          get().start();
+        }
       }
     },
     changeBpm: (changeBy: number) => {
-      set(state => {
-        if (
-          state.bpm + changeBy >= MIN_BPM &&
-          state.bpm + changeBy <= MAX_BPM
-        ) {
-          state.bpm += changeBy;
-        }
-      });
+      const newValue = get().bpm + changeBy;
+      if (newValue >= MIN_BPM && newValue <= MAX_BPM) {
+        set({bpm: newValue});
+      }
+      if (get().isPlaying) {
+        get().start();
+      }
     },
   })),
 );
