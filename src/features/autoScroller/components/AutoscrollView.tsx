@@ -26,7 +26,6 @@ export const AutoscrollView: React.FC<Props> = ({children}) => {
     topScrolling,
     disableTopScrolling,
     speed: scrollSpeed,
-    setSpeed,
   } = useAutoScroll();
 
   // useRef изспользуется для сохранения информации между ререндерами экрана
@@ -64,13 +63,12 @@ export const AutoscrollView: React.FC<Props> = ({children}) => {
 
     return () => {
       if (savedScrollInfo.current.timerId) {
-        setSpeed(0);
         clearInterval(savedScrollInfo.current.timerId);
         // eslint-disable-next-line react-hooks/exhaustive-deps
         savedScrollInfo.current.timerId = null;
       }
     };
-  }, [autoScroll, disableTopScrolling, setSpeed, topScrolling]);
+  }, [autoScroll, disableTopScrolling, topScrolling]);
 
   // Сохраняет текущее положение при скролле
   const handleScroll = (event: {nativeEvent: {contentOffset: {y: number}}}) => {

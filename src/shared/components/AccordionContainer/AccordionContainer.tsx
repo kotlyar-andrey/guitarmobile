@@ -9,12 +9,14 @@ type Props = {
   title: string;
   visible: boolean;
   toggleVisible: () => void;
+  toolbarButtons?: React.ReactNode[];
   children: React.ReactNode;
 };
 export const AccordionContainer: React.FC<Props> = ({
   title,
   visible,
   toggleVisible,
+  toolbarButtons,
   children,
 }) => {
   const theme = useTheme();
@@ -26,6 +28,11 @@ export const AccordionContainer: React.FC<Props> = ({
         <Text />
         {visible && <Text style={styles.title}>{title}</Text>}
         <View style={styles.toolbarContainer}>
+          {visible &&
+            toolbarButtons &&
+            toolbarButtons.map((toolbarItem, index) => (
+              <View key={`accordionToolbar${index}`}>{toolbarItem}</View>
+            ))}
           <TouchableOpacity style={styles.toolbarItem} onPress={toggleVisible}>
             {visible ? (
               <MaterialCommunityIcons
