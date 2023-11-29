@@ -10,10 +10,10 @@ export interface Addition {
 
 export interface Scheme {
   pk: number;
-  title: string;
-  name: string;
   inscription: string;
   image: string;
+  width: number;
+  height: number;
 }
 
 /**
@@ -23,7 +23,7 @@ export interface SimpleSong {
   pk: number;
   title: string;
   chords: number[];
-  schemes: string[];
+  schemes: Scheme[];
   beats: number[];
   text: string;
   metronome: number;

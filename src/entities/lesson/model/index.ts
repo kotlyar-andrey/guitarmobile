@@ -3,4 +3,5 @@ export {
   type Addition,
   type SimpleSong,
   type FullSong,
+  type Scheme,
 } from './interfaces';

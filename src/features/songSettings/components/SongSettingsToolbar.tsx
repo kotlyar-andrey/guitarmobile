@@ -18,18 +18,22 @@ export const SongSettingsToolbar: React.FC<Props> = ({showSettings}) => {
   return (
     <View style={styles.container}>
       <IconButton
-        active={false}
+        isActive={false}
         iconName={'cog-outline'}
         onPressHandler={() => {
           showSettings();
         }}
+        a11yLabel="Показать настройки"
+        a11yHint="Показывает настройки внешнего вида урока"
       />
       <IconButton
-        active={false}
+        isActive={false}
         iconName={'eye-off-outline'}
         onPressHandler={() => {
           togglePanelPinned();
         }}
+        a11yLabel="Спрятать панель"
+        a11yHint="Прячет панель с автопрокруткой и метрономом"
       />
     </View>
   );

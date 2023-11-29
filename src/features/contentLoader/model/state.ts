@@ -175,7 +175,7 @@ export const useContentState = create<LoaderState>()(
               get().beats.find((beatItem: Beat) => beatItem.pk === beatPk),
             )
             .filter((item): item is Beat => !!item);
-          return {...song, chords: chords, beats, schemes: []};
+          return {...song, chords: chords, beats};
         },
         getHowtoplaysForLesson: (lessonNumber: number) => {
           const allhowtoplays = get().howtoplays;

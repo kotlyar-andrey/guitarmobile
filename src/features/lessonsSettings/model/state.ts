@@ -9,6 +9,7 @@ export type BeatSize = 1 | 2 | 3 | 4 | 5;
 interface OneLessonSettings {
   chordsVisible: boolean;
   beatsVisible: boolean;
+  schemesVisible: boolean;
   isLessonComplite: boolean;
   isLessonFavorite: boolean;
   downloadedVideoPath: string | null;
@@ -20,6 +21,7 @@ interface LessonsSettings {
   toggleSettingsField: (lessonPk: number, fieldName: string) => void;
   toggleChordsVisible: (lessonPk: number) => void;
   toggleBeatsVisible: (lessonPk: number) => void;
+  toggleSchemesVisible: (lessonPk: number) => void;
   toggleIsLessonComplite: (lessonPk: number) => void;
   toggleIsLessonFavorite: (lessonPk: number) => void;
   getSettingsByPk: (lessonPk: number) => OneLessonSettings;
@@ -30,7 +32,8 @@ interface LessonsSettings {
 
 const defaultLessonSettings: OneLessonSettings = {
   chordsVisible: true,
-  beatsVisible: true,
+  beatsVisible: false,
+  schemesVisible: true,
   isLessonComplite: false,
   isLessonFavorite: false,
   downloadedVideoPath: null,
@@ -69,6 +72,9 @@ export const useLessonSettings = create<LessonsSettings>()(
         },
         toggleBeatsVisible: (lessonPk: number) => {
           get().toggleSettingsField(lessonPk, 'beatsVisible');
+        },
+        toggleSchemesVisible: (lessonPk: number) => {
+          get().toggleSettingsField(lessonPk, 'schemesVisible');
         },
         toggleIsLessonComplite: (lessonPk: number) => {
           get().toggleSettingsField(lessonPk, 'isLessonComplite');
