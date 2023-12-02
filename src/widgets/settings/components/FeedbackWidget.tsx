@@ -26,7 +26,7 @@ export const FeedbackWidget = () => {
           a11yLabel="Обратная связь"
           a11yHint="Нажмите, чтобы написать нам"
           text="Напишите нам"
-          size="small"
+          size={1}
           onPressHandler={mailToAdmin}
         />
       </View>
