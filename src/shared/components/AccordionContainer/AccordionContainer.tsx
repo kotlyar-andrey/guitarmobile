@@ -36,7 +36,7 @@ export const AccordionContainer: React.FC<Props> = ({
               {visible ? (
                 <MaterialCommunityIcons
                   name="eye-off-outline"
-                  color={theme.colors.secondary}
+                  color={theme.colors.primary}
                   size={moderateScale(14)}
                 />
               ) : (
@@ -46,7 +46,7 @@ export const AccordionContainer: React.FC<Props> = ({
                   </Text>
                   <MaterialCommunityIcons
                     name="eye-outline"
-                    color={theme.colors.secondary}
+                    color={theme.colors.primary}
                     size={moderateScale(14)}
                   />
                 </>

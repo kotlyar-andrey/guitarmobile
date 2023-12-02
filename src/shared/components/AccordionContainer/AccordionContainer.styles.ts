@@ -32,7 +32,7 @@ const createStyles = (theme: Theme) => {
       textDecorationColor: theme.colors.primary,
     },
     toolbarText: {
-      color: theme.colors.secondary,
+      color: theme.colors.primary,
       fontSize: '7@s',
       padding: '2@s',
     },
