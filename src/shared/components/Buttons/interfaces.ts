@@ -1,4 +1,4 @@
-export interface ButtonInterface {
+export type ButtonInterface = {
   text?: string;
   iconName?: string;
   isActive?: boolean;
@@ -8,4 +8,4 @@ export interface ButtonInterface {
   onPressHandler: () => void;
   onLongPressHandler?: () => void;
   onPressOutHandler?: () => void;
-}
+};

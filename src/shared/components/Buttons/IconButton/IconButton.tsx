@@ -6,7 +6,11 @@ import {useTheme} from '~/features/themeSwitcher';
 import createStyles from './IconButton.styles';
 import {ButtonInterface} from '../interfaces';
 
-export const IconButton: React.FC<ButtonInterface> = ({
+type OwnProps = {
+  flat?: boolean;
+};
+
+export const IconButton: React.FC<ButtonInterface & OwnProps> = ({
   onPressHandler,
   onLongPressHandler,
   onPressOutHandler,
@@ -15,9 +19,10 @@ export const IconButton: React.FC<ButtonInterface> = ({
   a11yHint,
   a11yLabel,
   size,
+  flat,
 }) => {
   const theme = useTheme();
-  const styles = createStyles(theme);
+  const styles = createStyles(theme, flat);
 
   const getIconSize = (buttonSize = 3) =>
     buttonSize === 1

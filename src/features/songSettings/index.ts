@@ -1,2 +1,7 @@
 export {useSongSettings} from './model';
-export {SongSettingsToolbar, SongSettingsTopBarWidget} from './components';
+export {
+  SongSettingsToolbar,
+  ChordsAccordionToolbar,
+  SchemesAccordionToolbar,
+  TextAccordionToolbar,
+} from './components';

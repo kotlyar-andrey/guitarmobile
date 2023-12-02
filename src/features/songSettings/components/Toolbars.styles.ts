@@ -6,7 +6,6 @@ const createStyles = (theme: Theme) => {
     container: {
       flexDirection: 'row',
       alignItems: 'center',
-      justifyContent: 'space-around',
       backgroundColor: theme.colors.background,
     },
   });

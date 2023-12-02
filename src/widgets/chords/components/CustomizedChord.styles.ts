@@ -2,7 +2,7 @@ import {ScaledSheet} from 'react-native-size-matters';
 import {CHORD_BASE_SIZE} from '~/shared/config/consts';
 
 const createStyles = (chordSize, chordOrientation) => {
-  const baseSize = chordSize * CHORD_BASE_SIZE;
+  const baseSize = Math.round((CHORD_BASE_SIZE * chordSize) / 100);
 
   const width =
     chordOrientation === 'vertical' ? `${baseSize}@ms` : `${2 * baseSize}@ms`;

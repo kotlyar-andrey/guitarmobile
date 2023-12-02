@@ -3,13 +3,9 @@ import {View} from 'react-native';
 import {useTheme} from '~/features/themeSwitcher';
 import {IconButton} from '~/shared/components/Buttons';
 import {useSongSettings} from '../model';
-import createStyles from './SongSettingsToolbar.styles';
+import createStyles from './Toolbars.styles';
 
-interface Props {
-  showSettings: () => void;
-}
-
-export const SongSettingsToolbar: React.FC<Props> = ({showSettings}) => {
+export const SongSettingsToolbar: React.FC = () => {
   const theme = useTheme();
   const styles = createStyles(theme);
 
@@ -17,15 +13,6 @@ export const SongSettingsToolbar: React.FC<Props> = ({showSettings}) => {
 
   return (
     <View style={styles.container}>
-      <IconButton
-        isActive={false}
-        iconName={'cog-outline'}
-        onPressHandler={() => {
-          showSettings();
-        }}
-        a11yLabel="Показать настройки"
-        a11yHint="Показывает настройки внешнего вида урока"
-      />
       <IconButton
         isActive={false}
         iconName={'eye-off-outline'}

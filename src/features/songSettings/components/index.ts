@@ -1,3 +1,4 @@
 export {SongSettingsToolbar} from './SongSettingsToolbar';
-export {SongSettingsModal} from './SongSettingsModal';
-export {SongSettingsTopBarWidget} from './SongSettingsTopBarWidget';
+export {ChordsAccordionToolbar} from './ChordsAccordionToolbar';
+export {SchemesAccordionToolbar} from './SchemesAccordionToolbar';
+export {TextAccordionToolbar} from './TextAccordionToolbar';

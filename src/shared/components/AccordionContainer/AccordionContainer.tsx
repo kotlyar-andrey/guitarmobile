@@ -8,8 +8,8 @@ import createStyles from './AccordionContainer.styles';
 type Props = {
   title: string;
   visible: boolean;
-  toggleVisible: () => void;
-  toolbarButtons?: React.ReactNode[];
+  toggleVisible?: () => void;
+  toolbarButtons?: React.ReactNode;
   children: React.ReactNode;
 };
 export const AccordionContainer: React.FC<Props> = ({
@@ -28,31 +28,31 @@ export const AccordionContainer: React.FC<Props> = ({
         <Text />
         {visible && <Text style={styles.title}>{title}</Text>}
         <View style={styles.toolbarContainer}>
-          {visible &&
-            toolbarButtons &&
-            toolbarButtons.map((toolbarItem, index) => (
-              <View key={`accordionToolbar${index}`}>{toolbarItem}</View>
-            ))}
-          <TouchableOpacity style={styles.toolbarItem} onPress={toggleVisible}>
-            {visible ? (
-              <MaterialCommunityIcons
-                name="eye-off-outline"
-                color={theme.colors.secondary}
-                size={moderateScale(14)}
-              />
-            ) : (
-              <>
-                <Text style={styles.toolbarText}>
-                  Показать {title.toLowerCase()}
-                </Text>
+          {visible && toolbarButtons && <View>{toolbarButtons}</View>}
+          {toggleVisible && (
+            <TouchableOpacity
+              style={styles.toolbarItem}
+              onPress={toggleVisible}>
+              {visible ? (
                 <MaterialCommunityIcons
-                  name="eye-outline"
+                  name="eye-off-outline"
                   color={theme.colors.secondary}
                   size={moderateScale(14)}
                 />
-              </>
-            )}
-          </TouchableOpacity>
+              ) : (
+                <>
+                  <Text style={styles.toolbarText}>
+                    Показать {title.toLowerCase()}
+                  </Text>
+                  <MaterialCommunityIcons
+                    name="eye-outline"
+                    color={theme.colors.secondary}
+                    size={moderateScale(14)}
+                  />
+                </>
+              )}
+            </TouchableOpacity>
+          )}
         </View>
       </View>
       {visible && <View>{children}</View>}

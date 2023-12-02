@@ -9,10 +9,6 @@ import {useTheme} from '~/features/themeSwitcher';
 import {ChordsContainer} from '~/widgets/chords';
 import {ScrollView, Text, View} from 'react-native';
 import {Chord} from '~/entities/chord';
-import {
-  SongSettingsModal,
-  SongSettingsTopBarWidget,
-} from '~/features/songSettings/components';
 
 type Props = NativeStackScreenProps<MainNavigationType, 'Chords'>;
 
@@ -28,12 +24,6 @@ export const Chords: React.FC<Props> = ({navigation}) => {
 
   const [activeNote, setActiveNote] = React.useState<string>('C');
   const [activeSubNote, setActiveSubNote] = React.useState<string>('');
-  const [settingsModalVisible, setSettingsModalVisible] =
-    React.useState<boolean>(false);
-
-  const toggleSettingsModalVisible = () => {
-    setSettingsModalVisible(!settingsModalVisible);
-  };
 
   const chordsToView: Chord[] = allChords.filter(
     chord =>
@@ -42,16 +32,7 @@ export const Chords: React.FC<Props> = ({navigation}) => {
 
   return (
     <SafeAreaView edges={['right', 'bottom']} style={styles.container}>
-      <TopBar
-        backArrow={true}
-        navigation={navigation}
-        title="Аккорды"
-        rightWidget={
-          <SongSettingsTopBarWidget
-            toggleSettingsModalVisible={toggleSettingsModalVisible}
-          />
-        }
-      />
+      <TopBar backArrow={true} navigation={navigation} title="Аккорды" />
       <View style={styles.topBarRow}>
         {notes.map(note => (
           <Text
@@ -90,10 +71,6 @@ export const Chords: React.FC<Props> = ({navigation}) => {
           <Text style={styles.notFoundError}>Нет данных для отображения</Text>
         )}
       </ScrollView>
-      <SongSettingsModal
-        visible={settingsModalVisible}
-        toggleVisible={toggleSettingsModalVisible}
-      />
     </SafeAreaView>
   );
 };

@@ -7,7 +7,9 @@ export const DOWNLOAD_VIDEO_BASEURL = 'http://guitar0.kotdatacenter.net/files';
 
 export const ADMIN_EMAIL = 'kotlyar562@gmail.com';
 
-export const BEAT_BASE_SIZE = 40;
+export const BEAT_BASE_SIZE = 100;
 export const PLUNK_BASE_SIZE = 40;
 
-export const CHORD_BASE_SIZE = 40;
+export const CHORD_BASE_SIZE = 100;
+export const SCHEME_BASE_SIZE = 120;
+export const TEXT_BASE_SIZE = 14;

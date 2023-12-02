@@ -3,18 +3,31 @@ import {create} from 'zustand';
 import {persist, createJSONStorage} from 'zustand/middleware';
 import {immer} from 'zustand/middleware/immer';
 
-export type ChordSize = 1 | 2 | 3 | 4 | 5;
-export type BeatSize = 1 | 2 | 3 | 4 | 5;
+// Размер в процентах: от 40 до 200 с шагом SIZE_STEP
+const MIN_SIZE = 40;
+const MAX_SIZE = 200;
+const SIZE_STEP = 20;
 
 interface SongSetting {
   chordOrientation: 'horizontal' | 'vertical';
-  chordSize: ChordSize;
-  beatSize: BeatSize;
+
+  chordSize: number;
+  beatSize: number;
+  schemeSize: number;
   textSize: number;
   panelPinned: boolean;
-  setChordSize: (newChordSize: ChordSize) => void;
-  setBeatSize: (newBeatSize: BeatSize) => void;
+  setChordSize: (newChordSize: number) => void;
+  increaseChordSize: () => void;
+  decreaseChordSize: () => void;
+
+  setSchemeSize: (newSchemeSize: number) => void;
+  increaseSchemeSize: () => void;
+  decreaseSchemeSize: () => void;
+
   setTextSize: (newTextSize: number) => void;
+  increaseTextSize: () => void;
+  decreaseTextSize: () => void;
+
   togglePanelPinned: () => void;
   toggleOrientation: () => void;
 }
@@ -24,20 +37,48 @@ export const useSongSettings = create<SongSetting>()(
     persist(
       (set, get) => ({
         chordOrientation: 'horizontal',
-        chordSize: 3,
-        beatSize: 3,
-        textSize: 10,
+        chordSize: 100,
+        beatSize: 100,
+        schemeSize: 100,
+        textSize: 100,
         panelPinned: true,
 
-        setChordSize: (newChordSize: ChordSize) => {
-          set({chordSize: newChordSize});
+        setChordSize: (newChordSize: number) => {
+          if (newChordSize >= MIN_SIZE && newChordSize <= MAX_SIZE) {
+            set({chordSize: newChordSize});
+          }
         },
-        setBeatSize: (newBeatSize: BeatSize) => {
-          set({beatSize: newBeatSize});
+        increaseChordSize: () => {
+          get().setChordSize(get().chordSize + SIZE_STEP);
         },
+        decreaseChordSize: () => {
+          get().setChordSize(get().chordSize - SIZE_STEP);
+        },
+
+        setSchemeSize: (newSchemeSize: number) => {
+          if (newSchemeSize >= MIN_SIZE && newSchemeSize <= MAX_SIZE) {
+            set({schemeSize: newSchemeSize});
+          }
+        },
+        increaseSchemeSize: () => {
+          get().setSchemeSize(get().schemeSize + SIZE_STEP);
+        },
+        decreaseSchemeSize: () => {
+          get().setSchemeSize(get().schemeSize - SIZE_STEP);
+        },
+
         setTextSize: (newTextSize: number) => {
-          set({textSize: newTextSize});
+          if (newTextSize >= MIN_SIZE && newTextSize <= MAX_SIZE) {
+            set({textSize: newTextSize});
+          }
         },
+        increaseTextSize: () => {
+          get().setTextSize(get().textSize + SIZE_STEP);
+        },
+        decreaseTextSize: () => {
+          get().setTextSize(get().textSize - SIZE_STEP);
+        },
+
         togglePanelPinned: () => {
           const currentPinned = get().panelPinned;
           const newPinned = !currentPinned;

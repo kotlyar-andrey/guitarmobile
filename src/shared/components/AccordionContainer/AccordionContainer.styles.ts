@@ -21,7 +21,7 @@ const createStyles = (theme: Theme) => {
       alignItems: 'center',
     },
     toolbarItem: {
-      marginRight: '4@s',
+      marginHorizontal: '4@s',
       flexDirection: 'row',
       alignItems: 'center',
     },
