@@ -9,6 +9,7 @@ import {useTheme} from '~/features/themeSwitcher';
 import {ChordsContainer} from '~/widgets/chords';
 import {ScrollView, Text, View} from 'react-native';
 import {Chord} from '~/entities/chord';
+import {ChordsAccordionToolbar} from '~/features/songSettings';
 
 type Props = NativeStackScreenProps<MainNavigationType, 'Chords'>;
 
@@ -32,7 +33,12 @@ export const Chords: React.FC<Props> = ({navigation}) => {
 
   return (
     <SafeAreaView edges={['right', 'bottom']} style={styles.container}>
-      <TopBar backArrow={true} navigation={navigation} title="Аккорды" />
+      <TopBar
+        backArrow={true}
+        navigation={navigation}
+        title="Аккорды"
+        rightWidget={<ChordsAccordionToolbar />}
+      />
       <View style={styles.topBarRow}>
         {notes.map(note => (
           <Text
