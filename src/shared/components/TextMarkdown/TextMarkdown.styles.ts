@@ -1,3 +1,4 @@
+import {Platform} from 'react-native';
 import {moderateScale} from 'react-native-size-matters';
 import {Theme} from '~/entities/theming';
 
@@ -46,6 +47,19 @@ const createStyles = (theme: Theme, size: number) => {
       marginBottom: moderateScale(2),
       paddingVertical: moderateScale(2),
       paddingHorizontal: moderateScale(4),
+    },
+    code_block: {
+      backgroundColor: theme.colors.background,
+      color: theme.colors.text,
+      padding: 10,
+      ...Platform.select({
+        ['ios']: {
+          fontFamily: 'Courier',
+        },
+        ['android']: {
+          fontFamily: 'monospace',
+        },
+      }),
     },
   };
   return styles;
