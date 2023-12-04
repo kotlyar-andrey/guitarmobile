@@ -78,6 +78,7 @@ export const VideoDownloader: React.FC<Props> = ({
           iconName="download"
           a11yHint="Скачать видео-урок"
           a11yLabel="Нажмите, чтобы скачать видео-урок и смотреть его офлайн"
+          size={2}
           onPressHandler={downloadVideo}
         />
       )}

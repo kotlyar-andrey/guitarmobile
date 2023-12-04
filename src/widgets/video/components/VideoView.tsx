@@ -63,6 +63,7 @@ export const VideoView: React.FC<Props> = ({
               iconName="play"
               a11yHint="Смотреть видео-урок"
               a11yLabel="Нажмите, чтобы смотреть видео-урок офлайн"
+              size={2}
               onPressHandler={watchvideoOffline}
             />
             <Text style={styles.hintText}>

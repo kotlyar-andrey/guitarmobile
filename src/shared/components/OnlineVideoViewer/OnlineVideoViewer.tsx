@@ -32,6 +32,7 @@ export const OnlineVideoViewer: React.FC<Props> = ({video, navigation}) => {
   return (
     <FillButton
       text="Смотреть онлайн"
+      size={2}
       iconName="youtube"
       a11yHint="Смотреть видео-урок"
       a11yLabel="Нажмите, чтобы смотреть видео-урок онлайн"
