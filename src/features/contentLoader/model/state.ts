@@ -46,7 +46,7 @@ export const useContentState = create<LoaderState>()(
         howtoplays: [],
         chords: [],
         beats: [],
-        dataVersion: 1,
+        dataVersion: 0,
         checkUpdate: async () => {
           const localDataVersion = get().dataVersion;
           if (localDataVersion === 0) {
